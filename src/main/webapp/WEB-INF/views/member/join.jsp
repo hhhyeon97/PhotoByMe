@@ -5,10 +5,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title></title>
-<link rel="stylesheet" href="css/join.css">
+<link rel="stylesheet" href="/resource/css/join.css">
 </head>
 <body>
-<jsp:include page="header.jsp" />
+<jsp:include page="../header.jsp" />
 <div class="container">
         <h1>회원가입 ⌯'▾'⌯</h1>
         <form>
@@ -30,6 +30,6 @@
             
         </form>
     </div>
-<jsp:include page="footer.jsp" />   
+<jsp:include page="../footer.jsp" />   
 </body>
 </html>

@@ -22,7 +22,7 @@ hr {
 	height: 2px; /* 선의 높이 설정 (선의 굵기 조절) */
 }
 h6{
-	color:#333;
+	color:gray;
 	font-weight: bold;
 	font-style: italic;
 	

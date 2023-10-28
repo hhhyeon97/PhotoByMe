@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="css/login.css">
 </head>
 <body>
-	<jsp:include page="header.jsp" />
+	<jsp:include page="../header.jsp" />
 	
 	<!-- 1차 틀 -->
 	<!-- 	<div class="container">
@@ -40,7 +40,7 @@
 		</div>
 		<div class="neu-button">
 			<button type="button" class="btn" id="loginBtn" onclick="loginChk()">로그인</button>
-			<button type="button" class="btn" id="joinBtn"><a href="/join">회원가입</a></button>
+			<button type="button" class="btn" id="joinBtn"><a href="./join">회원가입</a></button>
 		</div>
 	</div>
 	</form>
@@ -65,6 +65,6 @@
 			}
 		}
 	</script>
-<jsp:include page="footer.jsp" />
+<jsp:include page="../footer.jsp" />
 </body>
 </html>
