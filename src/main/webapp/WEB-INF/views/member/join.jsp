@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title></title>
-<link rel="stylesheet" href="/resource/css/join.css">
+<link rel="stylesheet" href="/css/join.css">
 </head>
 <body>
 <jsp:include page="../header.jsp" />

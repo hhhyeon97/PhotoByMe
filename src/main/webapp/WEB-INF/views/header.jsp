@@ -59,7 +59,7 @@ font-style: normal;
              <div class="right-nav">
             <ul class="nav-links">
                 <li><a href="/search" id="openModal">SEARCH</a></li>
-                <li><a href="/login">LOG IN</a></li>
+                <li><a href="/member/login">LOG IN</a></li>
                 <li><a href="/cart">My저장</a></li>
             </ul>
             </div>
