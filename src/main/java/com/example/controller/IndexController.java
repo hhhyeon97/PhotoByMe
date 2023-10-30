@@ -29,14 +29,10 @@ public class IndexController {
 			logger.info("메인 페이지 진입");
 		}
 	
-	
-	
 	@GetMapping("/cart")
 	public String cart() {
 		return "cart";
 	}
-	
-	
 	
 	@GetMapping("/search")
 	public String search() {
