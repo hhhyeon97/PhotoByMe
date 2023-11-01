@@ -22,22 +22,10 @@
                 <input type="password" name="mpw" placeholder="비밀번호">
             </div>
             <div class="neu-input">
-            	<input type="password" name="mpw" placeholder="비밀번호 재확인">
-            </div>
-            <div class="neu-input">
                 <input type="text" name="mname" placeholder="이름">
             </div>
              <div class="neu-input">
                 <input type="text" name="memail" placeholder="이메일">
-            </div>
-             <div class="neu-input">
-                <input type="text" name="mAddr1">
-            </div>
-             <div class="neu-input">
-                <input type="text" name="mAddr2">
-            </div>
-             <div class="neu-input">
-                <input type="text" name="mAddr3">
             </div>
             <div class="neu-button">
                 <input type="button" class="join_button" value="가입하기">
