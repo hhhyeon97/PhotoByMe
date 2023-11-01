@@ -15,7 +15,7 @@
         <div class="card" style="width: 18rem;">
             <img src="images/photo01.jpg" class="card-img-top custom-img" alt="...">
             <div class="card-body">
-                <a href="/product" class="btn btn-dark">click me!</a>
+                <a href="/product" class="btn btn-dark">저장</a>
             </div>
             <h5 class="card-title">해헤헤 하늘</h5>
         </div>
@@ -25,7 +25,7 @@
         <div class="card" style="width: 18rem;">
             <img src="images/photo02.jpg" class="card-img-top custom-img" alt="...">
             <div class="card-body">
-                <a href="/product" class="btn btn-dark">click me!</a>
+                <a href="/product" class="btn btn-dark">저장</a>
             </div>
             <h5 class="card-title">나는 귤입니다</h5>
         </div>
@@ -35,7 +35,7 @@
         <div class="card" style="width: 18rem;">
             <img src="images/photo03.jpg" class="card-img-top custom-img" alt="...">
             <div class="card-body">
-                <a href="/product" class="btn btn-dark">click me!</a>
+                <a href="/product" class="btn btn-dark">저장</a>
             </div>
             <h5 class="card-title">눈웃음을 드려요</h5>
         </div>
@@ -45,7 +45,7 @@
         <div class="card" style="width: 18rem;">
             <img src="images/photo06.jpg" class="card-img-top custom-img" alt="...">
             <div class="card-body">
-                <a href="/product" class="btn btn-dark">click me!</a>
+                <a href="/product" class="btn btn-dark">저장</a>
             </div>
             <h5 class="card-title">무지개를 따라서</h5>
         </div>

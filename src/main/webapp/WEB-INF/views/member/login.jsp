@@ -5,7 +5,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title></title>
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
 <link rel="stylesheet" href="/css/login.css">
+<script>
+$(document).ready(function () {
+    var regSuccess = ${regSuccess};
+    if (regSuccess) {
+        alert("회원가입을 축하합니다!");
+    }
+});
+</script>
 </head>
 <body>
 	<jsp:include page="../header.jsp" />
@@ -40,7 +49,7 @@
 		</div>
 		<div class="neu-button">
 			<button type="button" class="btn" id="loginBtn" onclick="loginChk()">로그인</button>
-			<button type="button" class="btn" id="joinBtn"><a href="./join">회원가입</a></button>
+			<button type="button" class="btn" id="joinBtn">회원가입</button>
 		</div>
 	</div>
 	</form>
@@ -51,6 +60,10 @@
 		var loginBtn = document.getElementById('loginBtn');
 		var joinBtn = document.getElementById('joinBtn');
 
+		joinBtn.addEventListener('click', function() {
+		    window.location.href = '/member/join';
+		});
+		
 		// 로그인 유효성 체크 바리데이션
 		function loginChk() {
 			if (!id.value) {

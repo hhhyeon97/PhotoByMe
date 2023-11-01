@@ -14,12 +14,17 @@
 
 <div class="container">
         <h1>회원가입 ⌯'▾'⌯</h1>
-        <form action="join_ok.jsp" id="join_form" method="post">
+        <form action="join_ok" id="join_form" method="post" onsubmit="return write_check();">
             <div class="neu-input">
-                <input type="text" name="mid" id="text" placeholder="아이디">
+                <input type="text" class="id_input" name="mid" placeholder="아이디">
             </div>
+            <span class="id_input_re_1">사용 가능한 아이디입니다.</span>
+			<span class="id_input_re_2">아이디가 이미 존재합니다.</span>
+            <span class="id_input_re_3">아이디가 짧습니다.(4자 이상 필수)</span>
+            <span class="id_input_re_4">아이디 형식을 초과했습니다.(4~12자 사이)</span>
+            <span class="id_input_re_5">공백이 들어가면 안 됩니다.</span>
             <div class="neu-input">
-                <input type="password" name="mpw" placeholder="비밀번호">
+                <input type="password" name="mpw" placeholder="비밀번호 (대문자/특수문자 포함 8자 이상)">
             </div>
             <div class="neu-input">
                 <input type="text" name="mname" placeholder="이름">
@@ -28,22 +33,153 @@
                 <input type="text" name="memail" placeholder="이메일">
             </div>
             <div class="neu-button">
-                <input type="button" class="join_button" value="가입하기">
+                <input type="submit" class="join_button" value="가입하기">
             </div>
         </form>
     </div>
 <jsp:include page="../footer.jsp" /> 
 
 <script>
+function write_check() {
+    var mid = document.forms["join_form"]["mid"].value;
+    var mpw = document.forms["join_form"]["mpw"].value;
+    var mname = document.forms["join_form"]["mname"].value;
+    var memail = document.forms["join_form"]["memail"].value;
+    
+    if (mid === "") {
+        alert("아이디를 입력하세요.");
+        return false;
+    }
+    
+    // 아이디 형식 검증 (4~12자, 영문 대/소문자와 숫자로만 구성)
+    if (!isValidId(mid)) {
+        alert("올바른 아이디 형식을 입력하세요.");
+        return false;
+    }
+        
+    if (mpw === "") {
+        alert("비밀번호를 입력하세요.");
+        return false;
+    }
+    
+    // 비밀번호 형식 검증
+    if(!pwValid(mpw)){
+    	alert("비밀번호는 8자 이상이어야 하며, 숫자/대문자/소문자/특수문자를 모두 포함해야 합니다.");
+    	return false;
+    }
+   
 
-$(document).ready(function(){
-	//회원가입 버튼(회원가입 기능 작동)
-	$(".join_button").click(function(){
-		$("#join_form").attr("action", "/member/join");
-		$("#join_form").submit();
-	});
+    if (mname === "") {
+        alert("이름을 입력하세요.");
+        return false;
+    }
+
+    if (memail === "") {
+        alert("이메일을 입력하세요.");
+        return false;
+    }
+
+    // 이메일 형식 검증
+    if (!isValidEmail(memail)) {
+        alert("올바른 이메일 주소를 입력하세요.");
+        return false;
+    }
+
+    return true;
+}
+function isValidId(id) {
+    // 아이디 형식 검증을 위한 정규 표현식
+    var idPattern = /^[a-zA-Z0-9]{4,12}$/;
+    return idPattern.test(id);
+}
+
+function isValidEmail(email) {
+    // 간단한 이메일 형식 검증 로직 (개선 가능)
+    var emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    return emailPattern.test(email);
+}
+
+//비밀번호 조건  8자리 이상/숫자 포함/영대 문자 포함/영소 문자 포함/특수문자 포함
+function pwValid(password){
+    var pwpat = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
+	return pwpat.test(password);
+}
+</script>
+
+
+<script>
+//함수를 별도로 정의하여 아이디 유효성 검증 및 중복 검사에 사용
+function validateId() {
+    var mid = $('.id_input').val();
+    
+    
+    // 0. 공백 검증
+    if (mid.includes(' ')) {
+        $('.id_input_re_1').css("display", "none");
+        $('.id_input_re_2').css("display", "none");
+        $('.id_input_re_3').css("display", "none");
+        $('.id_input_re_4').css("display", "none");
+        $('.id_input_re_5').css("display", "inline-block");
+        return;
+    }
+    // 1. 아이디 길이 검증
+    if (mid.length < 4) {
+        $('.id_input_re_1').css("display", "none");
+        $('.id_input_re_2').css("display", "none");
+        $('.id_input_re_3').css("display", "inline-block");
+        $('.id_input_re_4').css("display", "none");
+        $('.id_input_re_5').css("display", "none");
+        return;
+    }else if(mid.length >12){
+    	$('.id_input_re_1').css("display", "none");
+    	$('.id_input_re_2').css("display", "none");
+    	$('.id_input_re_3').css("display", "none");
+        $('.id_input_re_4').css("display", "inline-block");
+        $('.id_input_re_5').css("display", "none");
+        return;
+    }
+
+    // 2. 아이디 유효성 검증
+    if (!isValidId(mid)) {
+        $('.id_input_re_1').css("display", "none");
+        $('.id_input_re_2').css("display", "inline-block");
+        $('.id_input_re_3').css("display", "none");
+        $('.id_input_re_4').css("display", "none");
+        return;
+    }
+
+    // 3. 아이디 중복 여부 검사 (Ajax 요청)
+    var data = { mid: mid };
+    $.ajax({
+        type: "post",
+        url: "/member/memberIdChk",
+        data: data,
+        success: function (result) {
+            if (result != 'fail') {
+                $('.id_input_re_1').css("display", "inline-block");
+                $('.id_input_re_2').css("display", "none");
+                $('.id_input_re_3').css("display", "none");
+                $('.id_input_re_4').css("display", "none");
+                $('.id_input_re_5').css("display", "none");
+                
+            } else {
+                $('.id_input_re_1').css("display", "none");
+                $('.id_input_re_2').css("display", "inline-block");
+                $('.id_input_re_3').css("display", "none");
+                $('.id_input_re_4').css("display", "none");
+                $('.id_input_re_5').css("display", "none");
+            }
+        }
+    });
+}
+
+// 이벤트 리스너를 등록하여 입력란 변경 시 validateId 함수 호출
+$('.id_input').on("propertychange change keyup paste input", function () {
+    validateId();
 });
 
-</script>  
+
+</script>
+
 </body>
 </html>

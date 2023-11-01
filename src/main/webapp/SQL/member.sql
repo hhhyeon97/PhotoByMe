@@ -16,13 +16,15 @@ create table member(
 
 commit;
 
-insert into member values('admin01', 'admin', '관리자', 'admin', 'admin', 'admin', 'admin', 1, sysdate);
+
 
 select * from member;
 
 alter table member drop column mAddr3; -- 주소1,2,3 삭제 
 
+insert into member values('admin01', 'admin', '관리자', 'admin',1, sysdate);
 
+delete from member;
 
 
 

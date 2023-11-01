@@ -19,6 +19,11 @@ public class MemberServiceImpl implements MemberService {
 		membermapper.memberJoin(member);
 		
 	}
+
+	@Override
+	public int idCheck(String mid) throws Exception {
+		return membermapper.idCheck(mid);
+	}
 	
 	
 }

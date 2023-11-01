@@ -8,4 +8,6 @@ public interface MemberMapper {
 
 	//회원 가입
 	public void memberJoin(MemberVO member);
+
+	public int idCheck(String mid);
 }

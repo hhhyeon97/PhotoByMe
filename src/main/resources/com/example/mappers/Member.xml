@@ -8,4 +8,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="memberJoin">
 		insert into member values(#{mid}, #{mpw}, #{mname}, #{memail}, 0, sysdate)
 	</insert>
+<!-- 아이디 중복 검사 -->
+  	<select id="idCheck" resultType="int">
+  		select count(*) from member where mid = #{mid}
+  	</select>
 </mapper> 
