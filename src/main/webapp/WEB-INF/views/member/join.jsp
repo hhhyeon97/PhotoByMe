@@ -30,9 +30,23 @@
             <div class="neu-input">
                 <input type="text" name="mname" placeholder="이름">
             </div>
+            
+            <!-- 메일 부분 시작 -->
              <div class="neu-input">
                 <input type="text" name="memail" placeholder="이메일">
+            
+            <div class="mail_check_wrap">
+            	<div class="mail_check_input_box" id="mail_check_input_box_false">
+            	<input class="mail_check_input_box" disabled="disabled" placeholder="인증번호 입력">
+            	</div>
+            <div class="mailbutton">
+            	<button>인증번호 전송</button>
             </div>
+            <div class="clearfix"></div>
+            </div>
+            </div>
+            <!-- 메일 부분 끝  -->
+            
             <div class="neu-button">
                 <input type="submit" class="join_button" value="가입하기">
             </div>
@@ -247,6 +261,33 @@ function write_check() {
 // 이벤트 리스너를 등록하여 입력란 변경 시 validateId 함수 호출
 $('.id_input').on("propertychange change keyup paste input", function () {
     validateId();
+    
+ // 
+   /*  var data = { mid: mid };
+    $.ajax({
+        type: "post",
+        url: "/member/memberIdChk",
+        data: data,
+        success: function (result) {
+            if (result != 'fail') {
+                $('.id_input_re_1').css("display", "inline-block");
+                $('.id_input_re_2').css("display", "none");
+                $('.id_input_re_3').css("display", "none");
+                $('.id_input_re_4').css("display", "none");
+                $('.id_input_re_5').css("display", "none");
+               
+                
+            } else {
+                $('.id_input_re_1').css("display", "none");
+                $('.id_input_re_2').css("display", "inline-block");
+                $('.id_input_re_3').css("display", "none");
+                $('.id_input_re_4').css("display", "none");
+                $('.id_input_re_5').css("display", "none");
+               
+                
+            }
+        }
+    }); */
 });
 
 

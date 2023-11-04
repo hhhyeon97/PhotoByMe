@@ -81,6 +81,27 @@ button:hover {
     background: #e0e0e0;
 }
 
+#mailbutton{
+	padding: 10px 20px;
+    border: none;
+    background: #b8c6db;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2),
+                -5px -5px 10px rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+}
+
+ 
+#mail_check_input_box_false{
+    background-color:#ebebe4;
+}
+ 
+#mail_check_input_box_true{
+    background-color:white;
+}
+
+
+
 /* 중복아이디 존재하지 않는경우 */
 .id_input_re_1 {
 	color: green;

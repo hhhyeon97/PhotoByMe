@@ -58,7 +58,7 @@ public class MemberController {
 		@ResponseBody
 		public String memberIdChk(String mid) throws Exception{
 
-			//logger.info("memberIdChk() 진입");
+			logger.info("memberIdChk() 진입");
 
 			int result = memberservice.idCheck(mid);
 
