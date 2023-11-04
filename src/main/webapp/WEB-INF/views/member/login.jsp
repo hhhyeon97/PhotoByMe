@@ -7,16 +7,11 @@
 <title></title>
 <script src="https://code.jquery.com/jquery-latest.min.js"></script>
 <link rel="stylesheet" href="/css/login.css">
-<script>
-$(document).ready(function () {
-    var regSuccess = ${regSuccess};
-    if (regSuccess) {
-        alert("회원가입을 축하합니다!");
-    }
-});
-</script>
 </head>
 <body>
+
+
+
 	<jsp:include page="../header.jsp" />
 	
 	<!-- 1차 틀 -->
@@ -78,6 +73,8 @@ $(document).ready(function () {
 			}
 		}
 	</script>
+	
+    
 <jsp:include page="../footer.jsp" />
 </body>
 </html>

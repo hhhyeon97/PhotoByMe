@@ -18,7 +18,7 @@ commit;
 
 
 
-select * from member;
+select * from member order by mdate desc;
 
 alter table member drop column mAddr3; -- 주소1,2,3 삭제 
 
