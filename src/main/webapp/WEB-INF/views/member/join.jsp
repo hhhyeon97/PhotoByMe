@@ -32,8 +32,8 @@
             </div>
             
             <!-- 메일 부분 시작 -->
-             <div class="neu-input">
-                <input type="text" name="memail" placeholder="이메일">
+             <div class="mail_input">
+                <input type="text" name="memail" id="memail" placeholder="이메일">
             
             <div class="mail_check_wrap">
             	<div class="mail_check_input_box" id="mail_check_input_box_false">
@@ -55,6 +55,19 @@
 <jsp:include page="../footer.jsp" /> 
 
 <script>
+
+/* 인증번호 이메일 전송 */
+$(".mailbutton").click(function(){
+	var memail = $(".mail_input").val(); 
+    $.ajax({
+        type:"GET",
+        url:"mailCheck?memail=" + memail
+                
+    });
+});
+ 
+
+
 
 function nothangleid() {
     // 아이디 입력 필드의 값을 가져옵니다.
