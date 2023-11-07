@@ -40,7 +40,13 @@ font-style: normal;
 <body>
 
 <header>
-<audio controls src="/audio/Oneul - Summer Vacation.mp3"></audio>
+
+<audio id="music" controls>
+  <source src="/audio/Oneul - Summer Vacation.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+<!--<audio controls src="/audio/Oneul - Summer Vacation.mp3"></audio>-->
         <nav>
         	   <div class="left-nav">
             <ul class="nav-links">
@@ -68,7 +74,23 @@ font-style: normal;
     </header>
 
 
+<script>
+//HTML 오디오 요소 가져오기
+const audioElement = document.getElementById("music");
 
+// 페이지가 로드될 때 음악을 자동 재생하도록 설정
+audioElement.autoplay = true;
+
+// 페이지 간 전환 시 음악이 계속 재생되도록 설정
+window.addEventListener("beforeunload", () => {
+  audioElement.pause();
+});
+
+// 페이지가 다시 로드될 때 음악을 다시 재생하도록 설정
+window.addEventListener("load", () => {
+  audioElement.play();
+});
+</script>
  
     
 </body>

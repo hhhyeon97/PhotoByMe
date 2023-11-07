@@ -70,6 +70,12 @@ font-style: normal;
 <jsp:include page="header.jsp" />
 </head>
 <body>
+
+<audio id="music" controls style="display:none;">
+  <source src="http://example.com/path/to/music.mp3" type="audio/mpeg">
+</audio>
+
+
     <!-- 검색 모달 -->
     <div id="searchModal" class="modal">
         <div class="modal-content">
@@ -117,6 +123,20 @@ font-style: normal;
                 }
             });
         });
+    </script>
+    
+    
+    <script>
+ // HTML 오디오 요소 가져오기
+    const audioElement = document.getElementById("music");
+
+    // 페이지가 로드될 때 음악을 자동 재생하도록 설정
+    audioElement.autoplay = false;
+
+    // 페이지가 다시 로드될 때 음악을 다시 재생하도록 설정
+    window.addEventListener("load", () => {
+      audioElement.play();
+    });
     </script>
 </body>
 </html>

@@ -34,7 +34,7 @@
             <!-- 메일 부분 시작 -->
              <div class="mail_input">
                 <input type="text" name="memail" id="memail" placeholder="이메일">
-            
+           
             <div class="mail_check_wrap">
             	<div class="mail_check_input_box" id="mail_check_input_box_false">
             	<input class="mail_check_input_box" disabled="disabled" placeholder="인증번호 입력">

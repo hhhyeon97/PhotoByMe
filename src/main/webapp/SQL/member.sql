@@ -14,13 +14,15 @@ create table member(
     ,mdate DATE NOT NULL
 );
 
+select * from member;
+
 commit;
 
 
 
 select * from member order by mdate desc;
 
-alter table member drop column mAddr3; -- 주소1,2,3 삭제 
+alter table member drop column mAddr1; -- 주소1,2,3 삭제 
 
 insert into member values('admin01', 'admin', '관리자', 'admin',1, sysdate);
 
