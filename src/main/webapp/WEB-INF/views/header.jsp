@@ -30,10 +30,15 @@ font-style: normal;
 	font-family: 'UhBeeSe_hyun';
 	font-weight:bold;
 	font-size: 50px;
+	position : relative;
+	top:17px;
 }
 .logo a{
 	text-decoration: none;
 	color:inherit;
+}
+header{
+	margin-bottom:30px;
 }
 </style>
 </head>
@@ -41,10 +46,12 @@ font-style: normal;
 
 <header>
 
+
+<!--
 <audio id="music" controls>
   <source src="/audio/Oneul - Summer Vacation.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
 </audio>
+-->
 
 <!--<audio controls src="/audio/Oneul - Summer Vacation.mp3"></audio>-->
         <nav>
@@ -74,12 +81,12 @@ font-style: normal;
     </header>
 
 
-<script>
+<!-- <script>
 //HTML 오디오 요소 가져오기
 const audioElement = document.getElementById("music");
 
 // 페이지가 로드될 때 음악을 자동 재생하도록 설정
-audioElement.autoplay = true;
+audioElement.autoplay = false;
 
 // 페이지 간 전환 시 음악이 계속 재생되도록 설정
 window.addEventListener("beforeunload", () => {
@@ -87,11 +94,34 @@ window.addEventListener("beforeunload", () => {
 });
 
 // 페이지가 다시 로드될 때 음악을 다시 재생하도록 설정
-window.addEventListener("load", () => {
+/* window.addEventListener("load", () => {
   audioElement.play();
-});
-</script>
- 
-    
+}); */
+</script> -->
+<!-- 
+<script>
+//새로운 페이지 로드 함수
+function loadNewPage(url) {
+  // 페이지 컨텐츠 부분만 업데이트
+  fetch(url)
+    .then((response) => response.text())
+    .then((newPageHTML) => {
+      const mainContent = document.querySelector("index");
+      mainContent.innerHTML = newPageHTML;
+
+      // 페이지 로드 후 음악 재생
+      audioElement.play();
+    });
+}
+
+document.addEventListener("click", (event) => {
+	  const target = event.target;
+	  if (target.tagName === "A" && target.getAttribute("href")) {
+	    // event.preventDefault(); // 주석 처리
+	    const newPageUrl = target.getAttribute("href");
+	    loadNewPage(newPageUrl);
+	  }
+	});
+</script> -->
 </body>
 </html>

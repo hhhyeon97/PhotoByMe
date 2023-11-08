@@ -14,17 +14,18 @@
 
 footer {
 	padding: 10px 0;
+	margin-top: 10px;
 }
 
 hr {
 	opacity: 0.1; /* 투명도 값을 0.5로 설정 (0은 완전 투명, 1은 완전 불투명) */
 	background-color: #9bbacf; /* 선의 색상 설정 (원하는 색상으로 변경 가능) */
 	height: 2px; /* 선의 높이 설정 (선의 굵기 조절) */
+	margin-top: 70px;
 }
 h6{
 	color:gray;
 	font-weight: bold;
-	font-style: italic;
 	
 }
 </style>
