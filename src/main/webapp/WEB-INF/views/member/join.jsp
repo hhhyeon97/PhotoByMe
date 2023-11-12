@@ -49,6 +49,7 @@
             
             <div class="neu-button">
                 <input type="submit" class="join_button" id="join_button" value="가입하기">
+                <input type="reset" value="취소" onclick="$('#mid').focus();" />
             </div>
 
             
