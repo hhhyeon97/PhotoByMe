@@ -94,7 +94,7 @@ a{
     </div>
     
         <div class="col-md-3">
-        <div class="card mb-4" style="width: 12rem; height: 15rem;">
+        <div class="card mb-4" style="width: 12rem; height: 14rem;">
             <img src="images/photo07.jpg" class="card-img-top custom-img" alt="...">
             <h5 class="card-title">수리중<a href="/cart"><i id="mycon" class='bx bx-cart'></i></a></h5>
         </div>

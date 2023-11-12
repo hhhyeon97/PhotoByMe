@@ -48,8 +48,11 @@
             <!-- 메일 부분 끝  -->
             
             <div class="neu-button">
-                <input type="submit" class="join_button" value="가입하기">
+                <input type="submit" class="join_button" id="join_button" value="가입하기">
             </div>
+
+            
+            
         </form>
     </div>
 <jsp:include page="../footer.jsp" /> 
@@ -303,6 +306,39 @@ $('.id_input').on("propertychange change keyup paste input", function () {
     }); */
 });
 
+
+</script>
+
+
+<script>
+
+/* 유효성 검사 통과유무 변수 */
+var idCheck = false;            // 아이디
+var idckCheck = false;            // 아이디 중복 검사
+var pwCheck = false;            // 비번
+var pwckCheck = false;            // 비번 확인
+var pwckcorCheck = false;        // 비번 확인 일치 확인
+var nameCheck = false;            // 이름
+var mailCheck = false;            // 이메일
+var mailnumCheck = false;        // 이메일 인증번호 확인
+var addressCheck = false         // 주소
+
+
+//회원가입 버튼(회원가입 기능 작동)
+$(".join_button").click(function(){
+
+    /* 입력값 변수 */
+    var id = $('.id_input').val();                 // id 입력란
+    var pw = $('.pw_input').val();                // 비밀번호 입력란
+    var pwck = $('.pwck_input').val();            // 비밀번호 확인 입력란
+    var name = $('.user_input').val();            // 이름 입력란
+    var mail = $('.mail_input').val();            // 이메일 입력란
+    var addr = $('.address_input_3').val();        // 주소 입력란
+	
+	
+	//$("#join_form").attr("action", "/member/join");
+//$("#join_form").submit();
+});
 
 </script>
 
