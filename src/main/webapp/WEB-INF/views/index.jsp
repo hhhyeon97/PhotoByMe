@@ -74,13 +74,21 @@ a{
     margin: auto; /* Center the image horizontally 
 } */
 
-        .carousel-inner img {
+ /*        .carousel-inner img {
             width: 100%;
             height: auto;
             max-height: 400px;
             margin: auto;
             object-fit:cover;
-        }
+        } */
+        
+        .carousel-inner img {
+  display: block;
+  width: auto;
+ height: auto;
+ max-height: 400px;
+ object-fit:cover;
+}
 </style>
 </head>
 <body>
@@ -89,13 +97,13 @@ a{
 <div id="carouselExample" class="carousel slide">
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="images/slide08.jpg" class="d-block w-100" alt="...">
+      <img src="images/sli03.jpg" class="d-block w-100" alt="...">
     </div>
     <div class="carousel-item">
-      <img src="images/slide06.jpg" class="d-block w-100" alt="...">
+      <img src="images/sli06.jpg" class="d-block w-100" alt="...">
     </div>
     <div class="carousel-item">
-      <img src="images/slide07.jpg" class="d-block w-100" alt="...">
+      <img src="images/sli08.jpg" class="d-block w-100" alt="...">
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
