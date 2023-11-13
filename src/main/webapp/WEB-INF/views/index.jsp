@@ -10,6 +10,13 @@
 <jsp:include page="header.jsp" />
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 
+
+<link
+   href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+   rel="stylesheet">
+<link rel="stylesheet"
+   href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+</head>
 <style>
 /* 스크롤바의 너비와 스타일을 변경 */
 ::-webkit-scrollbar {
@@ -59,10 +66,59 @@ a{
 	text-decoration: none;
 	color:inherit;
 }
+
+
+/* .carousel-inner img {
+    width: 100%; /* Make sure the image fills the width of the container 
+    max-height: 300px; /* Set the maximum height as per your requirement 
+    margin: auto; /* Center the image horizontally 
+} */
+
+        .carousel-inner img {
+            width: 100%;
+            height: auto;
+            max-height: 400px;
+            margin: auto;
+            object-fit:cover;
+        }
 </style>
 </head>
 <body>
+
+
+<div id="carouselExample" class="carousel slide">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="images/slide08.jpg" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="images/slide06.jpg" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="images/slide07.jpg" class="d-block w-100" alt="...">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
 <div id="product"  class="container">
+
+
+
+
+
+
+
+
+
+
 	<div class="row">
     <div id="jaebal" class="col-md-3">
         <div class="card mb-4" style="width: 12rem; height: 14rem;">
