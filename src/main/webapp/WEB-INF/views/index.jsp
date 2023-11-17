@@ -33,15 +33,15 @@ function openPopup() {
     var popupFeatures = 'width=auto,height=auto,scrollbars=yes';
     var popupWindow = window.open('', '_blank', popupFeatures);
     var imageUrl = '<%=request.getContextPath()%>/images/popup.png';
-    var text = '안녕하세요!<br>여기는 Photo By Me 입니다<br>마음에 드는 사진을 보관해보세요!';
+    var text = '안녕하세요 ⋰˚★<br>여기는 <span style="color: #72b1f7; font-size: 26px;">Photo By Me</span> 입니다<br>마음에 드는 사진을 보관해보세요 !';
     
     //popupWindow.document.write('<img src="' + imageUrl + '" alt="popup img">');
     
       // 팝업 창에 이미지와 텍스트를 동적으로 추가
-    popupWindow.document.write('<div style="position: relative; text-align: center;">');
+    popupWindow.document.write('<html><head><div style="position: relative; text-align: center;">');
     popupWindow.document.write('<img src="' + imageUrl + '" alt="popup img" style="width: 100%; height: auto; opacity: 0.7;">');
-    popupWindow.document.write('<p style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -20%);  font-size: 18px; font-weight: bold; color: black; ">' + text + '</p>');
-    popupWindow.document.write('</div>');
+    popupWindow.document.write('<p style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -10%);  font-size: 18px; font-weight: bold; color: black; ">' + text + '</p>');
+    popupWindow.document.write('</div></body></html>');
     
     popupWindow.document.title = 'Photo by Me';
 
