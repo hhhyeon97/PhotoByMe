@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!--<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>-->
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +14,7 @@
 
 
 	<jsp:include page="../header.jsp" />
-	
+
 	<!-- 1차 틀 -->
 	<!-- 	<div class="container">
 		<h1>로그인 ⌯'▾'⌯</h1>
@@ -31,9 +31,9 @@
 		</form>
 	</div> -->
 
-<!-- 2차 틀 -->
+	<!-- 2차 틀 -->
 
-<!-- 
+	
 	<form name="welcome" method="post" class="login">
 		<div class="container">
 		<h1>로그인 ⌯'▾'⌯</h1>
@@ -52,11 +52,9 @@
 	</div>
 	</form>
 
- -->
-
-<!-- 로그인 폼 수정 중  -->
-<c:if test="${empty mid}">
-		<%--로그인 전 화면 --%>
+	<%-- <!-- 로그인 폼 수정 중  -->
+	<!--<c:if test="${empty mid}">-->
+		로그인 전 화면
 		<div id="Login_wrap">
 			<h2 class="Login_title">로그인 폼</h2>
 			<form method="post" action="login_ok"
@@ -64,29 +62,30 @@
 				<table id="Login_t">
 					<tr>
 						<th>아이디</th>
-						<td><input name="mid" id="mid" size="14"
-							tabindex="1" />
-						<%-- tabindex="1"로 설정하면 탭키를 눌렀을
-     때 첫번째로 포커스를 가진다. --%></td>
+						<td><input name="mid" id="mid" size="14" tabindex="1" /> tabindex="1"로 설정하면 탭키를 눌렀을
+     때 첫번째로 포커스를 가진다.</td>
 						<th rowspan="2">
-							<%--rowspan="2" 2개행을 합침 --%> <input type="submit" value="로그인" />
+							rowspan="2" 2개행을 합침 <input type="submit" value="로그인" />
 						</th>
 					</tr>
 					<tr>
 						<th>비밀번호</th>
-						<td><input type="password" name="mpwd" id="mpwd"
-							size="14" tabindex="2" /></td>
+						<td><input type="password" name="mpw" id="mpw" size="14"
+							tabindex="2" /></td>
 					</tr>
 				</table>
 				<div id="Login_menu">
+					<c:if test="${result == 0 }">
+						<div class="login_warn">사용자 ID 또는 비밀번호를 잘못 입력하셨습니다.</div>
+					</c:if>
 					<input type="button" value="비번찾기" onclick="pwd_find();" /> <input
 						type="button" value="회원가입" onclick="location='/member/join';" />
 				</div>
 			</form>
-		</div>
-	</c:if>
-	<c:if test="${!empty mid}">
-		<%--로그인 이후 화면 --%>
+		</div> --%>
+	<!--</c:if>-->
+	<%-- <c:if test="${!empty mid}">
+		로그인 이후 화면
 		<div id="Index_wrap">
 			<h2 class="Index_title">로그인 후 메인화면</h2>
 			<form method="post" action="member_logout">
@@ -98,14 +97,14 @@
 							type="submit" value="로그아웃" /></th>
 					</tr>
 					<tr>
-						<th>${mid}님로그인을 환영합니다.</th>
+						<th>${mid}님로그인을환영합니다.</th>
 					</tr>
 				</table>
 			</form>
 		</div>
-	</c:if>
+	</c:if> --%>
 
-<!-- 로그인 폼 끝  -->
+	<!-- 로그인 폼 끝  -->
 
 	<script>
 		var id = document.getElementById('userID');
@@ -118,21 +117,21 @@
 		});
 		
 		// 로그인 유효성 체크 바리데이션
-		function loginChk() {
-			if (!id.value) {
+		function login_check() {
+			if (!mid.value) {
 				alert('아이디를 입력해주세요.');
-				id.focus();
+				mid.focus();
 				return;
 			}
-			if (!pw.value) {
+			if (!mpw.value) {
 				alert('비밀번호를 입력해주세요.');
-				pw.focus();
+				mpw.focus();
 				return;
 			}
 		}
 	</script>
-	
-    
-<jsp:include page="../footer.jsp" />
+
+
+	<jsp:include page="../footer.jsp" />
 </body>
 </html>

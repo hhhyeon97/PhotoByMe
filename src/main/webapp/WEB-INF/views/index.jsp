@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Photo_By_Me</title>
+<title>Photo By Me</title>
 <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 <link rel="stylesheet" href="css/style.css">
 <jsp:include page="header.jsp" />
@@ -17,6 +17,56 @@
 <link rel="stylesheet"
    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 </head>
+
+
+<!-- 팝업 창 띄우기  -->
+<script>
+function handlePageLoad() {
+    if (document.cookie.indexOf('popupShown=1') === -1 || !isPopupClosed()) {
+        openPopup();
+    }
+}
+
+window.onload = handlePageLoad;
+
+function openPopup() {
+    var popupFeatures = 'width=auto,height=auto,scrollbars=yes';
+    var popupWindow = window.open('', '_blank', popupFeatures);
+    var imageUrl = '<%=request.getContextPath()%>/images/popup.png';
+    var text = '안녕하세요!<br>여기는 Photo By Me 입니다<br>마음에 드는 사진을 보관해보세요!';
+    
+    //popupWindow.document.write('<img src="' + imageUrl + '" alt="popup img">');
+    
+      // 팝업 창에 이미지와 텍스트를 동적으로 추가
+    popupWindow.document.write('<div style="position: relative; text-align: center;">');
+    popupWindow.document.write('<img src="' + imageUrl + '" alt="popup img" style="width: 100%; height: auto; opacity: 0.7;">');
+    popupWindow.document.write('<p style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -20%);  font-size: 18px; font-weight: bold; color: black; ">' + text + '</p>');
+    popupWindow.document.write('</div>');
+    
+    popupWindow.document.title = 'Photo by Me';
+
+    popupWindow.document.write('<input type="checkbox" id="hidePopupCheckbox">');
+    popupWindow.document.write('<label for="hidePopupCheckbox">하루 동안 보지 않기</label>');
+
+    var hidePopupCheckbox = popupWindow.document.getElementById('hidePopupCheckbox');
+
+ // 팝업이 닫힐 때 체크 여부에 따라 쿠키 저장
+    popupWindow.onbeforeunload = function () {
+        var hidePopupCheckbox = popupWindow.document.getElementById('hidePopupCheckbox');
+        if (hidePopupCheckbox.checked) {
+            var expiryDate = new Date();
+            expiryDate.setDate(expiryDate.getDate() + 1);
+            document.cookie = 'popupShown=1; expires=' + expiryDate.toUTCString() + '; path=/';
+        }
+    }; 
+}
+
+function isPopupClosed() {
+    return document.cookie.indexOf('popupShown=1') !== -1;
+}
+</script>
+
+
 <style>
 /* 스크롤바의 너비와 스타일을 변경 */
 ::-webkit-scrollbar {
@@ -86,13 +136,14 @@ a{
   display: block;
   width: auto;
  height: auto;
- max-height: 400px;
+ max-height: 320px;
  object-fit:cover;
 }
 </style>
 </head>
 <body>
 
+<!-- 슬라이드 시작 -->
 
 <div id="carouselExample" class="carousel slide">
   <div class="carousel-inner">
@@ -115,18 +166,10 @@ a{
     <span class="visually-hidden">Next</span>
   </button>
 </div>
+<!-- 슬라이드 끝  -->
+
 
 <div id="product"  class="container">
-
-
-
-
-
-
-
-
-
-
 	<div class="row">
     <div id="jaebal" class="col-md-3">
         <div class="card mb-4" style="width: 12rem; height: 14rem;">

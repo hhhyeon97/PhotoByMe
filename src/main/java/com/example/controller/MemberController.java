@@ -1,6 +1,7 @@
 package com.example.controller;
 
-import org.slf4j.Logger;
+import java.util.logging.Logger;
+
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,8 +18,7 @@ import com.example.vo.MemberVO;
 @RequestMapping(value = "/member")
 public class MemberController {
 
-	private static final Logger logger = LoggerFactory.getLogger(IndexController.class);
-	
+	//private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 	
 	@Autowired
 	private MemberService memberservice;
@@ -27,19 +27,19 @@ public class MemberController {
 		@RequestMapping(value = "/join", method = RequestMethod.GET)
 		public void loginGET() {
 			
-			logger.info("회원가입 페이지 진입");
+			//logger.info("회원가입 페이지 진입");
 		}
 		
 		//회원가입
 		@RequestMapping(value="/join_ok", method=RequestMethod.POST)
 		public String join_ok(MemberVO member,Model model) throws Exception{
 			
-			logger.info("join 진입");
+			//logger.info("join 진입");
 			
 			// 회원가입 서비스 실행
 			memberservice.memberJoin(member);
 			
-			logger.info("join Service 성공");
+			//logger.info("join Service 성공");
 			
 			 model.addAttribute("regSuccess", true);
 			 
@@ -49,7 +49,7 @@ public class MemberController {
 		//로그인 페이지 이동
 		@RequestMapping(value = "/login", method = RequestMethod.GET)
 		public void joinGET() {
-			logger.info("로그인 페이지 진입");
+			//logger.info("로그인 페이지 진입");
 		}
 		
 		
@@ -59,11 +59,11 @@ public class MemberController {
 		@ResponseBody
 		public String memberIdChk(String mid) throws Exception{
 
-			logger.info("memberIdChk() 진입");
+			//logger.info("memberIdChk() 진입");
 
 			int result = memberservice.idCheck(mid);
 
-			logger.info("결과값 = " + result);
+			//logger.info("결과값 = " + result);
 
 			if(result != 0) {
 
@@ -83,8 +83,8 @@ public class MemberController {
 	    public void mailCheckGET(String memail) throws Exception{
 	        
 	        /* 뷰(View)로부터 넘어온 데이터 확인 */
-	        logger.info("이메일 데이터 전송 확인");
-	        logger.info("인증번호 : " + memail);
+	        //logger.info("이메일 데이터 전송 확인");
+	        //logger.info("인증번호 : " + memail);
 	    }
 			
 	    /* 로그인 ok */
