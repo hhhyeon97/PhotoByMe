@@ -30,25 +30,36 @@ function handlePageLoad() {
 
 window.onload = handlePageLoad;
 
+
 function openPopup() {
-    var popupFeatures = 'width=auto,height=auto,scrollbars=yes';
+	
+	 var popupW = 600;
+	  var popupH = 500;
+	  var left = Math.ceil((window.screen.width - popupW)/2);
+	  var top = Math.ceil((window.screen.height - popupH)/2);
+	
+    var popupFeatures = 'width='+popupW+',height='+popupH+',left='+left+',top='+top+',scrollbars=yes';
     var popupWindow = window.open('', '_blank', popupFeatures);
     var imageUrl = '<%=request.getContextPath()%>/images/popup.png';
-    var text = '안녕하세요 ⋰˚★<br>여기는 <span style="color: #72b1f7; font-size: 26px;">Photo By Me</span> 입니다<br>마음에 드는 사진을 보관해보세요 !';
+    var text = '안녕하세요 ⋰˚★<br>여기는 <span style="color: #72b1f7; font-size: 15px;">Photo By Me</span> 입니다<br>마음에 드는 사진을 보관해보세요 !';
     
     //popupWindow.document.write('<img src="' + imageUrl + '" alt="popup img">');
     
       // 팝업 창에 이미지와 텍스트를 동적으로 추가
     popupWindow.document.write('<html><head><div style="position: relative; text-align: center;">');
-    popupWindow.document.write('<img src="' + imageUrl + '" alt="popup img" style="width: 100%; height: auto; opacity: 0.7;">');
+    
+    // 체크박스 위치 변경  
+    popupWindow.document.write('<input type="checkbox" id="hidePopupCheckbox">');
+    popupWindow.document.write('<label for="hidePopupCheckbox">하루 동안 보지 않기</label>');
+
+    
+      popupWindow.document.write('<img src="' + imageUrl + '" alt="popup img" style="width: 100%; height: auto; opacity: 0.7;">');
     popupWindow.document.write('<p style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -10%);  font-size: 18px; font-weight: bold; color: black; ">' + text + '</p>');
     popupWindow.document.write('</div></body></html>');
     
     popupWindow.document.title = 'Photo by Me';
 
-    popupWindow.document.write('<input type="checkbox" id="hidePopupCheckbox">');
-    popupWindow.document.write('<label for="hidePopupCheckbox">하루 동안 보지 않기</label>');
-
+    
     var hidePopupCheckbox = popupWindow.document.getElementById('hidePopupCheckbox');
 
  // 팝업이 닫힐 때 체크 여부에 따라 쿠키 저장

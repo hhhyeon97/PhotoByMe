@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
-<!--<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>-->
+<%--<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"--%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,8 +46,8 @@
 				onkeydown="if(event.keyCode == 13) loginChk()">
 		</div>
 		<div class="neu-button">
-			<button type="button" class="btn" id="loginBtn" onclick="loginChk()">로그인</button>
-			<button type="button" class="btn" id="joinBtn">회원가입</button>
+			<button type="button" class="btn" id="loginBtn" onclick="location='/';">로그인</button>
+			<button type="button" class="btn" id="joinBtn" onclick="location='/member/join';">회원가입</button>
 		</div>
 	</div>
 	</form>
@@ -106,7 +106,7 @@
 
 	<!-- 로그인 폼 끝  -->
 
-	<script>
+	<!-- <script>
 		var id = document.getElementById('userID');
 		var pw = document.getElementById('userPW');
 		var loginBtn = document.getElementById('loginBtn');
@@ -129,7 +129,7 @@
 				return;
 			}
 		}
-	</script>
+	</script> -->
 
 
 	<jsp:include page="../footer.jsp" />
