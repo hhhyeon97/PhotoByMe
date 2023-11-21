@@ -4,6 +4,7 @@ import java.io.PrintWriter;
 import java.util.Random;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,12 +29,35 @@ public class MemberController {
 	@Autowired
 	private MemberService memberservice;
 	
+	//로그인 페이지 이동
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public void loginGET() {
+		//logger.info("로그인 페이지 진입");
+	}
+	
+	
 	//회원가입 페이지 이동
 		@RequestMapping(value = "/join", method = RequestMethod.GET)
-		public void loginGET() {
+		/*
+		 * public void joinGET() {
+		 * 
+		 * //logger.info("회원가입 페이지 진입"); }
+		 */
+		public ModelAndView member_join() {
+			//String[] phone= {"010","011","019"};
+			String[] memail = {"gmail.com","naver.com","daum.net","nate.com","직접입력"};
 			
-			//logger.info("회원가입 페이지 진입");
-		}
+			ModelAndView jm=new ModelAndView();
+			//jm.addObject("phone", phone);
+			jm.addObject("email",memail);
+			jm.setViewName("/member/join");//뷰페이지 경로 설정
+			return jm;
+		}//member_join()
+		
+		
+	
+	    
+	    
 		
 		//회원가입
 		@RequestMapping(value="/join_ok", method=RequestMethod.POST)
@@ -51,11 +75,6 @@ public class MemberController {
 			return "redirect:/member/login";
 		}	
 		
-		//로그인 페이지 이동
-		@RequestMapping(value = "/login", method = RequestMethod.GET)
-		public void joinGET() {
-			//logger.info("로그인 페이지 진입");
-		}
 		
 		
 
@@ -93,7 +112,6 @@ public class MemberController {
 	    }
 			
 	    /* 로그인 ok */
-	    
 	    @PostMapping("/login_ok")
 	    public String login_ok() {
 	    	return "redirect:/";
@@ -144,4 +162,34 @@ public class MemberController {
 	    	}
 	    	return null;
 	    }//pwd_find_ok()
+	    
+	    
+	  //로그인 인증처리
+	    @PostMapping("/member_login_ok")
+	    public ModelAndView member_login_ok(String mid,String login_pwd,
+	    		HttpServletResponse response,HttpSession session) throws Exception{
+	    	response.setContentType("text/html;charset=UTF-8");
+	    	PrintWriter out=response.getWriter();
+	    	
+	    	MemberVO m = this.memberservice.loginCheck(mid);
+	    	
+	    	if(m == null) {
+	    		out.println("<script>");
+	    		out.println("alert('가입 안된 회원입니다!');");
+	    		out.println("history.back();");
+	    		out.println("</script>");
+	    	}else {
+	    		if(!m.getMpw().equals(PwdChange.getPassWordToXEMD5String(login_pwd))) {
+	    			out.println("<script>");
+	    			out.println("alert('비번이 다릅니다!');");
+	    			out.println("history.go(-1);");
+	    			out.println("</script>");
+	    		}else {
+	    			session.setAttribute("id",mid);//세션 id 키이름에 아이디 저장
+	    			return new ModelAndView("redirect:/member/login");
+	    		}
+	    	}
+	    	return null;
+	    }//member_login_ok()
+	    
 }

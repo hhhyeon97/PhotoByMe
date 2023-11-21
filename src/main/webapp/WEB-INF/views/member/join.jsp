@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,7 +34,16 @@
             
             <!-- 메일 부분 시작 -->
              <div class="mail_input">
-                <input type="text" name="memail" id="memail" placeholder="이메일">
+                <input type="text" name="memail" id="memail" class="input_box" placeholder="이메일">@<input name="mail_domain" id="mail_domain"
+						size="25" class="input_box" readonly />
+						<select name="mail_list"
+						onchange="domain_list();">
+							<c:forEach var="mail" items="${memail}">
+								<option value="${memail}">${memail}</option>
+							</c:forEach>
+					</select>
+           
+           
            
             <div class="mail_check_wrap">
             	<div class="mail_check_input_box" id="mail_check_input_box_false">

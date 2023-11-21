@@ -39,6 +39,11 @@ public class MemberServiceImpl implements MemberService {
 	public void updatePwd(MemberVO m) {
 		this.memberDao.updatePwd(m);
 	}
+
+	@Override
+	public MemberVO loginCheck(String mid) {
+		return memberDao.loginCheck(mid);
+	}
 	
 	
 }

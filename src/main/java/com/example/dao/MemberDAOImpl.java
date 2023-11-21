@@ -21,5 +21,10 @@ public class MemberDAOImpl implements MemberDAO {
 	public void updatePwd(MemberVO m) {
 		sqlSession.update("pwEdit",m);
 	}
+
+	@Override
+	public MemberVO loginCheck(String mid) {
+		return sqlSession.selectOne("loginCheck",mid);
+	}
 	
 }

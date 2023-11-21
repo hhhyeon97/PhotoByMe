@@ -13,6 +13,8 @@ public interface MemberService {
 	public MemberVO pwdMember(MemberVO m);
 	//임시 비번 발급
 	public void updatePwd(MemberVO m);
+	// 로그인 인증 
+	public MemberVO loginCheck(String mid);
 
 
 }

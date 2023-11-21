@@ -76,10 +76,10 @@
 	</form> -->
 
 	<!-- 로그인 폼 시작  -->
-	<c:if test="${empty id}">
+	
 		<%--로그인 전 화면 --%>
-			<form method="post" action="login_ok"
-				onclick="return login_check();">
+			<form method="post" action="member_login_ok"
+				onsubmit="return login_check();">
 					<div class="container">
 					<h1>로그인 ⌯'▾'⌯</h1>
 						<div class="neu-input">
@@ -93,27 +93,13 @@
 							placeholder="비밀번호" size="14" tabindex="2" />
 							</div>
 				<div class="neu-button">
-				<input type="button" id="loginBtn" value="로그인" />
+				<input type="submit" id="loginBtn" value="로그인" />
 					<input type="button" class="btn" value="비번 찾기" onclick="pwd_find();" /> 
 					<input type="button" class="btn" id="joinBtn" value="회원가입" onclick="location='/member/join';" />
 				</div>
 		</div>
 		</form>
-	</c:if>
-	<c:if test="${!empty id}">
-		<%--로그인 이후 화면 --%>
-		<div id="Index_wrap">
-			<h2 class="Index_title">로그인 후 메인화면</h2>
-			<form method="post" action="member_logout">
-						<input type="button" value="정보수정"
-							onclick="location='member_edit';" /> <input type="button"
-							value="회원탈퇴" onclick="location='member_del';" /> <input
-							type="submit" value="로그아웃" />
-						${id}님로그인을 환영합니다.
-			</form>
-		</div>
-	</c:if>
-	<!-- 로그인 폼 끝  -->
+
 	
 	
 	

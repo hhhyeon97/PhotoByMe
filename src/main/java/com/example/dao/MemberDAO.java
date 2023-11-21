@@ -8,4 +8,6 @@ public interface MemberDAO {
 
 	void updatePwd(MemberVO m);
 
+	MemberVO loginCheck(String mid);
+
 }
