@@ -217,10 +217,10 @@ a{
       <img src="images/photo07.jpg"  class="d-block w-100 img-fluid" alt="...">
     </div>
     <div class="carousel-item">
-      <img src="images/sli06.jpg" class="d-block w-100 img-fluid" alt="...">
+      <img src="images/sli222.jpg" style="object-position: 50% 80%;" class="d-block w-100 img-fluid" alt="...">
     </div>
     <div class="carousel-item">
-      <img src="images/sli08.jpg" class="d-block w-100 img-fluid" alt="...">
+      <img src="images/s01.jpg" class="d-block w-100 img-fluid" alt="...">
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
