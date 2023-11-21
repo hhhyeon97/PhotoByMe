@@ -10,14 +10,22 @@
 <link rel="stylesheet" href="css/style.css">
 <jsp:include page="header.jsp" />
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-
-
 <link
    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
    rel="stylesheet">
 <link rel="stylesheet"
    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 </head>
+
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<!-- Bootstrap JS and Popper.js -->
+   <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+   <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
 
 
 <!-- 팝업 창 띄우기  -->
@@ -41,7 +49,7 @@ function openPopup() {
     var popupFeatures = 'width='+popupW+',height='+popupH+',left='+left+',top='+top+',scrollbars=yes';
     var popupWindow = window.open('', '_blank', popupFeatures);
     var imageUrl = '<%=request.getContextPath()%>/images/popup.png';
-    var text = '안녕하세요 ⋰˚★<br>여기는 <span style="color: #72b1f7; font-size: 15px;">Photo By Me</span> 입니다<br>마음에 드는 사진을 보관해보세요 !';
+    var text = '안녕하세요 ⋰˚★<br>여기는 <span style="color: #72b1f7; font-size: 16px;">Photo By Me</span> 입니다<br>마음에 드는 사진을 보관해보세요 !';
     
     //popupWindow.document.write('<img src="' + imageUrl + '" alt="popup img">');
     
@@ -145,22 +153,37 @@ a{
         } */
         
         .carousel-inner img {
-  display: block;
+  /*display: block;*/
   width: auto;
  height: auto;
- max-height: 320px;
+ max-height: 420px;
  object-fit:cover;
+ object-position: 50% 30%; /* 이미지 배치 조절 */
 }
 </style>
+
+<!-- <script>
+    // Wait for the DOM to be ready
+    document.addEventListener("DOMContentLoaded", function() {
+      // Initialize the Carousel
+      var myCarousel = new bootstrap.Carousel(document.getElementById('carouselExample'), {
+        interval: 3000, // Set the interval (in milliseconds) for the automatic sliding
+        pause: 'hover', // Pause on mouse hover
+        wrap: true // Allow wrapping of the slides
+      });
+    });
+  </script> -->
+  
+  
 </head>
 <body>
 
 <!-- 슬라이드 시작 -->
-
+<!-- 
 <div id="carouselExample" class="carousel slide">
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="images/sli03.jpg" class="d-block w-100" alt="...">
+      <img src="images/photo07.jpg" class="d-block w-100" alt="...">
     </div>
     <div class="carousel-item">
       <img src="images/sli06.jpg" class="d-block w-100" alt="...">
@@ -174,6 +197,37 @@ a{
     <span class="visually-hidden">Previous</span>
   </button>
   <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div> -->
+<!-- 슬라이드 끝  -->
+
+
+<!-- 슬라이드 버전 02  -->
+
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="images/photo07.jpg"  class="d-block w-100 img-fluid" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="images/sli06.jpg" class="d-block w-100 img-fluid" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="images/sli08.jpg" class="d-block w-100 img-fluid" alt="...">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Next</span>
   </button>
