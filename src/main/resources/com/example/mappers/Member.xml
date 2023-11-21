@@ -13,12 +13,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   		select count(*) from member where mid = #{mid}
   	</select>
   	
-  	
       <!-- 로그인 -->
       <select id="memberLogin" resultType="member">
-         select mid, mpw, mname, memail from member where mid = #{mid} and mpw = #{mpw}
+         select mid, mpw from member where mid = #{mid} and mpw = #{mpw}
       </select>
  
+ <!-- 비번 찾기 -->
+   <select id="pwFind" resultType="member">
+    select * from member where mid=#{mid} and mname=#{mname}
+  </select>
   	
+  	<!-- 암호화 된 임시비번으로 수정 -->
+  <update id="pwEdit">
+    update member set mpw=#{mpw} where mid=#{mid}
+  </update>
   	
 </mapper> 

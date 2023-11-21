@@ -11,6 +11,7 @@ header {
     background-color: #fff; 
     color: #000;
     padding: 10px 0;
+    margin-bottom:30px;
 }
 
 nav {
@@ -79,5 +80,35 @@ nav {
     color: #7498cf;
 }
 
+
+
+
+
+p{
+	font-size: 12px;
+}
+ audio {
+ 	position:relative;
+ 	left:30em;
+    margin-right: 20px; /* 오디오 요소 오른쪽 여백 설정 */
+        }  
+
+@font-face {
+font-family: 'UhBeeSe_hyun';
+src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_five@.2.0/UhBeeSe_hyun.woff') format('woff');
+font-weight: normal;
+font-style: normal;
+}
+
+.logo h2{
+	font-family: 'UhBeeSe_hyun';
+	font-weight:bold;
+	font-size: 50px;
+	position : relative;
+	top:17px;
+}
+.logo a{
+	text-decoration: none;
+	color:inherit;
 
  

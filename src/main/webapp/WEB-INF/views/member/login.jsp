@@ -79,7 +79,7 @@
 	<c:if test="${empty id}">
 		<%--로그인 전 화면 --%>
 			<form method="post" action="login_ok"
-				onsubmit="return login_check();">
+				onclick="return login_check();">
 					<div class="container">
 					<h1>로그인 ⌯'▾'⌯</h1>
 						<div class="neu-input">
@@ -93,7 +93,7 @@
 							placeholder="비밀번호" size="14" tabindex="2" />
 							</div>
 				<div class="neu-button">
-				<input type="submit" id="loginBtn" value="로그인" />
+				<input type="button" id="loginBtn" value="로그인" />
 					<input type="button" class="btn" value="비번 찾기" onclick="pwd_find();" /> 
 					<input type="button" class="btn" id="joinBtn" value="회원가입" onclick="location='/member/join';" />
 				</div>

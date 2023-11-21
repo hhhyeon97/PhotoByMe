@@ -10,14 +10,14 @@
 <link rel="stylesheet" href="/css/header.css">
 
 <style>
-
+/* 
 p{
 	font-size: 12px;
 }
  audio {
  	position:relative;
  	left:30em;
-    margin-right: 20px; /* 오디오 요소 오른쪽 여백 설정 */
+    margin-right: 20px; 오디오 요소 오른쪽 여백 설정 
         }  
 
 @font-face {
@@ -40,7 +40,7 @@ font-style: normal;
 }
 header{
 	margin-bottom:30px;
-}
+} */
 </style>
 
 <!-- 11/21 검색 모달 헤더로 이동  -->
@@ -79,7 +79,7 @@ font-style: normal;
             float: right;
             cursor: pointer;
         }
-        h3{
+        .modal h3{
         	font-family:'UhBeeSe_hyun';
         	text-align:center;
         	color: #8693a3;
@@ -87,7 +87,7 @@ font-style: normal;
         #sear{
         	text-align:center;
         }
-        input {
+        .modal input {
         	width:30%;
         	margin-top:5px;
         	padding:10px;
@@ -100,7 +100,7 @@ font-style: normal;
        .bx-search{
        		font-size: 25px;
        }
-       input::placeholder{
+       .modal input::placeholder{
        	font-family:'UhBeeSe_hyun';
        }
 </style>

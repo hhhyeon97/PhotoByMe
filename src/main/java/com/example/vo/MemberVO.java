@@ -1,5 +1,7 @@
 package com.example.vo;
 
+import java.sql.Date;
+
 public class MemberVO {
 
 	
@@ -8,7 +10,7 @@ public class MemberVO {
 	private String mname; //회원이름
 	private String memail; // 회원 이메일
 	private int adminCk; // 관리자 구분 (0:일반 사용자/1:관리자)
-	private int mdate; // 등록 일자
+	private Date mdate; // 등록 일자
 	
 	
 	
@@ -43,10 +45,11 @@ public class MemberVO {
 	public void setAdminCk(int adminCk) {
 		this.adminCk = adminCk;
 	}
-	public int getMdate() {
+
+	public Date getMdate() {
 		return mdate;
 	}
-	public void setMdate(int mdate) {
+	public void setMdate(Date mdate) {
 		this.mdate = mdate;
 	}
 }
