@@ -135,7 +135,7 @@ margin-bottom: 20px;
 }
 
 .col-md-3{
-	margin-top: 15px;
+	margin-top: 25px;
 }
 
 a{
@@ -190,6 +190,19 @@ a{
     display: block;
 }
 
+#dubogi{
+	margin-top:40px;
+}
+
+.col-md-3{
+	margin-bottom : 20px;
+}
+
+.custom-img {
+    width: 100%; /* 이미지를 부모 요소의 100% 크기로 설정 */
+    height: 100%; /* 이미지를 부모 요소의 100% 높이로 설정 */
+    object-fit: cover; /* 가로 세로 비율을 유지하면서 부모 요소에 꽉 차게 설정 */
+}
 
 </style>
 
@@ -268,7 +281,7 @@ a{
 <!-- 제품(이미지)부분 시작 -->
 <div id="product"  class="container">
 	<div class="row">
-    <div id="jaebal" class="col-md-3">
+    <div class="col-md-3">
         <div class="card mb-4" style="width: 12rem; height: 14rem;">
             <img src="images/photo01.jpg" class="card-img-top custom-img" alt="...">
             <h5 class="card-title">햇살 하늘<a href="/cart"><i id="mycon" class='bx bx-cart'></i></a></h5>
@@ -283,7 +296,7 @@ a{
             <img src="images/photo02.jpg" class="card-img-top custom-img" alt="...">
             <h5 class="card-title">나는 귤입니다<a href="/cart"><i id="mycon" class='bx bx-cart'></i></a></h5>
         <div class="image-description">
-         <p class="description-text">귤 먹기 좋은 날 </p> <!-- 11/21 사진 간단 설명글 추가 -->
+         <p class="description-text">귤 먹기 좋은 날 </p> 
         </div>
         </div>
     </div>
@@ -293,7 +306,7 @@ a{
             <img src="images/photo03.jpg" class="card-img-top custom-img" alt="...">
             <h5 class="card-title">눈웃음 냥이<a href="/cart"><i id="mycon" class='bx bx-cart'></i></a></h5>
                 <div class="image-description">
-         <p class="description-text">웃으면 복이 와요 </p> <!-- 11/21 사진 간단 설명글 추가 -->
+         <p class="description-text">웃으면 복이 와요 </p>
         </div>
         </div>
     </div>
@@ -303,7 +316,7 @@ a{
             <img src="images/photo06.jpg" class="card-img-top custom-img" alt="...">
             <h5 class="card-title">총총총 무지개<a href="/cart"><i id="mycon" class='bx bx-cart'></i></a></h5>
         <div class="image-description">
-         <p class="description-text">무지개를 건너</p> <!-- 11/21 사진 간단 설명글 추가 -->
+         <p class="description-text">무지개를 건너</p> 
         </div>
         </div>
     </div>
@@ -312,6 +325,9 @@ a{
         <div class="card mb-4" style="width: 12rem; height: 14rem;">
             <img src="images/photo06.jpg" class="card-img-top custom-img" alt="...">
             <h5 class="card-title">총총총 무지개<a href="/cart"><i id="mycon" class='bx bx-cart'></i></a></h5>
+                <div class="image-description">
+         <p class="description-text">무지개를 건너</p> 
+        </div>
         </div>
     </div> 
     
@@ -343,6 +359,12 @@ a{
 </div>
 
 <!-- 제품(이미지) 부분 끝  -->
+
+
+<!-- 더보기 기능  -->
+<div id="dubogi">
+	<button type="button" class="btn btn-secondary" onclick="location='/';">더보기</button>
+</div>
 
 
 <script>
