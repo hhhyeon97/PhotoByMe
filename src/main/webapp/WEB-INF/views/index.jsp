@@ -121,8 +121,14 @@ function isPopupClosed() {
 	top:2px;
 	float:right;
 	width :3ex;
+	color: gray; /* 아이콘의 기본 색상 설정 */
+    transition: color 0.3s; /* 색상 전환 애니메이션 추가 - > 부드럽게 색상 표시됨 !! */
 }
 
+/* 아이콘을 호버했을 때의 스타일 */
+#mycon:hover {
+    color: skyblue; /* 호버 시 적용할 색상 설정 */
+}
 
 #jaebal{
 margin-bottom: 20px;
@@ -160,6 +166,31 @@ a{
  object-fit:cover;
  object-position: 50% 30%; /* 이미지 배치 조절 */
 }
+
+#product {
+	margin-top:25px;
+}
+
+.image-description {
+    display: none;
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 10px;
+    border: 1px solid #ddd;
+    z-index: 1;
+    bottom: 0; /* 이미지 아래에 배치 */
+    width: 100%; /* 이미지 카드의 너비와 동일하게 설정 */
+    box-sizing: border-box; /* 패딩과 테두리를 포함한 전체 너비를 설정 */
+}
+.card {
+    position: relative; /* 자식 요소인 .image-description를 상대적으로 배치 */
+}
+
+.card:hover .image-description {
+    display: block;
+}
+
+
 </style>
 
 <!-- <script>
@@ -241,14 +272,19 @@ a{
         <div class="card mb-4" style="width: 12rem; height: 14rem;">
             <img src="images/photo01.jpg" class="card-img-top custom-img" alt="...">
             <h5 class="card-title">햇살 하늘<a href="/cart"><i id="mycon" class='bx bx-cart'></i></a></h5>
+         <div class="image-description">
+         <p class="description-text">햇살처럼 따듯한 하루 되세요!</p> <!-- 11/21 사진 간단 설명글 추가 -->
         </div>
     </div>
-
+</div>
 
     <div class="col-md-3">
         <div class="card mb-4" style="width: 12rem; height: 14rem;">
             <img src="images/photo02.jpg" class="card-img-top custom-img" alt="...">
             <h5 class="card-title">나는 귤입니다<a href="/cart"><i id="mycon" class='bx bx-cart'></i></a></h5>
+        <div class="image-description">
+         <p class="description-text">귤 먹기 좋은 날 </p> <!-- 11/21 사진 간단 설명글 추가 -->
+        </div>
         </div>
     </div>
     
@@ -256,6 +292,19 @@ a{
         <div class="card mb-4" style="width: 12rem; height: 14rem;">
             <img src="images/photo03.jpg" class="card-img-top custom-img" alt="...">
             <h5 class="card-title">눈웃음 냥이<a href="/cart"><i id="mycon" class='bx bx-cart'></i></a></h5>
+                <div class="image-description">
+         <p class="description-text">웃으면 복이 와요 </p> <!-- 11/21 사진 간단 설명글 추가 -->
+        </div>
+        </div>
+    </div>
+    
+        <div class="col-md-3">
+        <div class="card mb-4" style="width: 12rem; height: 14rem;">
+            <img src="images/photo06.jpg" class="card-img-top custom-img" alt="...">
+            <h5 class="card-title">총총총 무지개<a href="/cart"><i id="mycon" class='bx bx-cart'></i></a></h5>
+        <div class="image-description">
+         <p class="description-text">무지개를 건너</p> <!-- 11/21 사진 간단 설명글 추가 -->
+        </div>
         </div>
     </div>
     
@@ -264,14 +313,7 @@ a{
             <img src="images/photo06.jpg" class="card-img-top custom-img" alt="...">
             <h5 class="card-title">총총총 무지개<a href="/cart"><i id="mycon" class='bx bx-cart'></i></a></h5>
         </div>
-    </div>
-    
-        <div class="col-md-3">
-        <div class="card mb-4" style="width: 12rem; height: 14rem;">
-            <img src="images/photo07.jpg" class="card-img-top custom-img" alt="...">
-            <h5 class="card-title">수리중<a href="/cart"><i id="mycon" class='bx bx-cart'></i></a></h5>
-        </div>
-    </div>    
+    </div> 
     
          <div class="col-md-3">
         <div class="card mb-4" style="width: 12rem; height: 14rem;">
@@ -307,6 +349,23 @@ a{
 document.getElementById("mycon").addEventListener("click", function (e) {
     e.preventDefault(); // 기본 동작 중지
     alert("My저장소에 추가되었습니다!");
+/*     alert("⠀⠀⠀⠀ ⠀⠀⠀⣀⠤⠔⠒⠒⡄⢀⣠⠤⠤⠦⡄⠀
+    		⠀⠀⠀⠀⠀⢀⡴⠋⠀⠀⠀⣀⠴⠊⣡⣴⣾⡿⣣⠃⠀⠀
+    		⠀⠀⠀⠀⢰⠋⠀⠀⠀⡤⠊⠁⣠⣾⡿⠟⣉⠴⠁⠀⠀⠀
+    		⠀⠀⠀⡠⠓⠀⠀⠀⠘⠁⢒⣿⠍⠓⠒⠉⠀⠀⠀⠀⠀⠀
+    		⠀⢠⠞⠀⠀⠀⠀⠀⠀⠀⠀⠀⠑⣄⠀⠀⠀⠀⠀⠀⠀⠀
+    		⠀⡏⠀⠀⠀⠀⠴⠂⠀⠀⠀⠀⠀⠘⢦⠀⠀⠀⠀⠀⠀⠀
+    		⢸⠘⠉⠀⠀⠀⣴⣶⢶⢀⠤⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀
+    		⠀⢷⣿⣵⣴⡆⢙⠉⡘⠟⠉⠁⠀⢀⡼⠁⠀⠀⠀⠀⠀⠀
+    		⢀⣾⡉⠣⠵⠶⠎⠉⠀⠀⠀⡠⠖⠛⠉⠉⠉⠙⢦⡀⠀⠀
+    		⠀⠊⠑⠂⠀⠤⣄⠀⠀⠀⠀⠀⠀⢀⣠⠄⠒⠀⠘⠁⠀⠀
+    		⣴⣒⠤⢤⡠⠔⡏⠀⠀⣀⠀⠀⠀⠀⠈⠙⠒⠢⢴⠑⢢⠀
+    		⠷⡀⠁⠀⠀⠈⡏⠑⠊⠉⠀⠀⠀⠀⠀⠀⠀⠀⠈⡇⢠⠁
+    		⠀⠈⠉⠉⠉⠉⠱⡀⠀⠀⠀⠀⠰⠀⠀⠀⠀⠀⠀⡏⠁⠀
+    		⠀⠀⠀⠀⠀⠀⢸⠉⠒⠤⠤⢤⡇⠀⠀⠀⠀⢀⢼⣇⠀⠀
+    		⠀⠀⠀⠀⠀⢠⠶⠿⠤⠤⠔⠛⡞⠦⣄⡠⡤⢊⣾⠟⠀⠀
+    		⠀⠀⠀⠀⠀⢱⣤⣤⣤⠠⢶⡿⠀⠀⠀⠙⠶⠽⠟⠀⠀⠀
+    		⠀⠀⠀⠀⠀⠀⠀⠉⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"); */
     // 이후 링크로 이동하거나 다른 동작을 수행할 수 있습니다
     // 예를 들어, 페이지를 이동하려면 다음과 같이 사용할 수 있습니다.
      window.location.href = "/cart";
