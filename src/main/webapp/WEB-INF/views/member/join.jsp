@@ -13,12 +13,14 @@
 <body>
 <jsp:include page="../header.jsp" />
 
+<%
+    String mname = request.getParameter("mname"); // 여기에서 mname 값을 얻어옴, 예를 들어 request.getParameter("mname");
+%>
 <div class="container">
         <h1>회원가입 ⌯'▾'⌯</h1>
         <form action="join_ok" id="join_form" method="post" onsubmit="return write_check();">
             <div class="neu-input">
                 <input type="text" class="id_input" id="id_input" name="mid" oninput="nothangleid()" placeholder="아이디">
-            <!--<button type="button" onclick="checkDuplicateId()">아이디 중복 체크</button>  -->
             </div>
             <span class="id_input_re_1">사용 가능한 아이디입니다.</span>
 			<span class="id_input_re_2">아이디가 이미 존재합니다.</span>
@@ -33,19 +35,18 @@
             </div>
             
             <!-- 메일 부분 시작 -->
-             <div class="mail_input">
-                <input type="text" name="memail" id="memail" class="input_box" placeholder="이메일">@<input name="mail_domain" id="mail_domain"
-						size="25" class="input_box" readonly />
-						<select name="mail_list"
-						onchange="domain_list();">
-							<c:forEach var="mail" items="${memail}">
-								<option value="${memail}">${memail}</option>
-							</c:forEach>
-					</select>
+             <div class="neu-input" style="display: flex; align-items: center;">
+    			<input type="text" size="14" name="memail" id="memail" class="input_box" placeholder="이메일">
+    			<span>@</span>
+    			<input type="text" name="memail2" id="memail2" size="18" class="input_box" placeholder="도메인"/>
+    		<%-- <select name="mail_list" onchange="domain_list();">
+        		<c:forEach var="mail" items="${email}">
+            <option value="${mail}">${mail}</option>
+        		</c:forEach>
+    		</select> --%>
+				</div>
            
-           
-           
-            <div class="mail_check_wrap">
+ <!--            <div class="mail_check_wrap">
             	<div class="mail_check_input_box" id="mail_check_input_box_false">
             	<input class="mail_check_input_box" disabled="disabled" placeholder="인증번호 입력">
             	</div>
@@ -54,11 +55,11 @@
             </div>
             <div class="clearfix"></div>
             </div>
-            </div>
+            </div> -->
             <!-- 메일 부분 끝  -->
             
             <div class="neu-button">
-                <input type="submit" class="join_button" id="join_button" value="가입하기">
+                <input type="submit" size="10" class="join_button" id="join_Button" value="가입하기">
                 <input type="reset" value="취소" onclick="$('#mid').focus();" />
             </div>
 
@@ -69,289 +70,40 @@
 <jsp:include page="../footer.jsp" /> 
 
 <script>
+document.addEventListener("DOMContentLoaded", function() {
+    var join_Button = document.getElementById("join_Button");
+    var mname = '<%= mname %>';
+    console.log('mname:', mname);
 
-/* 인증번호 이메일 전송 */
-$(".mailbutton").click(function(){
-	var memail = $(".mail_input").val(); 
-    $.ajax({
-        type:"GET",
-        url:"mailCheck?memail=" + memail
-                
+    join_Button.addEventListener("click", function() {
+        var welcomeMessage = mname ? mname + '님, 회원가입을 축하합니다!' : '회원가입을 축하합니다!';
+        alert(welcomeMessage);
     });
 });
- 
-
-
-
-function nothangleid() {
-    // 아이디 입력 필드의 값을 가져옵니다.
-    var idField = document.getElementById("id_input");
-    var id = idField.value;
-
-    // 정규 표현식을 사용하여 한글이 포함되어 있는지 확인합니다.
-    var pattern = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
-    if (pattern.test(id)) {
-        // 한글이 포함되어 있으면 경고창을 표시합니다.
-        alert("아이디에는 한글을 사용할 수 없습니다.");
-        // 입력 필드를 초기화합니다.
-        idField.value = "";
-        // 입력 필드로 포커스를 돌려줍니다.
-        idField.focus();
-    }
-    
-    
-    // 정규 표현식을 사용하여 특수문자가 포함되어 있는지 확인합니다.
-    var pattern = /[!@#%^&*()_+|~\-+=]/; // 원하는 특수문자 패턴을 추가하세요
-
-    if (pattern.test(id)) {
-        // 특수문자가 포함되어 있으면 경고창을 표시합니다.
-        alert("아이디에 특수문자를 사용할 수 없습니다.");
-        // 입력 필드를 초기화합니다.
-        idField.value = "";
-        // 입력 필드로 포커스를 돌려줍니다.
-        idField.focus();
-    }
-    
-    
-}
-
-
-
-/*1차*/
-function isValidId(id) {
-    // 아이디 형식 검증을 위한 정규 표현식
-    var idPattern = /^[a-zA-Z0-9]{4,12}$/;
-    return idPattern.test(id);
-}
-
-/* 2차 특수문자 검증 추가 
-function isValidId(id) {
-    // 아이디 형식 및 특수문자 검증을 위한 정규 표현식
-    var idPattern = /^[a-zA-Z0-9!@#%^&*()_+|~\-+=]{4,12}$/;
-    return idPattern.test(id);
-}
-*/
-
-/* 3차 빈 공백 추가 
-function isValidId(id) {
-    var idPattern = /^[a-zA-Z0-9!@#%^&*()_+|~\-+=\s]{4,12}$/;
-    return idPattern.test(id);
-}
-*/
-
-function isValidEmail(email) {
-    // 간단한 이메일 형식 검증 로직 (개선 가능)
-    var emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-    return emailPattern.test(email);
-}
-
-//비밀번호 조건  8자리 이상/숫자 포함/영대 문자 포함/영소 문자 포함/특수문자 포함
-function pwValid(password){
-    var pwpat = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
-	return pwpat.test(password);
-}
 </script>
 
-
-<script>
-//함수를 별도로 정의하여 아이디 유효성 검증 및 중복 검사에 사용
-function validateId() {
-    var mid = $('.id_input').val();
-    
-    
-    // 0. 공백 검증
-    if (mid.includes(' ')) {
-        $('.id_input_re_1').css("display", "none");
-        $('.id_input_re_2').css("display", "none");
-        $('.id_input_re_3').css("display", "none");
-        $('.id_input_re_4').css("display", "none");
-        $('.id_input_re_5').css("display", "inline-block");
-        return;
-    }
-    // 1. 아이디 길이 검증
-    if (mid.length < 4) {
-        $('.id_input_re_1').css("display", "none");
-        $('.id_input_re_2').css("display", "none");
-        $('.id_input_re_3').css("display", "inline-block");
-        $('.id_input_re_4').css("display", "none");
-        $('.id_input_re_5').css("display", "none");
-        return;
-    }else if(mid.length >12){
-    	$('.id_input_re_1').css("display", "none");
-    	$('.id_input_re_2').css("display", "none");
-    	$('.id_input_re_3').css("display", "none");
-        $('.id_input_re_4').css("display", "inline-block");
-        $('.id_input_re_5').css("display", "none");
-
-        return;
+<!-- <script>
+// 메일 주소 선택과 직접 입력
+function domain_list() {
+    var num = m.mail_list.selectedIndex; // 선택한 목록 항목 번호
+    if (num == -1) { // 목록이 선택되지 않았을때 실행
+        return true;
     }
 
-    // 2. 아이디 유효성 검증
-    if (!isValidId(mid)) {
-        $('.id_input_re_1').css("display", "none");
-        $('.id_input_re_2').css("display", "inline-block");
-        $('.id_input_re_3').css("display", "none");
-        $('.id_input_re_4').css("display", "none");
-        return;
-    }
+    // 도메인 입력란과 도메인 선택 목록 가져오기
+    var domainInput = m.memail2;
+    var selectedDomain = m.mail_list.value;
 
-    // 3. 아이디 중복 여부 검사 (Ajax 요청)
-    var data = { mid: mid };
-    $.ajax({
-        type: "post",
-        url: "/member/memberIdChk",
-        data: data,
-        success: function (result) {
-            if (result != 'fail') {
-                $('.id_input_re_1').css("display", "inline-block");
-                $('.id_input_re_2').css("display", "none");
-                $('.id_input_re_3').css("display", "none");
-                $('.id_input_re_4').css("display", "none");
-                $('.id_input_re_5').css("display", "none");
-               
-                
-            } else {
-                $('.id_input_re_1').css("display", "none");
-                $('.id_input_re_2').css("display", "inline-block");
-                $('.id_input_re_3').css("display", "none");
-                $('.id_input_re_4').css("display", "none");
-                $('.id_input_re_5').css("display", "none");
-               
-                
-            }
-        }
-    });
+    if (selectedDomain == "직접입력") {
+        domainInput.value = "";
+        domainInput.readOnly = false; // 쓰기 가능
+        domainInput.focus(); // 입력박스로 포커스 이동
+    } else {
+        domainInput.value = m.mail_list.options[num].value; // 수정된 부분
+        domainInput.readOnly = true; // 읽기 전용
+    }
 }
-function write_check() {
-    var mid = document.forms["join_form"]["mid"].value;
-    var mpw = document.forms["join_form"]["mpw"].value;
-    var mname = document.forms["join_form"]["mname"].value;
-    var memail = document.forms["join_form"]["memail"].value;
-    
-    if (mid === "") {
-        alert("아이디를 입력하세요.");
-        return false;
-    }
-    
-    // 아이디 형식 검증 (4~12자, 영문 대/소문자와 숫자로만 구성)
-    if (!isValidId(mid)) {
-        alert("올바른 아이디 형식을 입력하세요.");
-        return false;
-    }
-        
-    if (mpw === "") {
-        alert("비밀번호를 입력하세요.");
-        return false;
-    }
-    
-    // 비밀번호 형식 검증
-    if(!pwValid(mpw)){
-    	alert("비밀번호는 8자 이상이어야 하며, 숫자/대문자/소문자/특수문자를 모두 포함해야 합니다.");
-    	return false;
-    }
-   
-
-    if (mname === "") {
-        alert("이름을 입력하세요.");
-        return false;
-    }
-
-    if (memail === "") {
-        alert("이메일을 입력하세요.");
-        return false;
-    }
-
-    // 이메일 형식 검증
-    if (!isValidEmail(memail)) {
-        alert("올바른 이메일 주소를 입력하세요.");
-        return false;
-    }
-
-    
-    // 특수문자 검증 
-     if (!idPattern.test(id)) {
-        // 아이디에 특수문자가 포함되어 있으면 경고창 표시
-        alert("아이디에 특수문자를 사용할 수 없습니다.");
-        return false;
-    }
-    
-   
-    return true;
-     
-    
-    
-    
-}
-
-
-
-// 이벤트 리스너를 등록하여 입력란 변경 시 validateId 함수 호출
-$('.id_input').on("propertychange change keyup paste input", function () {
-    validateId();
-    
- // 
-   /*  var data = { mid: mid };
-    $.ajax({
-        type: "post",
-        url: "/member/memberIdChk",
-        data: data,
-        success: function (result) {
-            if (result != 'fail') {
-                $('.id_input_re_1').css("display", "inline-block");
-                $('.id_input_re_2').css("display", "none");
-                $('.id_input_re_3').css("display", "none");
-                $('.id_input_re_4').css("display", "none");
-                $('.id_input_re_5').css("display", "none");
-               
-                
-            } else {
-                $('.id_input_re_1').css("display", "none");
-                $('.id_input_re_2').css("display", "inline-block");
-                $('.id_input_re_3').css("display", "none");
-                $('.id_input_re_4').css("display", "none");
-                $('.id_input_re_5').css("display", "none");
-               
-                
-            }
-        }
-    }); */
-});
-
-
-</script>
-
-
-<script>
-
-/* 유효성 검사 통과유무 변수 */
-var idCheck = false;            // 아이디
-var idckCheck = false;            // 아이디 중복 검사
-var pwCheck = false;            // 비번
-var pwckCheck = false;            // 비번 확인
-var pwckcorCheck = false;        // 비번 확인 일치 확인
-var nameCheck = false;            // 이름
-var mailCheck = false;            // 이메일
-var mailnumCheck = false;        // 이메일 인증번호 확인
-var addressCheck = false         // 주소
-
-
-//회원가입 버튼(회원가입 기능 작동)
-$(".join_button").click(function(){
-
-    /* 입력값 변수 */
-    var id = $('.id_input').val();                 // id 입력란
-    var pw = $('.pw_input').val();                // 비밀번호 입력란
-    var pwck = $('.pwck_input').val();            // 비밀번호 확인 입력란
-    var name = $('.user_input').val();            // 이름 입력란
-    var mail = $('.mail_input').val();            // 이메일 입력란
-    var addr = $('.address_input_3').val();        // 주소 입력란
-	
-	
-	//$("#join_form").attr("action", "/member/join");
-//$("#join_form").submit();
-});
-
-</script>
+</script> -->
 
 </body>
 </html>

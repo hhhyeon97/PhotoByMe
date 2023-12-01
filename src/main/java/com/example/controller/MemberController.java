@@ -8,7 +8,6 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -38,9 +37,9 @@ public class MemberController {
 		//회원가입 페이지 이동
 		@RequestMapping(value = "/join", method = RequestMethod.GET)
 		public ModelAndView member_join() {
-			String[] memail = {"gmail.com","naver.com","daum.net","nate.com","직접입력"};
+			//String[] email = {"직접입력","gmail.com","naver.com","daum.net"};
 			ModelAndView jm=new ModelAndView();
-			jm.addObject("email",memail);
+			//jm.addObject("email",email);
 			jm.setViewName("/member/join");//뷰페이지 경로 설정
 			return jm;
 		}//member_join()
@@ -60,9 +59,19 @@ public class MemberController {
 			}
 			out.println(re); // 값 반환 기능 
 			return null;
-		} // memberIdChk() 종료	
+		} // memberIdChk()	
 		
-		
+		// 회원가입(회원 데이터 저장) 
+		@RequestMapping("join_ok")
+		public ModelAndView join_ok(MemberVO m) {
+			/*	MemberVO m 이라고 하면 join.jsp의 네임피라미터 이름과 
+			 *  해당 vo클래스 변수명이 같으면 m에 입력한 회원 정보가 자동 저장 연결 될 수 있다.
+			 */
+			m.setMpw(PwdChange.getPassWordToXEMD5String(m.getMpw())); // 비번 암호화
+			this.memberservice.memberJoin(m); // 회원 저장 
+			return new ModelAndView("redirect:/member/login");
+			// 생성자 인자값에 redirect:/가 들어가면 원하는 매핑주소로 이동시킴.
+		}//join_ok()
 		
 		
 		//회원가입

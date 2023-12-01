@@ -22,6 +22,13 @@ public class MemberServiceImpl implements MemberService {
 	public MemberVO idCheck(String mid) {
 		return memberDao.idCheck(mid);
 	}
+	
+	@Override
+	public void memberJoin(MemberVO m) {
+		 memberDao.memberJoin(m);
+	}
+	
+	
 
 	@Override
 	public MemberVO pwdMember(MemberVO m) {
@@ -38,6 +45,7 @@ public class MemberServiceImpl implements MemberService {
 	public MemberVO loginCheck(String mid) {
 		return memberDao.loginCheck(mid);
 	}
+
 
 	
 	

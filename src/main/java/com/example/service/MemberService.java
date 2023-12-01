@@ -6,7 +6,8 @@ public interface MemberService {
 
 	// 아이디 중복 체크 
 	 public MemberVO idCheck(String mid);
-	
+	// 회원 저장 
+	 public void memberJoin(MemberVO m);
 		
 	// 비밀번호 찾기	
 	public MemberVO pwdMember(MemberVO m);
@@ -14,6 +15,8 @@ public interface MemberService {
 	public void updatePwd(MemberVO m);
 	// 로그인 인증 
 	public MemberVO loginCheck(String mid);
+
+
 
 
 }

@@ -18,6 +18,12 @@ public class MemberDAOImpl implements MemberDAO {
 	public MemberVO idCheck(String mid) {
 		return sqlSession.selectOne("idCheck",mid);
 	}
+	//회원 저장 
+	@Override
+	public void memberJoin(MemberVO m) {
+		sqlSession.insert("memberJoin",m);
+	}
+	
 	
 	@Override
 	public MemberVO pwdMember(MemberVO m) {
@@ -33,6 +39,7 @@ public class MemberDAOImpl implements MemberDAO {
 	public MemberVO loginCheck(String mid) {
 		return sqlSession.selectOne("loginCheck",mid);
 	}
+
 
 	
 }

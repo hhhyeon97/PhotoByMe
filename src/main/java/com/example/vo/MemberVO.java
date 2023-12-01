@@ -11,9 +11,16 @@ public class MemberVO {
 	private String memail; // 회원 이메일
 	private int adminCk; // 관리자 구분 (0:일반 사용자/1:관리자)
 	private Date mdate; // 등록 일자
+	private String memail2; // 회원 이메일 도메인
 	
 	
 	
+	public String getMemail2() {
+		return memail2;
+	}
+	public void setMemail2(String memail2) {
+		this.memail2 = memail2;
+	}
 	public String getMid() {
 		return mid;
 	}

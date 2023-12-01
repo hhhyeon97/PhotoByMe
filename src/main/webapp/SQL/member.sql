@@ -28,9 +28,22 @@ insert into member01 values('test01', 'Test123!', '지현', 'test01@naver.com',0
 
 
 
+-- 1202 이메일 도메인 컬럼 추가 
 
+alter table member01 add memail2 varchar2(30) not null;
+-- not null인 컬럼을 추가할려면 테이블이 비어있어야 함. 
+-- 테이블 초기화 후 다시 시도하면 성공 ! 
+TRUNCATE TABLE member01;
 
+select * from member01;
 
+--  memail2 를 memail뒤로 오게 컬럼 순서 변경 ! 
+ALTER TABLE member01 MODIFY adminCk INVISIBLE;
+ALTER TABLE member01 MODIFY mdate INVISIBLE;
 
+ALTER TABLE member01 MODIFY adminCk VISIBLE;
+ALTER TABLE member01 MODIFY mdate VISIBLE;
+
+commit;
 
 
