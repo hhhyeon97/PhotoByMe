@@ -17,16 +17,10 @@ public class MemberServiceImpl implements MemberService {
 	@Autowired
 	private MemberDAO memberDao;
 	
-	@Override
-	public void memberJoin(MemberVO member) throws Exception {
-		
-		membermapper.memberJoin(member);
-		
-	}
 
 	@Override
-	public int idCheck(String mid) throws Exception {
-		return membermapper.idCheck(mid);
+	public MemberVO idCheck(String mid) {
+		return memberDao.idCheck(mid);
 	}
 
 	@Override
@@ -44,6 +38,7 @@ public class MemberServiceImpl implements MemberService {
 	public MemberVO loginCheck(String mid) {
 		return memberDao.loginCheck(mid);
 	}
+
 	
 	
 }

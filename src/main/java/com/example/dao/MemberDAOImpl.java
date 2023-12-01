@@ -8,10 +8,17 @@ import com.example.vo.MemberVO;
 
 @Repository
 public class MemberDAOImpl implements MemberDAO {
-
+	
+	// 의존성 주입
 	@Autowired
 	private SqlSession sqlSession;
-
+	
+	// 아이디 중복 여부 확인
+	@Override
+	public MemberVO idCheck(String mid) {
+		return sqlSession.selectOne("idCheck",mid);
+	}
+	
 	@Override
 	public MemberVO pwdMember(MemberVO m) {
 		return sqlSession.selectOne("pwFind",m);
@@ -26,5 +33,6 @@ public class MemberDAOImpl implements MemberDAO {
 	public MemberVO loginCheck(String mid) {
 		return sqlSession.selectOne("loginCheck",mid);
 	}
+
 	
 }

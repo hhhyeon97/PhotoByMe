@@ -35,70 +35,53 @@ public class MemberController {
 		//logger.info("로그인 페이지 진입");
 	}
 	
-	
-	//회원가입 페이지 이동
+		//회원가입 페이지 이동
 		@RequestMapping(value = "/join", method = RequestMethod.GET)
-		/*
-		 * public void joinGET() {
-		 * 
-		 * //logger.info("회원가입 페이지 진입"); }
-		 */
 		public ModelAndView member_join() {
-			//String[] phone= {"010","011","019"};
 			String[] memail = {"gmail.com","naver.com","daum.net","nate.com","직접입력"};
-			
 			ModelAndView jm=new ModelAndView();
-			//jm.addObject("phone", phone);
 			jm.addObject("email",memail);
 			jm.setViewName("/member/join");//뷰페이지 경로 설정
 			return jm;
 		}//member_join()
 		
 		
-	
-	    
-	    
-		
-		//회원가입
-		@RequestMapping(value="/join_ok", method=RequestMethod.POST)
-		public String join_ok(MemberVO member,Model model) throws Exception{
-			
-			//logger.info("join 진입");
-			
-			// 회원가입 서비스 실행
-			memberservice.memberJoin(member);
-			
-			//logger.info("join Service 성공");
-			
-			 model.addAttribute("regSuccess", true);
-			 
-			return "redirect:/member/login";
-		}	
-		
-		
-		
-
 		// 아이디 중복 검사
 		@RequestMapping(value = "/memberIdChk", method = RequestMethod.POST)
 		@ResponseBody
-		public String memberIdChk(String mid) throws Exception{
-
+		public String memberIdChk(String mid,HttpServletResponse response) throws Exception{
 			//logger.info("memberIdChk() 진입");
-
-			int result = memberservice.idCheck(mid);
-
-			//logger.info("결과값 = " + result);
-
-			if(result != 0) {
-
-				return "fail";	// 중복 아이디가 존재
-
-			} else {
-
-				return "success";	// 중복 아이디 x
-
+			
+			PrintWriter out = response.getWriter();
+			MemberVO db_id = this.memberservice.idCheck(mid);
+			int re = -1; // 중복 아이디가 없는 경우 반환값 
+			if(db_id != null) { // 중복 아이디가 있는 경우
+				re=1;
 			}
+			out.println(re); // 값 반환 기능 
+			return null;
 		} // memberIdChk() 종료	
+		
+		
+		
+		
+		//회원가입
+		
+		/*
+		@RequestMapping(value="/join_ok", method=RequestMethod.POST)
+		public String join_ok(MemberVO member,Model model) throws Exception{
+			//logger.info("join 진입");
+			// 회원가입 서비스 실행
+			memberservice.memberJoin(member);
+			//logger.info("join Service 성공");
+			 model.addAttribute("regSuccess", true);
+			return "redirect:/member/login";
+		}	
+		
+		*/
+		
+
+		
 
 		
 		/* 이메일 인증 */
@@ -116,6 +99,7 @@ public class MemberController {
 	    public String login_ok() {
 	    	return "redirect:/";
 	    }
+	    
 	    
 	    //비번찾기 공지창
 	    @RequestMapping("/pwd_find")
