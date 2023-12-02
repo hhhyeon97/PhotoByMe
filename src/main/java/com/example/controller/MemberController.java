@@ -1,6 +1,8 @@
 package com.example.controller;
 
 import java.io.PrintWriter;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 import javax.servlet.http.HttpServletResponse;
@@ -8,6 +10,8 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -43,6 +47,7 @@ public class MemberController {
 			jm.setViewName("/member/join");//뷰페이지 경로 설정
 			return jm;
 		}//member_join()
+		
 		
 		
 		// 아이디 중복 검사
