@@ -13,14 +13,14 @@
 
 <script>
  function login_check(){
-    if($.trim($("#login_id").val())==""){
+    if($.trim($("#mid").val())==""){
        alert("로그인 아이디를 입력하세요!");
-       $("#login_id").val("").focus();
+       $("#mpw").val("").focus();
        return false;
     }
-    if($.trim($("#login_pwd").val())==""){
+    if($.trim($("#mpw").val())==""){
        alert("로그인 비번을 입력하세요!");
-       $("#login_pwd").val("").focus();
+       $("#mpw").val("").focus();
        return false;
     }
  }//로그인 인증 유효성 검증
@@ -76,20 +76,19 @@
 	</form> -->
 
 	<!-- 로그인 폼 시작  -->
-	
 		<%--로그인 전 화면 --%>
-			<form method="post" action="member_login_ok"
+			<form method="post" action="login_ok"
 				onsubmit="return login_check();">
 					<div class="container">
 					<h1>로그인 ⌯'▾'⌯</h1>
 						<div class="neu-input">
-						<input name="mid" id="login_id" placeholder="아이디" size="14"
+						<input name="mid" id="mid" placeholder="아이디" size="14"
 							tabindex="1" />
 						<!-- tabindex="1"로 설정하면 탭키를 눌렀을 때 첫번째로 포커스를 가진다.-->
      					</div>
 							
 						<div class="neu-input">
-						<input type="password" name="mpw" id="login_pwd"
+						<input type="password" name="mpw" id="mpw"
 							placeholder="비밀번호" size="14" tabindex="2" />
 							</div>
 				<div class="neu-button">
@@ -99,37 +98,6 @@
 				</div>
 		</div>
 		</form>
-
-	
-	
-	
-
-	<!-- <script>
-		var id = document.getElementById('userID');
-		var pw = document.getElementById('userPW');
-		var loginBtn = document.getElementById('loginBtn');
-		var joinBtn = document.getElementById('joinBtn');
-
-		joinBtn.addEventListener('click', function() {
-		    window.location.href = '/member/join';
-		});
-		
-		// 로그인 유효성 체크 바리데이션
-		function login_check() {
-			if (!mid.value) {
-				alert('아이디를 입력해주세요.');
-				mid.focus();
-				return;
-			}
-			if (!mpw.value) {
-				alert('비밀번호를 입력해주세요.');
-				mpw.focus();
-				return;
-			}
-		}
-	</script> -->
-
-
 	<jsp:include page="../footer.jsp" />
 </body>
 </html>

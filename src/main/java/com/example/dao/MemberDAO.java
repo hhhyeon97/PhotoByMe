@@ -6,13 +6,8 @@ public interface MemberDAO {
 	
 	MemberVO idCheck(String mid);
 	void memberJoin(MemberVO m);
-
-	
-	
 	MemberVO pwdMember(MemberVO m);
-
 	void updatePwd(MemberVO m);
-
 	MemberVO loginCheck(String mid);
 
 

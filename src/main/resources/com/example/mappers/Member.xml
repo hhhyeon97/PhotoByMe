@@ -4,6 +4,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="Member">
+
 <!-- 아이디 중복 체크-->
   	<select id="idCheck" resultType="member">
   		select * from member where mid=#{mid};
@@ -13,27 +14,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="memberJoin">
 		insert into member01 values(#{mid}, #{mpw}, #{mname}, #{memail}, #{memail2}, 0, sysdate)
 	</insert>
-
-	
-      <!-- 로그인 
-      <select id="memberLogin" resultType="member">
-         select mid, mpw from member01 where mid = #{mid} and mpw = #{mpw}
-      </select>-->
  
- <!-- 비번 찾기 -->
+<!-- 비번 찾기 -->
    <select id="pwFind" resultType="member">
     select * from member01 where mid=#{mid} and mname=#{mname}
   </select>
   	
-  	<!-- 암호화 된 임시비번으로 수정 -->
+<!-- 암호화 된 임시비번으로 수정 -->
   <update id="pwEdit">
     update member01 set mpw=#{mpw} where mid=#{mid}
   </update>
-  	
-  	<!-- 로그인 인증 처리 -->
-  <select id="loginCheck" resultType="member">
-    select * from member01 where mid=#{mid} and mpw=#{mpw}
-  </select>
-  	
+  
+<!-- 로그인 인증 --> 
+<select id="loginCheck" resultType="member">
+	select * from member01 where mid=#{mid}
+</select> 	
   	
 </mapper> 

@@ -35,7 +35,7 @@ alter table member01 add memail2 varchar2(30) not null;
 -- 테이블 초기화 후 다시 시도하면 성공 ! 
 TRUNCATE TABLE member01;
 
-select * from member01;
+select * from member01 order by mdate desc;
 
 --  memail2 를 memail뒤로 오게 컬럼 순서 변경 ! 
 ALTER TABLE member01 MODIFY adminCk INVISIBLE;

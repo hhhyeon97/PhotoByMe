@@ -79,41 +79,31 @@ public class MemberController {
 		}//join_ok()
 		
 		
-		//회원가입
-		
-		/*
-		@RequestMapping(value="/join_ok", method=RequestMethod.POST)
-		public String join_ok(MemberVO member,Model model) throws Exception{
-			//logger.info("join 진입");
-			// 회원가입 서비스 실행
-			memberservice.memberJoin(member);
-			//logger.info("join Service 성공");
-			 model.addAttribute("regSuccess", true);
-			return "redirect:/member/login";
-		}	
-		
-		*/
-		
-
-		
-
-		
-		/* 이메일 인증 */
-	    @RequestMapping(value="/mailCheck", method=RequestMethod.GET)
-	    @ResponseBody
-	    public void mailCheckGET(String memail) throws Exception{
-	        
-	        /* 뷰(View)로부터 넘어온 데이터 확인 */
-	        //logger.info("이메일 데이터 전송 확인");
-	        //logger.info("인증번호 : " + memail);
-	    }
-			
-	    /* 로그인 ok */
-	    @PostMapping("/login_ok")
-	    public String login_ok() {
-	    	return "redirect:/";
-	    }
-	    
+		// 로그인 인증 처리 
+		@PostMapping("/login_ok")
+		public ModelAndView login_ok(String mid,String mpw,
+				HttpServletResponse response, HttpSession session) throws Exception{
+			response.setContentType("text/html;charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			MemberVO m = this.memberservice.loginCheck(mid);
+			if(m==null) {
+				out.println("<script>");
+				out.println("alert('가입 안 된 회원입니다!');");
+				out.println("history.back();");
+				out.println("</script>");
+			}else {
+				if(!m.getMpw().equals(PwdChange.getPassWordToXEMD5String(mpw))) {
+					out.println("<script>");
+					out.println("alert('비번이 다릅니다!');");
+					out.println("history.go(-1);");
+					out.println("</script>");
+			}else {
+				session.setAttribute("mid", mid); // 세션 mid 키이름에 아이디 저장
+				return new ModelAndView("redirect:/");
+			}
+			}
+			return null;
+		}//login_ok()
 	    
 	    //비번찾기 공지창
 	    @RequestMapping("/pwd_find")
@@ -160,34 +150,4 @@ public class MemberController {
 	    	}
 	    	return null;
 	    }//pwd_find_ok()
-	    
-	    
-	  //로그인 인증처리
-	    @PostMapping("/member_login_ok")
-	    public ModelAndView member_login_ok(String mid,String login_pwd,
-	    		HttpServletResponse response,HttpSession session) throws Exception{
-	    	response.setContentType("text/html;charset=UTF-8");
-	    	PrintWriter out=response.getWriter();
-	    	
-	    	MemberVO m = this.memberservice.loginCheck(mid);
-	    	
-	    	if(m == null) {
-	    		out.println("<script>");
-	    		out.println("alert('가입 안된 회원입니다!');");
-	    		out.println("history.back();");
-	    		out.println("</script>");
-	    	}else {
-	    		if(!m.getMpw().equals(PwdChange.getPassWordToXEMD5String(login_pwd))) {
-	    			out.println("<script>");
-	    			out.println("alert('비번이 다릅니다!');");
-	    			out.println("history.go(-1);");
-	    			out.println("</script>");
-	    		}else {
-	    			session.setAttribute("id",mid);//세션 id 키이름에 아이디 저장
-	    			return new ModelAndView("redirect:/member/login");
-	    		}
-	    	}
-	    	return null;
-	    }//member_login_ok()
-	    
 }

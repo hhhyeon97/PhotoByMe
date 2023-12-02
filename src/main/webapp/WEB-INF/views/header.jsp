@@ -10,37 +10,6 @@
 <link rel="stylesheet" href="/css/header.css">
 
 <style>
-/* 
-p{
-	font-size: 12px;
-}
- audio {
- 	position:relative;
- 	left:30em;
-    margin-right: 20px; 오디오 요소 오른쪽 여백 설정 
-        }  
-
-@font-face {
-font-family: 'UhBeeSe_hyun';
-src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_five@.2.0/UhBeeSe_hyun.woff') format('woff');
-font-weight: normal;
-font-style: normal;
-}
-
-.logo h2{
-	font-family: 'UhBeeSe_hyun';
-	font-weight:bold;
-	font-size: 50px;
-	position : relative;
-	top:17px;
-}
-.logo a{
-	text-decoration: none;
-	color:inherit;
-}
-header{
-	margin-bottom:30px;
-} */
 </style>
 
 <!-- 11/21 검색 모달 헤더로 이동  -->
@@ -118,13 +87,14 @@ font-style: normal;
 
 <!--<audio controls src="/audio/Oneul - Summer Vacation.mp3"></audio>-->
         <nav>
-        	   <div class="left-nav">
+<!--         	   <div class="left-nav">
             <ul class="nav-links">
                 <li><a href="/">ALL</a></li>
                 <li><a href="#">SIGHT</a></li>
                 <li><a href="#">OBJECT</a></li>
             </ul>
-        </div>
+        </div> -->
+        
             <div class="logo">
                 <a href="/"> <!-- 컨트롤러에서 정의한 URL로 링크 설정 -->
                 <h2>Photo By Me</h2>
@@ -134,13 +104,21 @@ font-style: normal;
             </div>
              <div class="right-nav">
             <ul class="nav-links">
-                <li><a href="#" id="openModal">SEARCH</a></li>
-                <li><a href="/member/login">LOG IN</a></li>
-                <li><a href="/cart">My저장</a></li>
-            </ul>
+    		<li><a href="#" id="openModal">SEARCH</a></li>
+   			 <!-- 이 부분에 대해 JavaScript로 동적으로 로그인 상태에 따라 변경 -->
+    			<li id="loginStatus">
+        			<%-- 이 부분에 대해 JavaScript로 동적으로 로그인 상태에 따라 변경 --%>
+        		<a href="<%= (session.getAttribute("mid") == null) ? "/member/login" : "/logout" %>">
+            	<%= (session.getAttribute("mid") == null) ? "LOG IN" : "LOG OUT" %>
+        			</a>
+    				</li>
+    				
+    <li id="userProfileLink"><a href="/member/userProfile">마이페이지</a></li>
+    				
+    				<li><a href="/cart">My저장</a></li>
+			</ul>
             </div>
         </nav>
- 
     </header>
 
 
@@ -236,5 +214,39 @@ document.addEventListener("click", (event) => {
 	  }
 	});
 </script> -->
+
+<!-- 로그인유무에 따른 메뉴바 변경 -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        updateLoginStatus(); // 페이지 로딩 시에 실행
+
+        // 로그아웃 후에 페이지 새로고침하면 메뉴 업데이트
+        window.addEventListener("unload", function() {
+            updateLoginStatus();
+        });
+
+        function updateLoginStatus() {
+            var loginStatusElement = document.getElementById("loginStatus");
+            var userProfileLink = document.getElementById("userProfileLink");
+            
+            // 세션에서 로그인 상태 확인
+            var loginStatus = "<%= (session.getAttribute("mid") == null) ? "LOG IN" : "LOG OUT" %>";
+
+            // 메뉴 업데이트
+            loginStatusElement.innerHTML = '<a href="' +
+                ((loginStatus === 'LOG IN') ? '/member/login' : '/logout') +
+                '">' + loginStatus + '</a>';
+                
+             // 추가: 로그인 상태에 따라 정보수정 메뉴 표시/숨김
+                if (loginStatus === 'LOG OUT') {
+                  userProfileLink.style.display = 'inline-block';
+                } else {
+                  userProfileLink.style.display = 'none';    
+                }
+                
+        }
+    });
+</script>
+
 </body>
 </html>
