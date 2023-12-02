@@ -105,6 +105,25 @@ public class MemberController {
 			return null;
 		}//login_ok()
 	    
+		
+		// 로그아웃
+		@PostMapping("/logout")
+		public ModelAndView member_logout(HttpServletResponse response,
+				HttpSession session) throws Exception{
+			response.setContentType("text/html;charset=UTF-8");
+			PrintWriter out=response.getWriter();
+			
+			session.invalidate(); // 세션 만료 (로그아웃)
+			
+			out.println("<script>");
+			out.println("alert('로그아웃 되었습니다!');");
+			out.println("location='/';");
+			out.println("</script>");
+			
+			return null;
+		} // member_logout()
+		
+		
 	    //비번찾기 공지창
 	    @RequestMapping("/pwd_find")
 	    public ModelAndView pwd_find() {

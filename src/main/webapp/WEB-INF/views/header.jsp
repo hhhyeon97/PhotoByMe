@@ -109,7 +109,9 @@ font-style: normal;
     			<li id="loginStatus">
         			<%-- 이 부분에 대해 JavaScript로 동적으로 로그인 상태에 따라 변경 --%>
         		<a href="<%= (session.getAttribute("mid") == null) ? "/member/login" : "/logout" %>">
+            	<button id="logoutButton" style="display:none;">
             	<%= (session.getAttribute("mid") == null) ? "LOG IN" : "LOG OUT" %>
+        			</button>
         			</a>
     				</li>
     				
@@ -244,6 +246,29 @@ document.addEventListener("click", (event) => {
                   userProfileLink.style.display = 'none';    
                 }
                 
+                
+                // 로그아웃 버튼 클릭 시 로그아웃 요청
+                var logoutButton = document.getElementById("logoutButton");
+                if (logoutButton) {
+                  logoutButton.addEventListener("click", function() {
+                    // 로그아웃 요청
+                    fetch('/logout', {
+                      method: 'POST',
+                      headers: {
+                        'Content-Type': 'application/json',
+                      },
+                    })
+                    .then(response => response.text())
+                    .then(data => {
+                      console.log(data); // 로그아웃 성공 메시지
+                      // 추가: 로그아웃 성공 시 메뉴 업데이트
+                      updateLoginStatus();
+                    })
+                    .catch((error) => {
+                      console.error('Error:', error);
+                    });
+                  });
+                  
         }
     });
 </script>
