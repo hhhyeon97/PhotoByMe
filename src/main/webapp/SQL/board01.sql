@@ -22,3 +22,6 @@ select * from Board01;
 
 commit;
 
+delete from Board01;
+
+ALTER TABLE Board01 DROP COLUMN board_step;

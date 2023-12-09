@@ -30,4 +30,10 @@ public class BoardVO {// jpa 방식으로 db 생성
 	private Timestamp bdate;
 	
 	
+	
+	private int bref; //글 그룹번호 => 원본글과 답변글을 묶어주기
+	private int bstep; //원본글과 답변글을 구분하는 번호값이면 몇번째 답변글인지 알려주기
+						// 원본 글이면 0, 첫번째 답변글이면 1, 두번째 답변글이면 2
+	private int blevel; //답변글 정렬 순서
+	
 }

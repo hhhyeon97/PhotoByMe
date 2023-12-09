@@ -4,6 +4,9 @@
 <head>
 <meta charset="UTF-8">
 <title></title>
+<link
+   href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+   rel="stylesheet">
 </head>
 <body>
 <script type="text/javascript" src="/js/check.js"></script>
@@ -31,8 +34,9 @@ style="display: flex;
 	
 </table>
 </form>
-	<input type="button" value="등록" onclick="add()">
-	<input type="button" value="취소" onclick="res()">
+	<input type="button" class="btn btn-secondary" value="등록" onclick="add()">
+	<input type="button" class="btn btn-secondary" value="취소" onclick="res()">
+	<input type="button" class="btn btn-secondary" value="목록" onclick="location='board_list?page=${page}';" />
 </section>
 <footer style="position:fixed; bottom:150px;
 left:0px; width:100%; height:30px;

@@ -7,5 +7,6 @@ PUBLIC "-//mybatis.org//DTO Config 3.0//EN"
 	<typeAliases> <!--  이 파일의 역할은 빈 클래스 객체 별칭이름을 관리  -->
 	<typeAlias type="com.example.vo.MemberVO" alias="member"/>
 	<typeAlias type="com.example.vo.BoardVO" alias="board"/>
+	<typeAlias type="com.example.vo.PageVO" alias="page" />
 	</typeAliases>			
 </configuration>
