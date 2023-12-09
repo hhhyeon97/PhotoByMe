@@ -9,10 +9,15 @@
 
 * {
 	text-align:center;
-	box-sizing: border-box;
 }
 
 footer {
+/* 	position:fixed;
+	left:0px;
+	bottom: 0px;
+	width:100%;
+	height:150px;
+	line-height:150px; */
 	padding: 10px 0;
 	margin-top: 10px;
 }
@@ -31,7 +36,7 @@ h6{
 </style>
 </head>
 <body>
-	<hr>
+	<!-- <hr> -->
 	<footer>
 		<div class="container">
 			<div class="row">
