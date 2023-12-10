@@ -90,5 +90,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
      #{bstep}+1,#{blevel}+1,sysdate)
     </insert>
 
+    <!-- 게시판 수정 -->
+    <update id="board_edit" parameterType="board">
+     update Board01 set bname=#{bname},
+     btitle=#{btitle},bcont=#{bcont}
+     where bno=#{bno}
+    </update>
+
+    <!-- 게시판 삭제 -->
+    <delete id="board_del" parameterType="int">
+     delete from Board01 where bno=#{bno}
+    </delete>
 
 </mapper>

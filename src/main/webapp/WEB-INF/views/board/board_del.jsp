@@ -15,7 +15,7 @@
 
 			<div id="delmenu">
 				<input type="submit" onclick="del()" value="삭제" /> <input
-					type="reset" value="취소" onclick="$('#del_pwd').focus();" /> <input
+					type="reset" value="취소"/> <input
 					type="button" value="목록"
 					onclick="location='board_list?page=${page}';" />
 			</div>

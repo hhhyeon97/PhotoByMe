@@ -1,8 +1,10 @@
 package com.example.controller;
 
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -158,5 +160,35 @@ public class BoardController {
 			this.boardService.replyBoard(rb);//답변저장+레벨증가
 			return "redirect:/board_list?page="+page;//목록보기로 이동
 		}
+		
+		// 게시판 수정
+		@RequestMapping("/board_edit_ok")
+		public String board_edit_ok(@ModelAttribute BoardVO eb,
+				HttpServletResponse response,
+				HttpServletRequest request) throws Exception{
+
+			int page=1;
+			if(request.getParameter("page") != null) {
+				page=Integer.parseInt(request.getParameter("page"));			
+			}
+			this.boardService.editBoard(eb);//게시물 수정
+			return "redirect:/board_cont?no="+eb.getBno()+"&page="+page+"&state=cont";
+									//?뒤에 3개의 인자값이 get방식으로 내용보기로 이동.	 
+		}
+		
+		//게시판 삭제 
+		@RequestMapping("/board_del_ok")
+		public String board_del_ok(
+				@RequestParam("bno") int bno,
+				HttpServletResponse response,
+				HttpServletRequest request)
+						throws Exception{
+			int page=1;
+			if(request.getParameter("page") != null) {
+				page=Integer.parseInt(request.getParameter("page"));
+			}
+				this.boardService.delBoard(bno);//게시판 삭제
+				return "redirect:/board_list?page="+page;
+		}//board_del_ok()
 
 }
