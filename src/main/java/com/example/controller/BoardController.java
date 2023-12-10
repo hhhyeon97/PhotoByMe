@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.service.BoardService;
@@ -48,7 +49,7 @@ public class BoardController {
 			//board_list로 이동
 		}//board_write_ok()
 	
-		//목록보기
+	//목록보기
 		@RequestMapping("/board_list")
 		//get or post 방식으로 접근하는 매핑주소를 처리
 		public ModelAndView board_list(
@@ -100,5 +101,48 @@ public class BoardController {
 			//경로와 파일명 지정
 			return listM;
 		}
+		
+		/*내용보기+수정폼+답변폼+삭제폼 -> 추후에 ui 페이지변경되지 않고 제자리에서 모달창 띄우는걸로 변경하기 */
+		@RequestMapping("/board_cont")
+		public String board_cont(
+				@RequestParam("no") int bno,
+				@RequestParam("state") String state,
+				HttpServletRequest request,
+				Model m,@ModelAttribute BoardVO b)
+						throws Exception{
+			int page=1;
+			if(request.getParameter("page") != null) {
+				page=Integer.parseInt(request.getParameter("page"));			
+			}
+
+			if(state.equals("cont")) {//내용보기일때만 조회수 증가
+				b=this.boardService.getBoardCont(bno);
+				//this.boardService.updateHit(board_no);
+			}else {
+				b=this.boardService.getBoardCont2(bno);
+			}
+
+			String board_cont=b.getBcont().replace("\n","<br/>");
+			//textarea태그 영역에서 엔터키 친부분을 웹브라우에 출력할때 줄바
+			//꿈처리
+
+			m.addAttribute("b",b);
+			m.addAttribute("bcont",board_cont);
+			m.addAttribute("page",page);//키,값 쌍으로 저장
+
+			if(state.equals("cont")) {//내용보기
+				return "/board/board_cont";// /WEB-INF/board/
+				//board_cont.jsp 뷰페이지로 이동
+			}else if(state.equals("reply")) {//답변글 폼
+				return "/board/board_reply";
+			}else if(state.equals("edit")) {//수정폼
+				return "/board/board_edit";
+			}else if(state.equals("del")) {//삭제폼
+				return "/board/board_del";
+			}
+			return null;
+		}//board_cont()
+		
+		
 
 }

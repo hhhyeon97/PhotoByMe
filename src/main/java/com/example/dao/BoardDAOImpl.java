@@ -27,8 +27,19 @@ public class BoardDAOImpl implements BoardDAO {
 
 	@Override
 	public List<BoardVO> getBoardList(PageVO p) {
-		return sqlSession.selectList("board_li",p);
+		return sqlSession.selectList("board_list",p);
 	}
+
+	@Override
+	public BoardVO getBoardCont(int bno) {
+		return sqlSession.selectOne("board_cont",bno);
+	}
+
+	@Override
+	public void updateHit(int bno) {
+		this.sqlSession.update("board_hit",bno);
+	}
+
 	
 	
 }

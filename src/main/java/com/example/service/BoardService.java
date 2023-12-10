@@ -10,5 +10,7 @@ public interface BoardService {
 	void insertBoard(BoardVO b);
 	int getListCount(PageVO p);
 	List<BoardVO> getBoardList(PageVO p);
+	BoardVO getBoardCont(int bno);
+	BoardVO getBoardCont2(int bno);
 
 }

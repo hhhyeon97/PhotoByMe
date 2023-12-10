@@ -115,7 +115,7 @@ font-style: normal;
         			</a>
     				</li>
     				
-    <li id="userProfileLink"><a href="/member/userProfile">마이페이지</a></li>
+    <!-- <li id="userProfileLink"><a href="/member/userProfile">마이페이지</a></li> -->
     				
     				<li><a href="/cart">My저장</a></li>
 			</ul>

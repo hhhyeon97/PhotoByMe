@@ -55,7 +55,7 @@ form {
 									</c:forEach>
 									<i class='bx bxs-right-arrow-alt'></i>
 									<%--답변글 이미지 출력부분 --%>
-								</c:if> <a href="bcont?no=${b.bno}&page=${page}&state=cont">
+								</c:if> <a href="board_cont?no=${b.bno}&page=${page}&state=cont">
 									${b.btitle}</a> <%-- bcont?no=번호&page=쪽번호&state=cont 3개의 인자값이
 													get방식으로 &구분하면서 전달된다. --%></td>
 							<td align="center">${b.bname}</td>

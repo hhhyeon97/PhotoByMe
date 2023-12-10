@@ -37,7 +37,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </select>
 
 <!-- 게시판 목록 -->
-    <select id="board_li" resultType="board" 
+    <select id="board_list" resultType="board" 
     parameterType="page">
      <!-- resultType은 반환 타입,parameterType은 전달인자 타입
      (생략가능) -->
@@ -62,6 +62,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
      blevel asc)) 
      where rNum &gt;= #{startrow} and rNum &lt;= #{endrow}
 <!-- &gt;은 ~보다 크다(>), &lt;은 ~보다 작다(<) -->     
+    </select>
+
+ <!-- 조회수 증가 -->
+    <update id="board_hit" parameterType="int">
+     update Board01 set bhit=bhit+1 
+     where bno=#{bno}
+    </update>
+
+ <!-- 내용보기 -->
+    <select id="board_cont" resultType="board">
+     select * from Board01 where bno=#{bno}
     </select>
 
 
