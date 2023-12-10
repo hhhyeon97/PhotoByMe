@@ -22,7 +22,7 @@ public class BoardDAOImpl implements BoardDAO {
 
 	@Override
 	public int getListCount(PageVO p) {
-		return sqlSession.selectOne("listCount",p);
+		return sqlSession.selectOne("countOri",p);
 	}
 
 	@Override

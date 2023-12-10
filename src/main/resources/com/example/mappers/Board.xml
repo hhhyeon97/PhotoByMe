@@ -36,6 +36,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
      </where>
     </select>
 
+	<!-- 댓글일 때는 카운트 안 되고 원본 글일 때만 목록 페이지에서 카운트 되게 처리 -->
+	<select id="countOri" resultType="int">
+		select count(bno) from Board01 where bstep=0		
+	</select>
+
+
+
 <!-- 게시판 목록 -->
     <select id="board_list" resultType="board" 
     parameterType="page">
