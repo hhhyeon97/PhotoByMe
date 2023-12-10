@@ -53,10 +53,10 @@ form {
 									<c:forEach begin="1" end="${b.bstep}" step="1">
    									&nbsp;<%--답변글 들여쓰기 --%>
 									</c:forEach>
-									<i class='bx bxs-right-arrow-alt'></i>
+									<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAIlJREFUSEvtk8ENgCAQBJfS7EQrMVaipViKnWjWHA8TvCPZ8CDhPjyAHZiDhMaVGudjAELDnqLbdksaB6DvHqwAtugKSpP5yi4Ak41FlgpgqAupAUQWMuQoKfMAO4C5Jt3WLAAI+ZTyS/NPpyKGn6XDqACGssm/pQCokCd3SwFE2e/8AISa+lf0AOoeGhnOOABkAAAAAElFTkSuQmCC"/>
 									<%--답변글 이미지 출력부분 --%>
 								</c:if> <a href="board_cont?no=${b.bno}&page=${page}&state=cont">
-									${b.btitle}</a> <%-- bcont?no=번호&page=쪽번호&state=cont 3개의 인자값이
+									${b.btitle}</a> <%-- board_cont?no=번호&page=쪽번호&state=cont 3개의 인자값이
 													get방식으로 &구분하면서 전달된다. --%></td>
 							<td align="center">${b.bname}</td>
 							<td align="center">${fn:substring(b.bdate,0,10)}</td>

@@ -74,6 +74,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <select id="board_cont" resultType="board">
      select * from Board01 where bno=#{bno}
     </select>
+    
+    <!-- 답변 레벨 증가 -->
+    <update id="reply_up" parameterType="board">
+     update Board01 set blevel=blevel+1
+     where bref=#{bref} 
+     and blevel>#{blevel}
+    </update>
+
+<!-- 답변 저장 -->
+    <insert id="reply_in">
+     insert into Board01 (bno,bname,btitle,bcont,bhit,bref,bstep,blevel,
+     bdate) values(board_seq.nextval,#{bname},
+     #{btitle},#{bcont},0,#{bref},
+     #{bstep}+1,#{blevel}+1,sysdate)
+    </insert>
 
 
 </mapper>

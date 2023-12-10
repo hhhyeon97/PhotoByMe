@@ -44,6 +44,16 @@ public class BoardServiceImpl implements BoardService {
 	public BoardVO getBoardCont2(int board_no) {
 		return this.boardDao.getBoardCont(board_no);
 	}
+
+	@Override
+	public void replyBoard(BoardVO rb) {
+		boardDao.updateLevel(rb);//답변 레벨 증가
+		boardDao.replyBoard(rb);//답변 저장
+		//답변 저장이 실패되면 답변 레벨 증가도 트랜잭션을 적용해
+		//서 롤백 처리를 해야 한다.즉 쿼리문 실행 취소를 시켜야
+		//한다.
+		
+	}
 	
 	
 	

@@ -65,8 +65,7 @@ public class BoardController {
 			//필드
 			p.setFind_field(find_field);
 			p.setFind_name("%"+find_name+"%");
-			//%는 오라클 와일드 카드 문자로서 하나이상의 임의의 문자와
-			//매핑 대응
+			//%는 오라클 와일드 카드 문자로서 하나이상의 임의의 문자와 매핑 대응
 
 			int listcount=this.boardService.getListCount(p);
 			//전체 레코드 개수 또는 검색전후 레코드 개수
@@ -102,6 +101,7 @@ public class BoardController {
 			return listM;
 		}
 		
+		//1211
 		/*내용보기+수정폼+답변폼+삭제폼 -> 추후에 ui 페이지변경되지 않고 제자리에서 모달창 띄우는걸로 변경하기 */
 		@RequestMapping("/board_cont")
 		public String board_cont(
@@ -123,8 +123,7 @@ public class BoardController {
 			}
 
 			String board_cont=b.getBcont().replace("\n","<br/>");
-			//textarea태그 영역에서 엔터키 친부분을 웹브라우에 출력할때 줄바
-			//꿈처리
+			//textarea태그 영역에서 엔터키 친부분을 웹브라우에 출력할때 줄바꿈처리
 
 			m.addAttribute("b",b);
 			m.addAttribute("bcont",board_cont);
@@ -143,6 +142,21 @@ public class BoardController {
 			return null;
 		}//board_cont()
 		
-		
+		//답변 저장+레벨증가
+		@RequestMapping("/board_reply_ok")
+		public String board_reply_ok(
+				@ModelAttribute BoardVO rb,
+				HttpServletRequest request)
+						throws Exception{
+			/* @ModelAttribute BoardVO rb라고 지정시 네임피라미터 이름과
+			 * 빈클래스 변수명이 일치하면 rb객체에 값이 저장되어져 있다. 		
+			 */
+			int page=1;
+			if(request.getParameter("page") != null) {
+				page=Integer.parseInt(request.getParameter("page"));			
+			}
+			this.boardService.replyBoard(rb);//답변저장+레벨증가
+			return "redirect:/board_list?page="+page;//목록보기로 이동
+		}
 
 }

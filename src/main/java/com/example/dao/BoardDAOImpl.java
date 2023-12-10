@@ -40,6 +40,18 @@ public class BoardDAOImpl implements BoardDAO {
 		this.sqlSession.update("board_hit",bno);
 	}
 
+	@Override
+	public void updateLevel(BoardVO rb) {
+		sqlSession.update("reply_up",rb);
+	}
+	
+	@Override
+	public void replyBoard(BoardVO rb) {
+		sqlSession.insert("reply_in",rb);
+		
+	}
+
+
 	
 	
 }

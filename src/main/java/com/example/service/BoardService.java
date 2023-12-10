@@ -12,5 +12,6 @@ public interface BoardService {
 	List<BoardVO> getBoardList(PageVO p);
 	BoardVO getBoardCont(int bno);
 	BoardVO getBoardCont2(int bno);
+	void replyBoard(BoardVO rb);
 
 }
