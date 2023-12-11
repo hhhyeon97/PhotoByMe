@@ -105,15 +105,9 @@ font-style: normal;
              <div class="right-nav">
             <ul class="nav-links">
     		<li><a href="#" id="openModal">SEARCH</a></li>
+    		<li><a href="#">NOTICE</a></li>
+    		<li><a href="/login">LOGIN</a></li>
    			 <!-- 이 부분에 대해 JavaScript로 동적으로 로그인 상태에 따라 변경 -->
-    			<li id="loginStatus">
-        			<%-- 이 부분에 대해 JavaScript로 동적으로 로그인 상태에 따라 변경 --%>
-        		<a href="<%= (session.getAttribute("mid") == null) ? "/member/login" : "/logout" %>">
-            	<button id="logoutButton" style="display:none;">
-            	<%= (session.getAttribute("mid") == null) ? "LOG IN" : "LOG OUT" %>
-        			</button>
-        			</a>
-    				</li>
     				
     <!-- <li id="userProfileLink"><a href="/member/userProfile">마이페이지</a></li> -->
     				
@@ -217,61 +211,6 @@ document.addEventListener("click", (event) => {
 	});
 </script> -->
 
-<!-- 로그인유무에 따른 메뉴바 변경 -->
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        updateLoginStatus(); // 페이지 로딩 시에 실행
-
-        // 로그아웃 후에 페이지 새로고침하면 메뉴 업데이트
-        window.addEventListener("unload", function() {
-            updateLoginStatus();
-        });
-
-        function updateLoginStatus() {
-            var loginStatusElement = document.getElementById("loginStatus");
-            var userProfileLink = document.getElementById("userProfileLink");
-            
-            // 세션에서 로그인 상태 확인
-            var loginStatus = "<%= (session.getAttribute("mid") == null) ? "LOG IN" : "LOG OUT" %>";
-
-            // 메뉴 업데이트
-            loginStatusElement.innerHTML = '<a href="' +
-                ((loginStatus === 'LOG IN') ? '/member/login' : '/logout') +
-                '">' + loginStatus + '</a>';
-                
-             // 추가: 로그인 상태에 따라 정보수정 메뉴 표시/숨김
-                if (loginStatus === 'LOG OUT') {
-                  userProfileLink.style.display = 'inline-block';
-                } else {
-                  userProfileLink.style.display = 'none';    
-                }
-                
-                
-                // 로그아웃 버튼 클릭 시 로그아웃 요청
-                var logoutButton = document.getElementById("logoutButton");
-                if (logoutButton) {
-                  logoutButton.addEventListener("click", function() {
-                    // 로그아웃 요청
-                    fetch('/logout', {
-                      method: 'POST',
-                      headers: {
-                        'Content-Type': 'application/json',
-                      },
-                    })
-                    .then(response => response.text())
-                    .then(data => {
-                      console.log(data); // 로그아웃 성공 메시지
-                      // 추가: 로그아웃 성공 시 메뉴 업데이트
-                      updateLoginStatus();
-                    })
-                    .catch((error) => {
-                      console.error('Error:', error);
-                    });
-                  });
-                  
-        }
-    });
-</script>
 
 </body>
 </html>

@@ -59,6 +59,10 @@ public class IndexController {
 		return "product";
 	}
 	
+	@GetMapping("/login")
+	public String login() {
+		return "/member/login";
+	}
 
 	
 }

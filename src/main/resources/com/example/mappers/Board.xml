@@ -109,4 +109,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
      delete from Board01 where bno=#{bno}
     </delete>
 
+	<!-- 추가 보완 - > 게시판 삭제 될 때 해당 글의 댓글도 같이 삭제 -->
+	<delete id="board_del2">
+	delete from Board01 where bno=#{bno} or bref=#{bno}
+</delete>
+
+
 </mapper>

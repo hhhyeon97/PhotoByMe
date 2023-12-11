@@ -58,7 +58,7 @@ public class BoardDAOImpl implements BoardDAO {
 
 	@Override
 	public void delBoard(int bno) {
-		sqlSession.delete("board_del",bno);
+		sqlSession.delete("board_del2",bno);
 	}
 
 

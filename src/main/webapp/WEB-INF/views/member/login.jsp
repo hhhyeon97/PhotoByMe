@@ -27,7 +27,7 @@
  
  //비번찾기
  function pwd_find(){
-    $url="pwd_find";//매핑주소
+    $url="/pwd_find";//매핑주소
     window.open($url,"비번검색","width=400px,height=300px"+
           ",scrollbars=yes");
     //open(공지창경로,공지창이름,속성) 메서드로 폭이 400픽셀,
