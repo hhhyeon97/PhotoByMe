@@ -8,5 +8,6 @@ PUBLIC "-//mybatis.org//DTO Config 3.0//EN"
 	<typeAlias type="com.example.vo.MemberVO" alias="member"/>
 	<typeAlias type="com.example.vo.BoardVO" alias="board"/>
 	<typeAlias type="com.example.vo.PageVO" alias="page" />
+	<typeAlias type="com.example.vo.NoticeVO" alias="notice" />
 	</typeAliases>			
 </configuration>
