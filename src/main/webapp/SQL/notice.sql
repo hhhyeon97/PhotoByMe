@@ -21,3 +21,5 @@ nocycle;
 
 select * from notice;
 
+commit;
+
