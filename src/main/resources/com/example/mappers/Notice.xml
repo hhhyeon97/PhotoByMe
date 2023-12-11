@@ -5,6 +5,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="Notice">
 
-
-
+<!-- 공지사항 저장 -->
+<insert id="notice_in">
+insert into notice(nno,nname,ntitle,npwd,ncont,nhit,ndate)
+		values(notice_seq.nextval,#{nname},#{ntitle},#{npwd},#{ncont},0,sysdate)
+</insert>
+	
+	
 </mapper>
