@@ -98,6 +98,6 @@
 				</div>
 		</div>
 		</form>
-	<jsp:include page="../footer.jsp" />
+<jsp:include page="../subfooter.jsp" />
 </body>
 </html>

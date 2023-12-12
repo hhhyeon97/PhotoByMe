@@ -7,6 +7,7 @@
 
 </head>
 <body>
+<jsp:include page="../header.jsp" />
 	<div id="del_wrap">
 		<h2>게시판 삭제</h2>
 		<form method="post" action="board_del_ok">
@@ -21,5 +22,6 @@
 			</div>
 		</form>
 	</div>
+<jsp:include page="../subfooter.jsp" />	
 </body>
 </html>

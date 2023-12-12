@@ -30,7 +30,7 @@ form {
 <body>
 <jsp:include page="../header.jsp" />
 	<section>
-		<h2>문의 게시판 / 글개수: ${listcount} 개</h2>
+		<h2><strong>Q&A</strong> ( ${listcount} )</h2>
 		<form method="get" action="board_list">
 			<table border="1">
 
@@ -162,11 +162,6 @@ form {
 		</form>
 	</section>
 	
-<footer style="position:fixed; bottom:150px;
-left:0px; width:100%; height:30px;
-line-height:30px; background-color:white;
-text-align:center;">
-<jsp:include page="../footer.jsp" />
-</footer>
+<jsp:include page="../subfooter.jsp" />
 </body>
 </html>

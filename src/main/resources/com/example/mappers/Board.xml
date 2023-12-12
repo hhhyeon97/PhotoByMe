@@ -6,7 +6,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="Board">
 
     <!-- 시퀀스 번호값 검색 -->
-    <select id="boardNoSeq_Find" resultType="int">
+    <select id="seqFind" resultType="int">
       select board_seq.nextval from dual
     </select>
     

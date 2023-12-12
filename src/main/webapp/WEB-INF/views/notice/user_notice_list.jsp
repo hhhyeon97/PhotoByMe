@@ -6,10 +6,18 @@
 <head>
 <meta charset="UTF-8">
 <title></title>
+<style>
+#container{
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	text-align:center;
+}
+</style>
 </head>
 <body>
 <jsp:include page="../header.jsp" />
-
+<div id="container">
 			<h2 id="headgong">공지사항</h2>
 			<hr id="notice_hr">
 			<table id="notice">
@@ -38,14 +46,9 @@
 				</c:if>
 
 			</table>
-	<jsp:include page="../footer.jsp" />
-	<!-- Bootstrap JS and Popper.js -->
-	<script
-		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
-
-
-
+			
+			</div>
+			
+	<jsp:include page="../subfooter.jsp" />
 </body>
 </html>

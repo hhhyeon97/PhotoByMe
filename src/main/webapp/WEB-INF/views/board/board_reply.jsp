@@ -6,6 +6,7 @@
 <title></title>
 </head>
 <body>
+<jsp:include page="../header.jsp" />
 	<div id="wrapper">
 		<h2>게시판 댓글</h2>
 		<form method="post" action="board_reply_ok"
@@ -42,5 +43,6 @@
 			</div>
 		</form>
 	</div>
+<jsp:include page="../subfooter.jsp" />	
 </body>
 </html>

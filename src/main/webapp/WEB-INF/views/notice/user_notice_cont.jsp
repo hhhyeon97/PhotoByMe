@@ -27,7 +27,7 @@
 			<input type="button" id="gbutton" class="btn btn-dark" value="공지목록" onclick="location='user_notice_list';" />
 		</div>
 	
-<jsp:include page="../footer.jsp" />
+<jsp:include page="../subfooter.jsp" />
 	<!-- Bootstrap JS and Popper.js -->
 	<script
 		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>

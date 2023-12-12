@@ -20,6 +20,7 @@
 <title></title>
 </head>
 <body>
+<jsp:include page="../header.jsp" />
 	<div id="cont_wrap">
 		<h2>게시판 내용보기</h2>
 		<table id="cont_table">
@@ -50,5 +51,6 @@
 				onclick="location='board_list?page=${page}';" />
 		</div>
 	</div>
+<jsp:include page="../subfooter.jsp" />	
 </body>
 </html>

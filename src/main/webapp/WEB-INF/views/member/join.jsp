@@ -9,6 +9,10 @@
 <link rel="stylesheet" href="/css/join.css">
 <!-- jQuery cdn 최신 버전 소스 -->
 <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+<style>
+#subfootermar {
+}
+</style>
 </head>
 <body>
 <jsp:include page="../header.jsp" />
@@ -72,8 +76,10 @@
             
         </form>
     </div>
-<jsp:include page="../footer.jsp" /> 
-
+    
+<div id="subfootermar">    
+<jsp:include page="../subfooter.jsp" />
+</div>
 <script>
 <%-- document.addEventListener("DOMContentLoaded", function() {
     var join_Button = document.getElementById("join_Button");

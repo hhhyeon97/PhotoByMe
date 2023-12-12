@@ -72,7 +72,6 @@ insert into notice(nno,nname,ntitle,npwd,ncont,nhit,ndate)
 		delete from notice where nno=#{no}
 	</delete>
 
-
 <!-- =========== 사용자 공지사항 ============= -->
 
 

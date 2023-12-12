@@ -7,9 +7,9 @@
 <link
    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
    rel="stylesheet">
+<script type="text/javascript" src="/js/check.js"></script>
 </head>
 <body>
-<script type="text/javascript" src="/js/check.js"></script>
 <jsp:include page="../header.jsp" />
 <section>
 <h2>문의 게시판</h2>
@@ -38,11 +38,6 @@ style="display: flex;
 	<input type="button" class="btn btn-secondary" value="취소" onclick="res()">
 	<input type="button" class="btn btn-secondary" value="목록" onclick="location='board_list?page=${page}';" />
 </section>
-<footer style="position:fixed; bottom:150px;
-left:0px; width:100%; height:30px;
-line-height:30px; background-color:white;
-text-align:center;">
-<jsp:include page="../footer.jsp" />
-</footer>
+<jsp:include page="../subfooter.jsp" />
 </body>
 </html>

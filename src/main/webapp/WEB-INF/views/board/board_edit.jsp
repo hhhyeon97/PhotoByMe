@@ -6,6 +6,7 @@
 <title></title>
 </head>
 <body>
+<jsp:include page="../header.jsp" />
 	<div id="wrapper">
 		<h2>게시판 수정폼</h2>
 		<form method="post" action="board_edit_ok"
@@ -35,5 +36,6 @@
 			</div>
 		</form>
 	</div>
+<jsp:include page="../subfooter.jsp" />	
 </body>
 </html>
