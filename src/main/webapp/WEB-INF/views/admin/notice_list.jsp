@@ -50,9 +50,9 @@ ${n.ntitle}
 location=
 'notice_del?no=${n.nno}&page=${page}';	
 }else{ return ;}" />
-									<%-- confirm() 자바스크립트 함수(메서드)는 삭제 유무를 판단하는
-확인/취소 버튼을 가진 경고창을 만들어 준다.확인을 클릭하면 true,
-취소를 클릭하면 false를 반환 --%></td>
+						<%-- confirm() 자바스크립트 함수(메서드)는 삭제 유무를 판단하는
+						확인/취소 버튼을 가진 경고창을 만들어 준다.확인을 클릭하면 true,취소를 클릭하면 false를 반환 --%>
+							</td>
 							</tr>
 						</c:forEach>
 					</c:if>

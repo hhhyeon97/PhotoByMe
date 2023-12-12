@@ -35,6 +35,10 @@ public class NoticeServiceImpl implements NoticeService {
 	public void editNotice(NoticeVO n) {
 		noticeDao.editNotice(n);
 	}
+	@Override
+	public void delNotice(int no) {
+		noticeDao.delNotice(no);
+	}
 	
 	
 	

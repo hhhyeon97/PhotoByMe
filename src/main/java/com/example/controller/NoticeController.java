@@ -155,5 +155,18 @@ public class NoticeController {
 			this.noticeService.editNotice(n);//공지 수정
 			return new ModelAndView("redirect:/notice_list?page="+page);
 		}//notice_edit_ok()	
+	
+		//공지 삭제
+		@RequestMapping("/notice_del")
+		public String notice_del(int no,HttpServletResponse response,
+				HttpSession session,HttpServletRequest request)throws Exception{
+			response.setContentType("text/html;charset=UTF-8");		
+			int page=1;
+			if(request.getParameter("page") != null) {
+				page=Integer.parseInt(request.getParameter("page"));		
+			}
+			this.noticeService.delNotice(no);//공지 삭제
+			return "redirect:/notice_list?page="+page;
+		}//notice_del()		
 		
 }

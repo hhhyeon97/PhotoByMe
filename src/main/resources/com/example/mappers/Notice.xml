@@ -64,5 +64,10 @@ insert into notice(nno,nname,ntitle,npwd,ncont,nhit,ndate)
 		ntitle=#{ntitle},ncont=#{ncont}
 		where nno=#{nno}
 	</update>	
+
+<!-- 관리자 공지삭제 -->
+	<delete id="notice_del">
+		delete from notice where nno=#{no}
+	</delete>
 	
 </mapper>

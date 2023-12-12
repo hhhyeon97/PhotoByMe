@@ -12,5 +12,6 @@ public interface NoticeService {
 	List<NoticeVO> getNoticeList(PageVO p);
 	NoticeVO getNoticeCont(int no);
 	void editNotice(NoticeVO n);
+	void delNotice(int no);
 
 }

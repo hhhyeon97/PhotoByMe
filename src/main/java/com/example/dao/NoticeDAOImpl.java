@@ -39,6 +39,11 @@ public class NoticeDAOImpl implements NoticeDAO {
 	public void editNotice(NoticeVO n) {
 		sqlSession.update("notice_ed",n);
 	}
+
+	@Override
+	public void delNotice(int no) {
+		sqlSession.delete("notice_del",no);
+	}
 	
 	
 }
