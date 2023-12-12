@@ -11,5 +11,6 @@ public interface NoticeDAO {
 	int getListCount(PageVO p);
 	List<NoticeVO> getNoticeList(PageVO p);
 	NoticeVO getNoticeCont(int no);
+	void editNotice(NoticeVO n);
 
 }

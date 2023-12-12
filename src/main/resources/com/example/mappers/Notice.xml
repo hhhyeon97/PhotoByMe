@@ -57,6 +57,12 @@ insert into notice(nno,nname,ntitle,npwd,ncont,nhit,ndate)
 	<select id="notice_co" resultType="notice">
 		select * from notice where nno=#{no}
 	</select>
-	
+
+<!-- 관리자 공지 수정 -->
+	<update id="notice_ed">
+		update notice set nname=#{nname},
+		ntitle=#{ntitle},ncont=#{ncont}
+		where nno=#{nno}
+	</update>	
 	
 </mapper>

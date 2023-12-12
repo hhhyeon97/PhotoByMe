@@ -34,6 +34,11 @@ public class NoticeDAOImpl implements NoticeDAO {
 	public NoticeVO getNoticeCont(int no) {
 		return sqlSession.selectOne("notice_co",no);
 	}
+
+	@Override
+	public void editNotice(NoticeVO n) {
+		sqlSession.update("notice_ed",n);
+	}
 	
 	
 }

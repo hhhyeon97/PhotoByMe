@@ -141,5 +141,19 @@ public class NoticeController {
 		}//notice_cont()	
 		
 		
+		//공지 수정완료
+		@RequestMapping("/notice_edit_ok")
+		public ModelAndView notice_edit_ok(NoticeVO n,
+				HttpServletRequest request,
+				HttpServletResponse response,HttpSession session)
+						throws Exception{
+			response.setContentType("text/html;charset=UTF-8");
+			int page=1;
+			if(request.getParameter("page") != null) {
+				page=Integer.parseInt(request.getParameter("page"));
+			}
+			this.noticeService.editNotice(n);//공지 수정
+			return new ModelAndView("redirect:/notice_list?page="+page);
+		}//notice_edit_ok()	
 		
 }

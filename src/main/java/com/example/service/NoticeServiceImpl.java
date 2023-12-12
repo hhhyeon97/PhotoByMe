@@ -31,6 +31,10 @@ public class NoticeServiceImpl implements NoticeService {
 	public NoticeVO getNoticeCont(int no) {
 		return noticeDao.getNoticeCont(no);
 	}
+	@Override
+	public void editNotice(NoticeVO n) {
+		noticeDao.editNotice(n);
+	}
 	
 	
 	
