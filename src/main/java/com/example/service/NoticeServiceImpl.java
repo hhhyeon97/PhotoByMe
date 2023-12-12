@@ -27,6 +27,10 @@ public class NoticeServiceImpl implements NoticeService {
 	public List<NoticeVO> getNoticeList(PageVO p) {
 		return noticeDao.getNoticeList(p);
 	}
+	@Override
+	public NoticeVO getNoticeCont(int no) {
+		return noticeDao.getNoticeCont(no);
+	}
 	
 	
 	

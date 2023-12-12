@@ -29,6 +29,11 @@ public class NoticeDAOImpl implements NoticeDAO {
 	public List<NoticeVO> getNoticeList(PageVO p) {
 		return sqlSession.selectList("notice_li",p);
 	}
+
+	@Override
+	public NoticeVO getNoticeCont(int no) {
+		return sqlSession.selectOne("notice_co",no);
+	}
 	
 	
 }

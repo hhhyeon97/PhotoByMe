@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.service.NoticeService;
@@ -107,4 +108,38 @@ public class NoticeController {
 			return listM;
 		}//notice_list()
 	
+		//공지 수정과 상세정보 보기
+		@RequestMapping("/notice_cont")
+		public ModelAndView notice_cont(HttpServletRequest request,
+				HttpServletResponse response,HttpSession session,
+				@RequestParam("no") int no,
+				@RequestParam("state") String state)
+						throws Exception {
+
+			response.setContentType("text/html;charset=UTF-8");
+
+			int page=1;
+			if(request.getParameter("page") != null) {
+				page=Integer.parseInt(request.getParameter("page"));		
+
+			}
+			NoticeVO n=this.noticeService.getNoticeCont(no);
+			String n_cont=n.getNcont().replace("\n","<br/>");
+			//textarea영역에서 엔터키 친 부분을 다음줄로 줄바꿈
+
+			ModelAndView cm=new ModelAndView();
+			cm.addObject("n",n);
+			cm.addObject("n_cont",n_cont);
+			cm.addObject("page",page);
+
+			if(state.equals("cont")) {//내용보기
+				cm.setViewName("admin/notice_cont");
+			}else if(state.equals("edit")) {//수정폼
+				cm.setViewName("admin/notice_edit");
+			}
+			return cm;
+		}//notice_cont()	
+		
+		
+		
 }
