@@ -13,5 +13,8 @@ public interface NoticeDAO {
 	NoticeVO getNoticeCont(int no);
 	void editNotice(NoticeVO n);
 	void delNotice(int no);
+	List<NoticeVO> getUserNoticeList();
+	void updateHit(int nno);
+	NoticeVO getUserNoticeCont(int nno);
 
 }

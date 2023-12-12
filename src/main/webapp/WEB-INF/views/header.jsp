@@ -105,7 +105,7 @@ font-style: normal;
              <div class="right-nav">
             <ul class="nav-links">
     		<li><a href="#" id="openModal">SEARCH</a></li>
-    		<li><a href="#">NOTICE</a></li>
+    		<li><a href="/user_notice_list">NOTICE</a></li>
     		<li><a href="/login">LOGIN</a></li>
    			 <!-- 이 부분에 대해 JavaScript로 동적으로 로그인 상태에 따라 변경 -->
     				

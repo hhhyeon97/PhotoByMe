@@ -44,6 +44,22 @@ public class NoticeDAOImpl implements NoticeDAO {
 	public void delNotice(int no) {
 		sqlSession.delete("notice_del",no);
 	}
+
+	@Override
+	public List<NoticeVO> getUserNoticeList() {
+		return sqlSession.selectList("user_notice_li");
+	}
+
+	@Override
+	public void updateHit(int nno) {
+		sqlSession.update("noticeHit",nno);
+	}
+	
+	@Override
+	public NoticeVO getUserNoticeCont(int nno) {
+		return sqlSession.selectOne("user_notice_co",nno);
+	}
+
 	
 	
 }

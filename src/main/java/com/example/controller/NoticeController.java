@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,6 +24,8 @@ public class NoticeController {
 	@Autowired
 	private NoticeService noticeService;
 	
+	
+	// ====================== 관리자 공지사항  ========================
 	
 	//관리자 공지 작성
 		@RequestMapping("/notice_write")
@@ -169,4 +172,29 @@ public class NoticeController {
 			return "redirect:/notice_list?page="+page;
 		}//notice_del()		
 		
+		// ====================== 사용자 공지사항 ========================
+		
+		//메인화면 최신 공지 목록 5개 보기(사용자 공지사항)
+		@RequestMapping("/user_notice_list")
+		public String user_notice_list(Model gm) {
+			List<NoticeVO> nlist=this.noticeService.getUserNoticeList();
+			gm.addAttribute("nlist",nlist);
+			return "notice/user_notice_list";
+		}//user_notice_list()
+		
+		//공지내용보기+조회수 증가
+		@RequestMapping("/user_notice_cont")
+		public ModelAndView user_notice_cont(
+				@RequestParam("nno") int nno)
+		{
+			NoticeVO n=this.noticeService.getUserNoticeCont(nno);
+			String ncont=n.getNcont().replace("\n","<br/>");
+
+			ModelAndView gm=new ModelAndView("notice/user_notice_cont");
+			gm.addObject("n",n);
+			gm.addObject("ncont",ncont);
+			return gm;
+		}//user_notice_cont()
+
+
 }

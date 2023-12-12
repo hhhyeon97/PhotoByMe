@@ -5,6 +5,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="Notice">
     
+<!-- =========== 관리자 공지사항 ============= -->    
+    
 <!-- 공지사항 저장 -->
 <insert id="notice_in">
 insert into notice(nno,nname,ntitle,npwd,ncont,nhit,ndate)
@@ -69,5 +71,29 @@ insert into notice(nno,nname,ntitle,npwd,ncont,nhit,ndate)
 	<delete id="notice_del">
 		delete from notice where nno=#{no}
 	</delete>
-	
+
+
+<!-- =========== 사용자 공지사항 ============= -->
+
+
+<!-- 사용자 메인 최신공지 목록 5개 보기 -->
+	<select id="user_notice_li" resultType="notice">
+		select * from (
+		select nno,ntitle,ndate
+		from notice order by nno desc)
+		where rownum &lt; 6
+	</select>
+
+<!-- 공지 조회수 증가 -->
+	<update id="noticeHit">
+		update notice set nhit=nhit+1
+		where nno=#{nno}
+	</update>
+
+<!-- 공지내용보기 -->
+	<select id="user_notice_co" resultType="notice">
+		select * from notice where nno=#{nno}
+	</select>
+
+
 </mapper>
