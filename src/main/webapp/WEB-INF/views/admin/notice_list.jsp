@@ -153,5 +153,6 @@ location=
 			</div>
 		</form>
 	</div>
+	<jsp:include page="../subfooter.jsp" />
 </body>
 </html>

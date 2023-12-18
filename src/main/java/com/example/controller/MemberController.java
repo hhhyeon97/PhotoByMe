@@ -24,60 +24,46 @@ import com.example.service.MemberService;
 import com.example.vo.MemberVO;
 
 @Controller
-@RequestMapping(value = "/member")
+//@RequestMapping(value = "/member")
 public class MemberController {
 
 	//private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 	
 	@Autowired
 	private MemberService memberservice;
+		//로그인 폼
+		@GetMapping("/login")
+		public ModelAndView login() {
+			return new ModelAndView("/member/login");
+		}
 	
-	//로그인 페이지 이동
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public void loginGET() {
-		//logger.info("로그인 페이지 진입");
-	}
-	
-		//회원가입 페이지 이동
-		@RequestMapping(value = "/join", method = RequestMethod.GET)
-		public ModelAndView member_join() {
-			//String[] email = {"직접입력","gmail.com","naver.com","daum.net"};
-			ModelAndView jm=new ModelAndView();
-			//jm.addObject("email",email);
-			jm.setViewName("/member/join");//뷰페이지 경로 설정
-			return jm;
-		}//member_join()
+		//회원가입 폼
+		@GetMapping("/join")
+		public ModelAndView join() {
+			return new ModelAndView("/member/join");
+		}
 		
-		
-		
-		// 아이디 중복 검사
-		@RequestMapping(value = "/memberIdChk", method = RequestMethod.POST)
-		@ResponseBody
-		public String memberIdChk(String mid,HttpServletResponse response) throws Exception{
-			//logger.info("memberIdChk() 진입");
-			
-			PrintWriter out = response.getWriter();
-			MemberVO db_id = this.memberservice.idCheck(mid);
-			int re = -1; // 중복 아이디가 없는 경우 반환값 
-			if(db_id != null) { // 중복 아이디가 있는 경우
-				re=1;
-			}
-			out.println(re); // 값 반환 기능 
-			return null;
-		} // memberIdChk()	
-		
-		// 회원가입(회원 데이터 저장) 
-		@RequestMapping("join_ok")
-		public ModelAndView join_ok(MemberVO m) {
-			/*	MemberVO m 이라고 하면 join.jsp의 네임피라미터 이름과 
-			 *  해당 vo클래스 변수명이 같으면 m에 입력한 회원 정보가 자동 저장 연결 될 수 있다.
-			 */
-			m.setMpw(PwdChange.getPassWordToXEMD5String(m.getMpw())); // 비번 암호화
-			this.memberservice.memberJoin(m); // 회원 저장 
-			return new ModelAndView("redirect:/member/login");
-			// 생성자 인자값에 redirect:/가 들어가면 원하는 매핑주소로 이동시킴.
-		}//join_ok()
-		
+		//아이디 중복검색
+	    @PostMapping("/idCheck")
+	    public ModelAndView idCheck(String id,HttpServletResponse response)
+	    throws Exception{
+	    	PrintWriter out=response.getWriter();
+	    	MemberVO db_id = this.memberservice.idCheck(id);
+	    	int re=-1; // 중복 아이디가 없는 경우 반환값 
+	    	if(db_id != null) {// 중복 아이디가 있는 경우
+	    		re=1;
+	    	}
+	    	out.println(re); // 값 반환
+	    	return null;
+	    }
+	    
+	    //회원저장
+	    @PostMapping("/join_ok")
+	    public ModelAndView join_ok(MemberVO m) {
+	    	m.setMpw(PwdChange.getPassWordToXEMD5String(m.getMpw()));//비번암호화
+	    	this.memberservice.memberJoin(m);
+	    	return new ModelAndView("redirect:/");
+	    }	
 		
 		// 로그인 인증 처리 
 		@PostMapping("/login_ok")

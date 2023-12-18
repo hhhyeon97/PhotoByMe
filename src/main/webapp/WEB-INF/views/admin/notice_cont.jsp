@@ -6,6 +6,7 @@
 <title></title>
 </head>
 <body>
+<jsp:include page="../header.jsp" />
 <div id="n_cont">
  <div id="n_wrap">
   <h2 class="n_title">관리자 공지 내용</h2>
@@ -26,5 +27,6 @@
   </div>
  </div>
 </div>
+	<jsp:include page="../subfooter.jsp" />
 </body>
 </html>

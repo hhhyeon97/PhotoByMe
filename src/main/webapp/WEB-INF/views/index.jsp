@@ -50,7 +50,6 @@ function openPopup() {
     var popupWindow = window.open('', '_blank', popupFeatures);
     var imageUrl = '<%=request.getContextPath()%>/images/popup.png';
     var text = '안녕하세요 ⋰˚★<br>여기는 <span style="color: #72b1f7; font-size: 16px;">Photo By Me</span> 입니다<br>마음에 드는 사진을 보관해보세요 !';
-    
     //popupWindow.document.write('<img src="' + imageUrl + '" alt="popup img">');
     
       // 팝업 창에 이미지와 텍스트를 동적으로 추가

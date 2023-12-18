@@ -61,7 +61,21 @@ input {
     border:1px solid #fff;
     border-radius:5px;
     color:gray;
+    flex: 1; /* 버튼이 동일한 너비를 가지도록 함 */
+    margin-right: 10px; /* 버튼 간 간격 조정 */
+    width: 50%; /* 버튼의 너비를 조절하여 동일한 크기로 만듦 */
 }
+
+#resetbtn{
+	width:100px;
+	position: relative;
+	left: 15px;
+}
+ .neu-button {
+        display: flex;
+        justify-content: space-between; /* 가로로 간격을 벌리기 위해 사용 */
+        text-align:center;
+    }
 
 .join_button:hover{
 	cursor:pointer;

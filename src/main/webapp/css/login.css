@@ -75,15 +75,10 @@ button {
 button:hover {
     background: #e0e0e0;
 }
-
 a{
 	text-decoration: none;
 	color:inherit;
-	
 }
-
-
- 
 /* 로그인 실패시 경고글 */
 .login_warn{
     margin-top: 30px;

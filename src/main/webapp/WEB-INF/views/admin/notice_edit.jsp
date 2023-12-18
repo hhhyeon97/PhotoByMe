@@ -6,6 +6,7 @@
 <title></title>
 </head>
 <body>
+<jsp:include page="../header.jsp" />
 <%--관리자 메인 본문 --%>
   <div id="aMain_cont">
     <div id="aBw_wrap">
@@ -54,5 +55,6 @@
      </form>
     </div>
   </div>
+	<jsp:include page="../subfooter.jsp" />
 </body>
 </html>

@@ -4,7 +4,7 @@ import com.example.vo.MemberVO;
 
 public interface MemberDAO {
 	
-	MemberVO idCheck(String mid);
+	MemberVO idCheck(String id);
 	void memberJoin(MemberVO m);
 	MemberVO pwdMember(MemberVO m);
 	void updatePwd(MemberVO m);

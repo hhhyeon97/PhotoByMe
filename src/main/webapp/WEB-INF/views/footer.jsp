@@ -20,6 +20,8 @@ footer {
 	line-height:150px; */
 	padding: 10px 0;
 	margin-top: 10px;
+	bottom: 0px;
+	height:150px;
 }
 
 hr {

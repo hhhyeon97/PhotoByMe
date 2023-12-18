@@ -49,6 +49,6 @@ div{
 	<input type="button" class="btn btn-secondary" value="목록" onclick="location='notice_list?page=${page}';" />
 
 </div>
-<jsp:include page="../footer.jsp" />
+	<jsp:include page="../subfooter.jsp" />
 </body>
 </html>

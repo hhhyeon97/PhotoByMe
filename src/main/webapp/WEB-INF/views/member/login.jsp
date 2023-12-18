@@ -5,12 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title></title>
+<title>로그인</title>
 <link rel="shortcut icon" href="/images/favicon.ico"/>
 <script src="https://code.jquery.com/jquery-latest.min.js"></script>
 <link rel="stylesheet" href="/css/login.css">
-
-
 <script>
  function login_check(){
     if($.trim($("#mid").val())==""){
@@ -55,8 +53,6 @@
 	</div> -->
 
 	<!-- 2차 틀 -->
-
-	
 	<!-- <form name="welcome" method="post" class="login">
 		<div class="container">
 		<h1>로그인 ⌯'▾'⌯</h1>
@@ -74,19 +70,14 @@
 		</div>
 	</div>
 	</form> -->
-
-	<!-- 로그인 폼 시작  -->
-		<%--로그인 전 화면 --%>
 			<form method="post" action="login_ok"
 				onsubmit="return login_check();">
 					<div class="container">
 					<h1>로그인 ⌯'▾'⌯</h1>
 						<div class="neu-input">
 						<input name="mid" id="mid" placeholder="아이디" size="14"
-							tabindex="1" />
-						<!-- tabindex="1"로 설정하면 탭키를 눌렀을 때 첫번째로 포커스를 가진다.-->
+							tabindex="1" /><!-- tabindex="1"로 설정하면 탭키를 눌렀을 때 첫번째로 포커스를 가진다.-->
      					</div>
-							
 						<div class="neu-input">
 						<input type="password" name="mpw" id="mpw"
 							placeholder="비밀번호" size="14" tabindex="2" />
@@ -94,10 +85,10 @@
 				<div class="neu-button">
 				<input type="submit" id="loginBtn" value="로그인" />
 					<input type="button" class="btn" value="비번 찾기" onclick="pwd_find();" /> 
-					<input type="button" class="btn" id="joinBtn" value="회원가입" onclick="location='/member/join';" />
+					<input type="button" class="btn" id="joinBtn" value="회원가입" onclick="location='/join';" />
 				</div>
 		</div>
 		</form>
-<jsp:include page="../subfooter.jsp" />
+<jsp:include page="../footer.jsp" />
 </body>
 </html>

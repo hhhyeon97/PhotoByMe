@@ -4,23 +4,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.dao.MemberDAO;
-import com.example.mapper.MemberMapper;
 import com.example.vo.MemberVO;
 
 
 @Service
 public class MemberServiceImpl implements MemberService {
 
-	@Autowired
-	private MemberMapper membermapper;
 
 	@Autowired
 	private MemberDAO memberDao;
 	
 
 	@Override
-	public MemberVO idCheck(String mid) {
-		return memberDao.idCheck(mid);
+	public MemberVO idCheck(String id) {
+		return memberDao.idCheck(id);
 	}
 	
 	@Override

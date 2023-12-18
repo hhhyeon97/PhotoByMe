@@ -16,8 +16,8 @@ public class MemberDAOImpl implements MemberDAO {
 	
 	// 아이디 중복 여부 확인
 	@Override
-	public MemberVO idCheck(String mid) {
-		return sqlSession.selectOne("idCheck",mid);
+	public MemberVO idCheck(String id) {
+		return sqlSession.selectOne("idCheck",id);
 	}
 	//회원 저장 
 	@Override
