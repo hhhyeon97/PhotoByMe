@@ -53,3 +53,7 @@ ALTER TABLE member01 MODIFY mdate date null;
 ALTER TABLE member01 MODIFY adminCk number null;
 
 select * from member01 order by mdate desc;
+
+commit;
+
+-- test09 임시비번 발급 테스트 - >	99514

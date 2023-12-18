@@ -91,14 +91,17 @@ public class MemberController {
 			}
 			return null;
 		}//login_ok()
-	    
 		
 		// 로그아웃
-		@PostMapping("/logout")
-		public ModelAndView member_logout(HttpServletResponse response,
+		@RequestMapping(value = "/logout", method = {RequestMethod.GET, RequestMethod.POST})
+		public ModelAndView logout(HttpServletResponse response,
 				HttpSession session) throws Exception{
 			response.setContentType("text/html;charset=UTF-8");
 			PrintWriter out=response.getWriter();
+			
+			 // 세션에 저장된 아이디를 가져와서 출력
+		    String mid = (String) session.getAttribute("mid");
+		    System.out.println("Logout - User ID: " + mid);
 			
 			session.invalidate(); // 세션 만료 (로그아웃)
 			
@@ -156,4 +159,20 @@ public class MemberController {
 	    	}
 	    	return null;
 	    }//pwd_find_ok()
+	    
+	    
+	    //세션에서 사용자 id를 가져와서 해당 id가 존재하는지 여부를 확인
+	    public static boolean isLogin(HttpSession session,HttpServletResponse response)
+	    throws Exception{
+	    	PrintWriter out = response.getWriter();
+	    	String id=(String)session.getAttribute("id");
+	    	if(id == null) {
+	    		out.println("<script>");
+	    		out.println("alert('다시 로그인 하세요!');");
+	    		out.println("location='/login';");
+	    		out.println("</script>");
+	    		return false;
+	    	}
+	    	return true;
+	    }//isLogin()
 }

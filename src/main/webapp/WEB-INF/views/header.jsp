@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -75,18 +76,14 @@ font-style: normal;
 </style>
 </head>
 <body>
-
 <header>
-
-
 <!--
 <audio id="music" controls>
   <source src="/audio/Oneul - Summer Vacation.mp3" type="audio/mpeg">
 </audio>
 -->
-
 <!--<audio controls src="/audio/Oneul - Summer Vacation.mp3"></audio>-->
-        <nav>
+        
 <!--         	   <div class="left-nav">
             <ul class="nav-links">
                 <li><a href="/">ALL</a></li>
@@ -94,7 +91,7 @@ font-style: normal;
                 <li><a href="#">OBJECT</a></li>
             </ul>
         </div> -->
-        
+       <nav>
             <div class="logo">
                 <a href="/"> <!-- 컨트롤러에서 정의한 URL로 링크 설정 -->
                 <h2>Photo By Me</h2>
@@ -102,23 +99,38 @@ font-style: normal;
                 <!--<img src="images/logo2.png" width="250px" height="120px">-->
                 </a>
             </div>
-             <div class="right-nav">
-            <ul class="nav-links">
-    		<li><a href="#" id="openModal">SEARCH</a></li>
-    		<li><a href="/user_notice_list">NOTICE</a></li>
-    		<li><a href="/board_list">Q&A</a></li>
-    		<li><a href="/login">LOGIN</a></li>
-   			 <!-- 이 부분에 대해 JavaScript로 동적으로 로그인 상태에 따라 변경 -->
-    				
-    <!-- <li id="userProfileLink"><a href="/member/userProfile">마이페이지</a></li> -->
-    				
-    				<li><a href="/cart">My저장</a></li>
-			</ul>
-            </div>
+            
+           <!-- 로그인 전 화면  -->
+        <c:if test="${empty sessionScope.mid}">
+            <form method="post" action="login_ok" onsubmit="return login_check();">
+                <div class="right-nav">
+                    <ul class="nav-links">
+                        <li><a href="#" id="openModal">SEARCH</a></li>
+                        <li><a href="/user_notice_list">NOTICE</a></li>
+                        <li><a href="/board_list">Q&A</a></li>
+                        <li><a href="/login">LOGIN</a></li>
+                    </ul>
+                </div>
+            </form>
+        </c:if>
+                  
+           <!-- 로그인 후 화면  -->      
+        <c:if test="${not empty sessionScope.mid}">    
+            <form method="post" action="logout">
+                <div class="right-nav">
+                    <ul class="nav-links">
+                        <li><a href="#" id="openModal">SEARCH</a></li>
+                        <li><a href="/user_notice_list">NOTICE</a></li>
+                        <li><a href="/board_list">Q&A</a></li>
+                        <li><a href="/logout">LOGOUT</a></li>
+                        <li><a href="/cart">My저장</a></li>
+                    </ul>
+                </div>
+            </form>
+        </c:if>
+        
         </nav>
     </header>
-
-
   <!-- 검색 모달 시작 -->
     <div id="searchModal" class="modal">
         <div class="modal-content">
