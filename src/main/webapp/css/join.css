@@ -55,7 +55,7 @@ input {
     outline: none;
 }
 
-.join_button {
+.cusbtn {
     margin-top: 20px;
     background: #b8c6db;
     border:1px solid #fff;
@@ -69,15 +69,16 @@ input {
 #resetbtn{
 	width:100px;
 	position: relative;
-	left: 15px;
+	left: 30px;
 }
  .neu-button {
         display: flex;
-        justify-content: space-between; /* 가로로 간격을 벌리기 위해 사용 */
+        justify-content:center; /* 가로로 간격을 벌리기 위해 사용 */
         text-align:center;
+        width: 35%;
     }
 
-.join_button:hover{
+.cusbtn:hover{
 	cursor:pointer;
 	color:black;
 }

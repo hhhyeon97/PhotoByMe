@@ -13,7 +13,7 @@
  function login_check(){
     if($.trim($("#mid").val())==""){
        alert("로그인 아이디를 입력하세요!");
-       $("#mpw").val("").focus();
+       $("#mid").val("").focus();
        return false;
     }
     if($.trim($("#mpw").val())==""){

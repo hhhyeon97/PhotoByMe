@@ -85,6 +85,7 @@ public class MemberController {
 					out.println("</script>");
 			}else {
 				session.setAttribute("mid", mid); // 세션 mid 키이름에 아이디 저장
+				System.out.println("로그인 성공 !");
 				return new ModelAndView("redirect:/");
 			}
 			}

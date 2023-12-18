@@ -35,10 +35,10 @@
     			<input type="text" name="memail2" id="memail2" size="18" class="input_box" placeholder="도메인"/>
 			</div>
         </form>
-         <div class="neu-button">
-                <input type="submit"  class="join_button" id="join_Button" value="가입하기" onclick="join_check()" />
-       			<input type="reset" value="취소"  class="join_button" id="resetbtn" onclick="$('#mid').focus();" />
-            </div>
+            <div class="neu-button">
+            <input type="submit" class="join_button" id="join_Button" value="가입하기" onclick="join_check()" />
+            <input type="reset" value="취소" class="join_button" id="resetbtn" onclick="$('#mid').focus();" />
+        </div>
     </div>
 <jsp:include page="../footer.jsp" />
 </body>
