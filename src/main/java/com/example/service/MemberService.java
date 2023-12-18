@@ -7,7 +7,7 @@ public interface MemberService {
 	// 아이디 중복 체크 
 	 public MemberVO idCheck(String id);
 	// 회원 저장 
-	 public void memberJoin(MemberVO m);
+	 public void join_ok(MemberVO m);
 	// 비밀번호 찾기	
 	public MemberVO pwdMember(MemberVO m);
 	//임시 비번 발급

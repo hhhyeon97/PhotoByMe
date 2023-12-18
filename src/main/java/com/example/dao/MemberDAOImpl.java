@@ -21,7 +21,7 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 	//회원 저장 
 	@Override
-	public void memberJoin(MemberVO m) {
+	public void join_ok(MemberVO m) {
 		sqlSession.insert("memberJoin",m);
 	}
 	//비밀번호 찾기

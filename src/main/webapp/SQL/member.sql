@@ -47,3 +47,9 @@ ALTER TABLE member01 MODIFY mdate VISIBLE;
 commit;
 
 
+--1218 테스트 
+
+ALTER TABLE member01 MODIFY mdate date null;
+ALTER TABLE member01 MODIFY adminCk number null;
+
+select * from member01 order by mdate desc;

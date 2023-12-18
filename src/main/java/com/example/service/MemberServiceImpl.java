@@ -21,8 +21,8 @@ public class MemberServiceImpl implements MemberService {
 	}
 	
 	@Override
-	public void memberJoin(MemberVO m) {
-		 memberDao.memberJoin(m);
+	public void join_ok(MemberVO m) {
+		 memberDao.join_ok(m);
 	}
 
 	@Override

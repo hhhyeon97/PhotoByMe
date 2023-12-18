@@ -15,6 +15,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert into member01 values(#{mid}, #{mpw}, #{mname}, #{memail}, #{memail2}, 0, sysdate)
 	</insert>
  
+ 
 <!-- 비번 찾기 -->
    <select id="pwFind" resultType="member">
     select * from member01 where mid=#{mid} and mname=#{mname}

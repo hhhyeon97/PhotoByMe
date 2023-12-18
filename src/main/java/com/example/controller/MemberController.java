@@ -61,7 +61,7 @@ public class MemberController {
 	    @PostMapping("/join_ok")
 	    public ModelAndView join_ok(MemberVO m) {
 	    	m.setMpw(PwdChange.getPassWordToXEMD5String(m.getMpw()));//비번암호화
-	    	this.memberservice.memberJoin(m);
+	    	this.memberservice.join_ok(m);
 	    	return new ModelAndView("redirect:/");
 	    }	
 		

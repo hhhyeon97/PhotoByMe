@@ -8,7 +8,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 <title>회원가입</title>
 <link rel="stylesheet" href="/css/join.css">
-<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>  
 <script type="text/javascript" src="/js/member.js"></script>
 </head>
 <body>
@@ -26,7 +26,7 @@
                 <input type="password" class="password_input" id="mpw" name="mpw" placeholder="비밀번호 (대문자/특수문자 포함 8자 이상)">
             </div>
             <div class="neu-input">
-                <input type="text" name="mname" placeholder="이름">
+                <input type="text" name="mname" id="mname" placeholder="이름">
             </div>
             <!-- 메일 부분 시작 -->
              <div class="neu-input" style="display: flex; align-items: center;">
@@ -34,11 +34,11 @@
     			<span>@</span>
     			<input type="text" name="memail2" id="memail2" size="18" class="input_box" placeholder="도메인"/>
 			</div>
-            <div class="neu-button">
-                <input type="submit"  class="join_button" id="join_Button" value="가입하기" onclick="join_check()">
+        </form>
+         <div class="neu-button">
+                <input type="submit"  class="join_button" id="join_Button" value="가입하기" onclick="join_check()" />
        			<input type="reset" value="취소"  class="join_button" id="resetbtn" onclick="$('#mid').focus();" />
             </div>
-        </form>
     </div>
 <jsp:include page="../footer.jsp" />
 </body>
