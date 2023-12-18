@@ -124,6 +124,7 @@ font-style: normal;
                         <li><a href="/board_list">Q&A</a></li>
                         <li><a href="/logout">LOGOUT</a></li>
                         <li><a href="/cart">My저장</a></li>
+                        <li><a href="/myPage">마이페이지</a></li>
                     </ul>
                 </div>
             </form>

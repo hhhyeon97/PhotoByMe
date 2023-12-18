@@ -30,5 +30,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <select id="loginCheck" resultType="member">
 	select * from member01 where mid=#{mid}
 </select> 	
+
+<!-- 회원정보 보기 -->
+  <select id="userInfo" resultType="member">
+    select mid,mname,memail,memail2 from member01 where mid=#{mid}
+  </select>  	
+  	
   	
 </mapper> 

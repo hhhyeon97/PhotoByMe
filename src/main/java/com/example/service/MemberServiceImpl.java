@@ -41,6 +41,11 @@ public class MemberServiceImpl implements MemberService {
 		return memberDao.loginCheck(mid);
 	}
 
+	@Override
+	public MemberVO getMember(String mid) {
+		return memberDao.getMember(mid);
+	}
+
 
 
 	

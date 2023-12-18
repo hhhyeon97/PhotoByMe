@@ -14,6 +14,8 @@ public interface MemberService {
 	public void updatePwd(MemberVO m);
 	// 로그인 
 	public MemberVO loginCheck(String mid);
+	// 회원 정보 수정
+	public MemberVO getMember(String mid);
 	
 
 

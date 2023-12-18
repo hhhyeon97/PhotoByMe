@@ -39,6 +39,10 @@ public class MemberDAOImpl implements MemberDAO {
 	public MemberVO loginCheck(String mid) {
 		return sqlSession.selectOne("loginCheck",mid);
 	}
+	@Override
+	public MemberVO getMember(String mid) {
+		return sqlSession.selectOne("userInfo",mid);
+	}
 
 	
 }

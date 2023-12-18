@@ -9,6 +9,7 @@ public interface MemberDAO {
 	MemberVO pwdMember(MemberVO m);
 	void updatePwd(MemberVO m);
 	MemberVO loginCheck(String mid);
+	MemberVO getMember(String mid);
 
 
 
