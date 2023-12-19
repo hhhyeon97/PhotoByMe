@@ -21,7 +21,7 @@
        $("#mpw").val("").focus();
        return false;
     }
- }//로그인 인증 유효성 검증
+}
  
  //비번찾기
  function pwd_find(){
