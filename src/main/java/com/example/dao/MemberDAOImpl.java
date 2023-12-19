@@ -43,6 +43,12 @@ public class MemberDAOImpl implements MemberDAO {
 	public MemberVO getMember(String mid) {
 		return sqlSession.selectOne("userInfo",mid);
 	}
+	@Override
+	public void updateMember(MemberVO m) {
+		sqlSession.update("userUpdate",m);
+	}
+	
+	
 
 	
 }

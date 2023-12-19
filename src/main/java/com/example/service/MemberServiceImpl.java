@@ -46,6 +46,11 @@ public class MemberServiceImpl implements MemberService {
 		return memberDao.getMember(mid);
 	}
 
+	@Override
+	public void updateMember(MemberVO m) {
+		memberDao.updateMember(m);
+	}
+
 
 
 	

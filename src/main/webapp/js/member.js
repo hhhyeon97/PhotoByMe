@@ -115,3 +115,47 @@ var pattern= new RegExp(/^[a-z0-9_]+$/);//아이디를 영문소문
 //자와 숫자 와 _조합으로 처리
 return pattern.test($mid);
 };
+
+//userEdit.jsp 유효성 검증
+function edit_check(){
+
+	$mpw=$.trim($("#mpw").val());
+	$mpw2=$.trim($("#mpw2").val());
+	if($mpw == ""){
+		alert("비번을 입력하세요!");
+		$("#mpw").val("").focus();
+		return false;
+	}
+	if($mpw2 == ""){
+		alert("비번확인을 입력하세요!");
+		$("#mpw2").val("").focus();
+		return false;
+	}
+	if($mpw != $mpw2){
+		alert("비번이 다릅니다!");
+		$("#mpw").val("");//비번 입력박스를 초기화
+		$("#mpw2").val("");
+		$("#mpw").focus();
+		return false;
+	}
+	
+	if($.trim($("#mname").val())==""){
+		alert("회원이름을 입력하세요!");
+		$("#mname").val("").focus();
+		return false;
+	}
+	if($.trim($("#memail").val())==""){
+		alert("이메일 아이디를 입력하세요!");
+		$("#memail").val("").focus();
+		return false;
+	}
+	if($.trim($("#memail2").val())==""){
+		alert("이메일 도메인을 입력하세요!");	
+		$("#memail2").val("").focus();	
+		return false;
+	}
+}//edit_check()
+
+
+
+

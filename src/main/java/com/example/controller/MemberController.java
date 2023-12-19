@@ -188,7 +188,7 @@ public class MemberController {
 	    return new ModelAndView("redirect:/login");
 	}*/
 	
-	 //회원 정보수정
+	 //회원 정보 수정 폼(회원 정보 구하기)
 	// 방법2
     @GetMapping("/user_edit")
     public ModelAndView user_edit(HttpServletResponse response,HttpSession session)
@@ -205,7 +205,28 @@ public class MemberController {
     	return null;
     }//user_edit()
 	
-	 //반복적인 코드 줄이기
+ // 회원 정보 수정 완료
+    @RequestMapping("/user_edit_ok")
+    public ModelAndView user_edit_ok(MemberVO m,HttpServletResponse response,
+    		HttpSession session) throws Exception{
+    	response.setContentType("text/html;charset=UTF-8");
+    	PrintWriter out=response.getWriter();
+    	String mid=(String)session.getAttribute("mid");
+    	if(isLogin(session, response)) {
+    		m.setMid(mid);
+    		m.setMpw(PwdChange.getPassWordToXEMD5String(m.getMpw()));//정식 비번 암호화
+    		this.memberservice.updateMember(m);// 회원정보 수정
+    		 // 세션 로그아웃 처리
+            session.invalidate();
+            out.println("<script>");
+            out.println("alert('정보 수정했습니다!새로운 비밀번호로 다시 로그인해주세요.');");
+            out.println("location='/login';"); // 로그인 페이지로 이동
+            out.println("</script>");
+    	}
+    	return null;
+    }//user_edit_ok()
+
+    //반복적인 코드 줄이기
     public static boolean isLogin(HttpSession session,HttpServletResponse response)
     throws Exception{
     	PrintWriter out = response.getWriter();
@@ -218,29 +239,5 @@ public class MemberController {
     		return false;
     	}
     	return true;
-    }//isLogin()
-    
-    // 회원 정보 수정 완료
-    @RequestMapping("/user_edit_ok")
-    public ModelAndView user_edit_ok(MemberVO m,HttpServletResponse response,
-    		HttpSession session) throws Exception{
-    	response.setContentType("text/html;charset=UTF-8");
-    	PrintWriter out=response.getWriter();
-    	
-    	String mid=(String)session.getAttribute("mid");
-    	
-    	if(isLogin(session, response)) {
-    		m.setMid(mid);
-    		m.setMpw(PwdChange.getPassWordToXEMD5String(m.getMpw()));//정식 비번 암호화
-    		
-    		this.memberservice.updateMember(m);// 회원정보 수정
-    		out.println("<script>");
-    		out.println("alert('정보 수정했습니다!');");
-    		out.println("location='member_edit';");
-    		out.println("</script>");
-    	}
-    	return null;
-    }//user_edit_ok()
-
-	
+    }//isLogin()	
 }

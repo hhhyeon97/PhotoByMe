@@ -12,15 +12,21 @@
 	<jsp:include page="../header.jsp" />
 <div id="mJoin_wrap">
 		<h2 class="mJoin_title">회원수정</h2>
-		<form name="m">
+		<form name="m" method="post" action="user_edit_ok"
+			onsubmit="return edit_check();">
 			<table id="mJoin_t">
 				<tr>
 					<th>회원아이디</th>
 					<td>${mid}</td>
 				</tr>
 				<tr>
-					<th>비밀번호</th>
+					<th>새 비밀번호</th>
 					<td><input type="password" name="mpw" id="mpw"
+						size="14" class="input_box" /></td>
+				</tr>
+				<tr>
+					<th>비밀번호 재확인</th>
+					<td><input type="password" name="mpw2" id="mpw2"
 						size="14" class="input_box" /></td>
 				</tr>
 				<tr>
