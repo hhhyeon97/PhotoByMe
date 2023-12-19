@@ -3,6 +3,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
 <title>회원탈퇴</title>
 <script src="https://code.jquery.com/jquery-latest.min.js"></script>
 <script>
@@ -14,6 +17,17 @@
 		}
 	}
 </script>
+<style>
+body{
+	text-align:center;
+}
+form {
+	display:flex;
+	justify-content: center;
+	align-items: center;
+	text-align:center;
+}
+</style>
 </head>
 <body>
 <jsp:include page="../header.jsp" />
@@ -37,8 +51,8 @@
 				</tr>
 			</table>
 			<div id="btnmenu">
-				<input type="submit" value="탈퇴" /> <input type="reset" value="취소"
-					onclick="$('#del_pwd').focus();" />
+				<input type="submit" class="btn btn-dark" value="탈퇴" /> 
+				<input type="reset" value="취소" class="btn btn-dark" onclick="$('#del_pwd').focus();" />
 			</div>
 		</form>
 	</div>

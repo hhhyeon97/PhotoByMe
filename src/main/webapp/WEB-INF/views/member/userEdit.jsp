@@ -4,9 +4,23 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
 <title>회원 정보 수정</title>
 <script src="https://code.jquery.com/jquery-latest.min.js"></script>
 <script src="/js/member.js"></script>
+<style>
+body{
+	text-align:center;
+}
+form {
+	display:flex;
+	justify-content: center;
+	align-items: center;
+	text-align:center;
+}
+</style>
 </head>
 <body>
 	<jsp:include page="../header.jsp" />
@@ -44,9 +58,8 @@
 				</tr>
 			</table>
 			<div id="mJoin_menu">
-				<input type="submit" value="수정" class="input_b" /> <input
-					type="reset" value="취소" class="input_b"
-					onclick="$('#mpw').focus();" />
+				<input type="submit" value="수정" class="btn btn-dark" />
+				 <input type="reset" value="취소" class="btn btn-dark" onclick="$('#mpw').focus();" />
 			</div>
 		</form>
 	</div>

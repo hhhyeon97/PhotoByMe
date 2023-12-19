@@ -322,33 +322,33 @@ a{
     
         <div class="col-md-3">
         <div class="card mb-4" style="width: 12rem; height: 14rem;">
-            <img src="images/photo06.jpg" class="card-img-top custom-img" alt="...">
-            <h5 class="card-title">총총총 무지개<a href="/cart"><i id="mycon" class='bx bx-cart'></i></a></h5>
+            <img src="images/KakaoTalk_20231220_021658232_01.jpg" class="card-img-top custom-img" alt="...">
+            <h5 class="card-title"><a href="/cart"><i id="mycon" class='bx bx-cart'></i></a></h5>
                 <div class="image-description">
-         <p class="description-text">무지개를 건너</p> 
+         <p class="description-text"></p> 
         </div>
         </div>
     </div> 
     
          <div class="col-md-3">
         <div class="card mb-4" style="width: 12rem; height: 14rem;">
-            <img src="images/photo06.jpg" class="card-img-top custom-img" alt="...">
-            <h5 class="card-title">총총총 무지개<a href="/cart"><i id="mycon" class='bx bx-cart'></i></a></h5>
+            <img src="images/KakaoTalk_20231220_021658232_02.jpg" class="card-img-top custom-img" alt="...">
+            <h5 class="card-title">이쁜 벽담<a href="/cart"><i id="mycon" class='bx bx-cart'></i></a></h5>
         </div>
     </div>
     
     
             <div class="col-md-3">
         <div class="card mb-4" style="width: 12rem; height: 14rem;">
-            <img src="images/photo06.jpg" class="card-img-top custom-img" alt="...">
-            <h5 class="card-title">총총총 무지개<a href="/cart"><i id="mycon" class='bx bx-cart'></i></a></h5>
+            <img src="images/KakaoTalk_20231220_021658232_03.png" class="card-img-top custom-img" alt="...">
+            <h5 class="card-title">생각의자<a href="/cart"><i id="mycon" class='bx bx-cart'></i></a></h5>
         </div>
     </div>
     
             <div class="col-md-3">
         <div class="card mb-4" style="width: 12rem; height: 14rem;">
-            <img src="images/photo06.jpg" class="card-img-top custom-img" alt="...">
-            <h5 class="card-title">총총총 무지개<a href="/cart"><i id="mycon" class='bx bx-cart'></i></a></h5>
+            <img src="images/KakaoTalk_20231220_021658232.jpg" class="card-img-top custom-img" alt="...">
+            <h5 class="card-title"><a href="/cart"><i id="mycon" class='bx bx-cart'></i></a></h5>
         </div>
     </div>
     
