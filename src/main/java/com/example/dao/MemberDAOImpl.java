@@ -39,13 +39,20 @@ public class MemberDAOImpl implements MemberDAO {
 	public MemberVO loginCheck(String mid) {
 		return sqlSession.selectOne("loginCheck",mid);
 	}
+	//회원 정보 구하기
 	@Override
 	public MemberVO getMember(String mid) {
 		return sqlSession.selectOne("userInfo",mid);
 	}
+	//회원 정보 수정
 	@Override
 	public void updateMember(MemberVO m) {
 		sqlSession.update("userUpdate",m);
+	}
+	// 회원 탈퇴 
+	@Override
+	public void delMember(MemberVO dm) {
+		sqlSession.delete("userDelete",dm);
 	}
 	
 	

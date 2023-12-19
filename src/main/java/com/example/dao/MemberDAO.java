@@ -11,6 +11,7 @@ public interface MemberDAO {
 	MemberVO loginCheck(String mid);
 	MemberVO getMember(String mid);
 	void updateMember(MemberVO m);
+	void delMember(MemberVO dm);
 
 
 

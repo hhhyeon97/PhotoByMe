@@ -33,12 +33,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <!-- 회원정보 보기 -->
   <select id="userInfo" resultType="member">
-    select mid,mname,memail,memail2 from member01 where mid=#{mid}
+    select * from member01 where mid=#{mid}
   </select>  
   	
 <!-- 정보수정 완료 -->
   <update id="userUpdate">
     update member01 set mpw=#{mpw}, mname=#{mname}, memail=#{memail}, memail2=#{memail2} where mid=#{mid}
   </update>  	
+
+<!-- 회원탈퇴 -->
+  <delete id="userDelete">
+    delete from member01 where mid=#{mid}
+  </delete>
+
   	
 </mapper> 

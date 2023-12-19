@@ -70,7 +70,7 @@ public class MemberController {
 	public ModelAndView join_ok(MemberVO m) {
 		m.setMpw(PwdChange.getPassWordToXEMD5String(m.getMpw()));//비번암호화
 		this.memberservice.join_ok(m);
-		return new ModelAndView("redirect:/");
+		return new ModelAndView("redirect:/login");
 	}	
 
 	// 로그인 인증 처리 
@@ -122,7 +122,7 @@ public class MemberController {
 	} // member_logout()
 
 
-	//비번찾기 공지창
+	//비밀번호 공지창
 	@RequestMapping("/pwd_find")
 	public ModelAndView pwd_find() {
 		return new ModelAndView("member/pwd_find");//생성자 인자값으로 뷰페이지 경로 설정 =>
@@ -130,7 +130,7 @@ public class MemberController {
 	}//pwd_find()
 
 
-	//비번찾기 결과
+	//임시 비번 발급
 	@RequestMapping("/pwd_find_ok")
 	public ModelAndView pwd_find_ok(@RequestParam("pwd_id") String pwd_id,
 			String pwd_name,HttpServletResponse response,MemberVO m) 
@@ -226,6 +226,54 @@ public class MemberController {
     	return null;
     }//user_edit_ok()
 
+    //회원 탈퇴 폼
+    @RequestMapping("/user_del")
+    public ModelAndView user_del(HttpServletResponse response,HttpSession session)
+    throws Exception{
+    	response.setContentType("text/html;charset=UTF-8");
+    	PrintWriter out=response.getWriter();
+    	String mid=(String)session.getAttribute("mid");//세션 아이디 구하기
+    	if(isLogin(session, response)) {
+    		MemberVO dm = this.memberservice.getMember(mid);
+    		ModelAndView m=new ModelAndView("member/userDel");
+    		m.addObject("dm",dm);
+    		return m;
+    	}
+    	return null;
+    }//user_del()    
+
+    //회원탈퇴 완료
+    @RequestMapping("/user_del_ok")
+    public ModelAndView user_del_ok(HttpServletResponse response,HttpSession session,
+    		String del_pwd) throws Exception{
+    	response.setContentType("text/html;charset=UTF-8");
+    	PrintWriter out=response.getWriter();
+    	String mid=(String)session.getAttribute("mid");
+    	if(isLogin(session, response)) {
+    		del_pwd = PwdChange.getPassWordToXEMD5String(del_pwd);//비번 암호화
+    		MemberVO db_pwd = this.memberservice.getMember(mid);
+    		System.out.println("db_pwd : "+db_pwd);
+    		if(!db_pwd.getMpw().equals(del_pwd)) {
+    			out.println("<script>");
+    			out.println("alert('비번이 다릅니다!');");
+    			out.println("history.back();");
+    			out.println("</script>");
+    		}else {
+    			MemberVO dm=new MemberVO();
+    			dm.setMid(mid);
+    			this.memberservice.delMember(dm);//회원탈퇴
+    			session.invalidate();//세션만료=>로그아웃
+    			out.println("<script>");
+    			out.println("alert('회원 탈퇴 했습니다!');");
+    			out.println("location='/';");
+    			out.println("</script>");
+    		}
+    	}
+    	return null;
+    }//user_del_ok()
+
+
+    
     //반복적인 코드 줄이기
     public static boolean isLogin(HttpSession session,HttpServletResponse response)
     throws Exception{

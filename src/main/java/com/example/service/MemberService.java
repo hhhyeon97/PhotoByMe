@@ -16,8 +16,10 @@ public interface MemberService {
 	public MemberVO loginCheck(String mid);
 	// 회원 정보 수정 데이터 불러오기 
 	public MemberVO getMember(String mid);
-	// 회원 정보 수정 완료
+	// 회원 정보 수정
 	public void updateMember(MemberVO m);
+	// 회원 탈퇴 
+	public void delMember(MemberVO db_pwd);
 	
 
 
