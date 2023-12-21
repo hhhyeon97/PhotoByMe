@@ -68,6 +68,10 @@ public class AdminServiceImpl implements AdminService {
 	public void editBoard(BoardVO eb) {
 		adminDao.editBoard(eb);
 	}
+	@Override
+	public void deleteBoard(int no) {
+		adminDao.deleteBoard(no);
+	}
 	
 
 

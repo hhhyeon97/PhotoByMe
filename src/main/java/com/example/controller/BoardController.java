@@ -214,7 +214,7 @@ public class BoardController {
 
 			if(isAdminLogin(session, response)) {
 				int page=1;//쪽번호
-				int limit=7;//한페이지에 보여지는 목록개수
+				int limit=10;//한페이지에 보여지는 목록개수
 				if(request.getParameter("page") != null) {
 					page=Integer.parseInt(request.getParameter("page"));			
 				}
@@ -230,7 +230,7 @@ public class BoardController {
 				//전체 레코드 개수 또는 검색전후 레코드 개수
 				//System.out.println("총 게시물수:"+listcount+"개");
 
-				p.setStartrow((page-1)*7+1);//시작행번호
+				p.setStartrow((page-1)*10+1);//시작행번호
 				p.setEndrow(p.getStartrow()+limit-1);//끝행번호
 
 				List<BoardVO> blist=
@@ -296,10 +296,7 @@ public class BoardController {
 			//@ModelAttribute BoardVO b라고 하면 네임피라미터 이름과 빈
 			//클래스 변수명이 일치하면 b객체에 값이 저장되어 있다.
 			response.setContentType("text/html;charset=UTF-8");
-			PrintWriter out=response.getWriter();
 			HttpSession session=request.getSession();
-
-			String aid=(String)session.getAttribute("aid");
 			if(isAdminLogin(session, response)){
 				this.adminService.insertBoard(b);
 				return "redirect:/admin_board_list";
@@ -360,6 +357,24 @@ public class BoardController {
 			}
 			return null;
 		}//admin_board_edit_ok()		
+
+		//관리자 게시판 삭제
+		@RequestMapping("/admin_board_del")
+		public String admin_board_del(
+				@RequestParam("no") int no,
+				@RequestParam("page") int page,
+				HttpServletResponse response,
+				HttpServletRequest request)
+						throws Exception{
+			response.setContentType("text/html;charset=UTF-8");
+			PrintWriter out=response.getWriter();
+			HttpSession session=request.getSession();
+			if(isAdminLogin(session, response)){
+				this.adminService.deleteBoard(no);//게시물 삭제
+				return "redirect:/admin_board_list?page="+page;
+			}		  
+			return null;
+		}
 		
 		// 관리자 로그인 인증 
 	    public static boolean isAdminLogin(HttpSession session,HttpServletResponse response)

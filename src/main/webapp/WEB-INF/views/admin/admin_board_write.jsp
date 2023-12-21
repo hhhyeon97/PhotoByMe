@@ -4,16 +4,24 @@
 <head>
 <meta charset="UTF-8">
 <title></title>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // 여기에 현재 관리자의 이름을 설정합니다.
+    var adminName = "관리자";
+    // input 요소에 값을 설정합니다.
+    document.getElementById("bname").value = adminName;
+});
+</script>
 </head>
 <body>
-     <h2 class="aBw_title">관리자 게시판 글쓰기</h2>
+     <h2>관리자 게시판 글쓰기</h2>
      <form method="post" action="admin_board_write_ok"
      onsubmit="return bw_check();">
-     <table id="aBw_t">
+     <table id="abtable">
     <tr>
      <th>이름</th>
      <td>
-     <input name="bname" id="bname" size="14" />
+     <input name="bname" id="bname" size="14"/>
      </td>
     </tr>
     <tr>
@@ -30,13 +38,11 @@
      </td>
     </tr>
    </table>
-   <div id="aBw_menu">
     <input type="submit" value="저장" />
     <input type="reset" value="취소" 
-    onclick="$('#bname').focus();" />
+    onclick="$('#btitle').focus();" />
     <input type="button" value="목록"
     onclick="location='admin_board_list?page=${page}';" />
-   </div>
      </form>
 </body>
 </html>

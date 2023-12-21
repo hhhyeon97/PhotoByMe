@@ -42,9 +42,9 @@ public class AdminController {
 		PrintWriter out = response.getWriter();
 		ab.setApw(PwdChange.getPassWordToXEMD5String(ab.getApw())); //관리자 비번 암호화
 		/*
-		 * ab.setAno(1); ab.setAname("관리자"); //관리자 이름 저장
+		 * ab.setAno(2); ab.setAname("jihyeon"); //관리자 이름 저장
 		 * this.adminService.insertAdmin(ab);//관리자 정보 저장
-		 */		 
+		 */		  
 		AdminVO admin_info = this.adminService.adminLogin(ab.getAid()); //관리자 아이디로 로그인 인증
 
 		if(admin_info == null) {

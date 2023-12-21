@@ -8,8 +8,6 @@
 <title></title>
 </head>
 <body>
-<%--관리자 메인 본문 --%>
-<div id="aMain_cont">
 	<form method="get" action="admin_board_list">
 		<div id="bList_wrap">
 			<h2 class="bList_title">관리자 게시판 목록</h2>
@@ -48,7 +46,16 @@ ${b.btitle}
 </c:if>
 							</a> <%-- board_cont?no=번호&page=쪽번호&state=cont 3개의 인자값이
 get방식으로 &구분하면서 전달된다. --%></td>
-							<td align="center">${b.bname}</td>
+		<td>				
+   <c:choose>
+        <c:when test="${b.bname eq '관리자'}">
+            <strong>${b.bname}</strong>
+        </c:when>
+        <c:otherwise>
+            ${b.bname}
+        </c:otherwise>
+    </c:choose>
+</td>
 							<td align="center">${fn:substring(b.bdate,0,10)}</td>
 							<td align="center">${b.bhit}</td>
 							<td align="center"><input type="button" value="수정"
@@ -161,6 +168,5 @@ location=
 			</div>
 		</div>
 	</form>
-</div>
 </body>
 </html>

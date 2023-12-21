@@ -55,7 +55,7 @@ public class AdminDAOImpl implements AdminDAO {
 	// =========== 관리자 QnA 관리 ===============
 	@Override
 	public int getListCount2(PageVO p) {
-		return sqlSession.selectOne("abCount",p);
+		return sqlSession.selectOne("countOri2",p);
 	}
 	@Override
 	public List<BoardVO> getBoardList(PageVO p) {
@@ -72,6 +72,10 @@ public class AdminDAOImpl implements AdminDAO {
 	@Override
 	public void editBoard(BoardVO eb) {
 		sqlSession.update("abEdit",eb);
+	}
+	@Override
+	public void deleteBoard(int no) {
+		sqlSession.delete("abDelete",no);
 	}
 
 	

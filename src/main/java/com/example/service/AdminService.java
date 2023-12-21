@@ -24,6 +24,7 @@ public interface AdminService {
 	void insertBoard(BoardVO b);
 	BoardVO getAdminBoardCont(int bno);
 	void editBoard(BoardVO eb);
+	void deleteBoard(int no);
 
 
 }

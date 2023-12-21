@@ -82,6 +82,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</where>
 	</select>
 	
+	<!-- 댓글일 때는 카운트 안 되고 원본 글일 때만 목록 페이지에서 카운트 되게 처리 -->
+	<select id="countOri2" resultType="int">
+		select count(bno) from Board01 where bstep=0		
+	</select>
+	
 <!-- 검색 전후 목록 -->
 	<select id="abList" resultType="board">
 		<!-- resultType 속성은 반환 타입 -->
@@ -110,9 +115,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <!-- 관리자 게시판 저장 -->
 	<insert id="abInsert" parameterType="board">
 		insert into Board01 (bno,bname,btitle,bcont,bhit,bref,bstep,blevel,
-		bdate) values(board_seq.nextval,#{bname},
-		#{btitle},#{bcont},0,
-		board_seq.nextval,0,0,sysdate)
+		bdate) values(board_seq.nextval,#{bname},#{btitle},#{bcont},0,board_seq.nextval,0,0,sysdate)
 	</insert>
 
 <!-- 관리자 게시판 내용보기+수정폼 -->
@@ -125,5 +128,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update Board01 set bname=#{bname},
 		btitle=#{btitle},bcont=#{bcont} where bno=#{bno}
 	</update>
-	
+
+<!-- 관리자 게시판 삭제 -->
+	<delete id="abDelete">
+		delete from Board01 where bno=#{no}
+	</delete>	
 </mapper>

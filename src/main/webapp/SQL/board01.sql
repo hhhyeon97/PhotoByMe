@@ -18,7 +18,7 @@ increment by 1
 nocache
 nocycle;
 
-select * from Board01;
+select * from Board01 order by bdate desc;
 
 commit;
 
