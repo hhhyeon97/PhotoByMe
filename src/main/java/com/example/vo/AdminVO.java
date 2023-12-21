@@ -24,6 +24,7 @@ public class AdminVO {
 	private int ano;
 	@Id 
 	private String aid;
+	
 	private String apw;
 	private String aname;
 	// mybatis에선 x

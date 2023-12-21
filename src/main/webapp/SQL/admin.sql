@@ -3,3 +3,5 @@
 
 
 select * from admin;
+drop table admin;
+commit;
