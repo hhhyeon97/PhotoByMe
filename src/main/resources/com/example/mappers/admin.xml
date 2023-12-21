@@ -106,4 +106,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where rNum &gt;= #{startrow} and rNum &lt;= #{endrow}
 		<!-- &gt;은 ~보다 크다(>), &lt;은 ~보다 작다(<) -->
 	</select>
+
+<!-- 관리자 게시판 저장 -->
+	<insert id="abInsert" parameterType="board">
+		insert into Board01 (bno,bname,btitle,bcont,bhit,bref,bstep,blevel,
+		bdate) values(board_seq.nextval,#{bname},
+		#{btitle},#{bcont},0,
+		board_seq.nextval,0,0,sysdate)
+	</insert>
+
 </mapper>

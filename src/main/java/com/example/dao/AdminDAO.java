@@ -20,6 +20,7 @@ public interface AdminDAO {
 	
 	int getListCount2(PageVO p);
 	List<BoardVO> getBoardList(PageVO p);
+	void insertBoard(BoardVO b);
 
 
 }

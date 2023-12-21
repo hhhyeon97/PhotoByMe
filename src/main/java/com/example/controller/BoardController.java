@@ -283,7 +283,28 @@ public class BoardController {
 			}
 			return null;
 		}//admin_board_write		
-		
+
+		//관리자 게시판 저장
+		@RequestMapping("/admin_board_write_ok")
+		public String admin_board_write_ok(
+				@ModelAttribute BoardVO b,
+				HttpServletRequest request,
+				HttpServletResponse response)
+						throws Exception{
+			//@ModelAttribute BoardVO b라고 하면 네임피라미터 이름과 빈
+			//클래스 변수명이 일치하면 b객체에 값이 저장되어 있다.
+			response.setContentType("text/html;charset=UTF-8");
+			PrintWriter out=response.getWriter();
+			HttpSession session=request.getSession();
+
+			String aid=(String)session.getAttribute("aid");
+			if(isAdminLogin(session, response)){
+				this.adminService.insertBoard(b);
+				return "redirect:/admin_board_list";
+			}
+			return null;
+		}//admin_board_write_ok()
+
 		
 		// 관리자 로그인 인증 
 	    public static boolean isAdminLogin(HttpSession session,HttpServletResponse response)

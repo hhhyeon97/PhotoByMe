@@ -56,6 +56,10 @@ public class AdminServiceImpl implements AdminService {
 	public List<BoardVO> getBoardList(PageVO p) {
 		return adminDao.getBoardList(p);
 	}
+	@Override
+	public void insertBoard(BoardVO b) {
+		adminDao.insertBoard(b);
+	}
 	
 
 

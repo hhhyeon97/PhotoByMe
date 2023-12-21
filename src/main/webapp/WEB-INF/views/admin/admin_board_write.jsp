@@ -19,15 +19,8 @@
     <tr>
      <th>제목</th>
      <td>
-     <input name="bname" id="btitle" size="35" />
+     <input name="btitle" id="btitle" size="35" />
      </td>
-    </tr>
-    <tr>
-     <th>비밀번호</th>
-     <td>
-     <input type="password" name="bpw" id="bpw"
-     size="14" />
-     </td>    
     </tr>
     <tr>
      <th>내용</th>

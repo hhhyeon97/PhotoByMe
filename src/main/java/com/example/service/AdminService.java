@@ -18,9 +18,10 @@ public interface AdminService {
 	MemberVO getMember(String mid);
 	void editMember(MemberVO m);
 	void deleteMem(String mid);
-	// 관리자 공지사항 관리 
+	// 관리자 QnA 관리 
 	int getListCount2(PageVO p); // 공지사항 목록 수 
 	List<BoardVO> getBoardList(PageVO p);
+	void insertBoard(BoardVO b);
 
 
 }
