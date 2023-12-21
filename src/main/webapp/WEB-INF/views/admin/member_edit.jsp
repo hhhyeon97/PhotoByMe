@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title></title>
+<script src="/js/member.js"></script>
 </head>
 <body>
 	<h2 class="amtitle">회원 정보 수정</h2>
@@ -31,7 +32,7 @@
 				<th class="left_box">이메일</th>
 				<td><input name="memail" id="memail" size="14"
 					value="${m.memail}" />@<input name="memail2" id="memail2"
-					size="12" value="${m.memail2}" readonly /></td>
+					size="12" value="${m.memail2}"/></td>
 			</tr>
 			<tr>
 				<th colspan="2"><input type="submit" value="수정" /> <input

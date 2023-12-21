@@ -14,7 +14,7 @@ public interface AdminDAO {
 	
 	int getListCount(PageVO p);
 	List<MemberVO> getMemberList(PageVO p);
-	MemberVO getMember(String mid);
+	MemberVO getMember2(String mid);
 	void editMember(MemberVO m);
 	void deleteMem(String mid);
 	

@@ -57,3 +57,6 @@ select * from member01 order by mdate desc;
 commit;
 
 -- test09 임시비번 발급 테스트 - >	99514
+
+-- adminCk 컬럼 삭제
+ALTER TABLE member01 DROP COLUMN adminCk;

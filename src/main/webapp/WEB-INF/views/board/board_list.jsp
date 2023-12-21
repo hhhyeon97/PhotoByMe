@@ -7,8 +7,8 @@
 <meta charset="UTF-8">
 <title></title>
 <link
-   href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-   rel="stylesheet">
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+	rel="stylesheet">
 <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
 <style>
 h2 {
@@ -16,21 +16,24 @@ h2 {
 }
 
 form {
-	display:flex;
+	display: flex;
 	justify-content: center;
 	align-items: center;
 }
 
-#listpaging{
+#listpaging {
 	/* position:relative;
 	bottom:15px; */
+	
 }
 </style>
 </head>
 <body>
-<jsp:include page="../header.jsp" />
+	<jsp:include page="../header.jsp" />
 	<section>
-		<h2><strong>Q&A</strong> ( ${listcount} )</h2>
+		<h2>
+			<strong>Q&A</strong> ( ${listcount} )
+		</h2>
 		<form method="get" action="board_list">
 			<table border="1">
 
@@ -53,23 +56,31 @@ form {
 									<c:forEach begin="1" end="${b.bstep}" step="1">
    									&nbsp;<%--답변글 들여쓰기 --%>
 									</c:forEach>
-									<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAIlJREFUSEvtk8ENgCAQBJfS7EQrMVaipViKnWjWHA8TvCPZ8CDhPjyAHZiDhMaVGudjAELDnqLbdksaB6DvHqwAtugKSpP5yi4Ak41FlgpgqAupAUQWMuQoKfMAO4C5Jt3WLAAI+ZTyS/NPpyKGn6XDqACGssm/pQCokCd3SwFE2e/8AISa+lf0AOoeGhnOOABkAAAAAElFTkSuQmCC"/>
+									<img
+										src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAIlJREFUSEvtk8ENgCAQBJfS7EQrMVaipViKnWjWHA8TvCPZ8CDhPjyAHZiDhMaVGudjAELDnqLbdksaB6DvHqwAtugKSpP5yi4Ak41FlgpgqAupAUQWMuQoKfMAO4C5Jt3WLAAI+ZTyS/NPpyKGn6XDqACGssm/pQCokCd3SwFE2e/8AISa+lf0AOoeGhnOOABkAAAAAElFTkSuQmCC" />
 									<%--답변글 이미지 출력부분 --%>
 								</c:if> <a href="board_cont?no=${b.bno}&page=${page}&state=cont">
 									${b.btitle}</a> <%-- board_cont?no=번호&page=쪽번호&state=cont 3개의 인자값이
 													get방식으로 &구분하면서 전달된다. --%></td>
-							<td align="center">${b.bname}</td>
+							<td align="center"><c:choose>
+									<c:when test="${b.bname eq '관리자'}">
+										<strong>${b.bname}</strong>
+									</c:when>
+									<c:otherwise>
+            						${b.bname}
+        						</c:otherwise>
+								</c:choose></td>
 							<td align="center">${fn:substring(b.bdate,0,10)}</td>
 							<td align="center">${b.bhit}</td>
 						</tr>
 					</c:forEach>
-					</c:if>
-					<c:if test="${empty blist}">
+				</c:if>
+				<c:if test="${empty blist}">
 					<tr>
 						<th colspan="5">목록이 없습니다!</th>
 					</tr>
-						</c:if>
-					</table>
+				</c:if>
+			</table>
 
 
 			<%--페이징 즉 쪽나누기 추가 --%>
@@ -136,10 +147,10 @@ form {
 					</c:if>
 				</c:if>
 			</div>
-	<div id="bmenu">
-				<input type="button"  class="btn btn-secondary" value="글쓰기"
+			<div id="bmenu">
+				<input type="button" class="btn btn-secondary" value="글쓰기"
 					onclick="location='board_write?page=${page}';" />
-					<c:if test="${(!empty find_field) && (!empty find_name)}">
+				<c:if test="${(!empty find_field) && (!empty find_name)}">
 					<input type="button" class="btn btn-secondary" value="전체목록"
 						onclick="location='board_list?page=${page}';" />
 				</c:if>
@@ -161,7 +172,7 @@ form {
 
 		</form>
 	</section>
-	
-<jsp:include page="../subfooter.jsp" />
+
+	<jsp:include page="../subfooter.jsp" />
 </body>
 </html>

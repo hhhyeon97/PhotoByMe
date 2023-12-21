@@ -12,6 +12,8 @@ create table photo(
 
 select * from photo;
 
+drop table photo; -- 외래키 제약조건 걸려 있어서 x
+drop table photo cascade constraints; -- 외래키 제약 조건 걸린 테이블 삭제 
 commit;
 
 -- 찜한 목록 my저장소 테이블

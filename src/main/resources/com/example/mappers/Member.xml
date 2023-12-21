@@ -12,7 +12,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <!-- 회원 가입 저장 -->
 	<insert id="memberJoin">
-		insert into member01 values(#{mid}, #{mpw}, #{mname}, #{memail}, #{memail2}, 0, sysdate)
+		insert into member01 values(#{mid}, #{mpw}, #{mname}, #{memail}, #{memail2}, sysdate)
 	</insert>
  
  

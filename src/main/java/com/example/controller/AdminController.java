@@ -108,7 +108,7 @@ public class AdminController {
 
 	//==================== 회원 관리 ============================
 
-	//관리자 회원목록
+	// 회원목록
 	@RequestMapping("/member_list")
 	public String member_list(Model listM,
 			HttpServletResponse response,
@@ -173,7 +173,6 @@ public class AdminController {
 		return null;
 	}//admin_member_list()
 
-
 	//회원 상세정보+수정폼
 	@RequestMapping("/member_info")
 	public String member_info(
@@ -196,9 +195,8 @@ public class AdminController {
 			if(request.getParameter("page") != null) {
 				page=Integer.parseInt(request.getParameter("page"));    		
 			}
-			MemberVO m=this.adminService.getMember(mid);//회원정보
+			MemberVO m=this.adminService.getMember2(mid);//회원정보
 			am.addAttribute("page",page);
-
 			if(state.equals("info")) {//상세정보 보기
 				return "admin/member_info";
 			}else if(state.equals("edit")) {//수정폼
@@ -208,7 +206,9 @@ public class AdminController {
 		return null;
 	}//member_info()
 
-	//관리자 회원관리 정보수정
+	
+	
+	//회원관리 정보수정
 	@RequestMapping("/member_edit")
 	public String member_edit(
 			MemberVO m,HttpServletRequest request,
@@ -236,7 +236,7 @@ public class AdminController {
 	}//member_edit()
 
 
-	//관리자 회원탈퇴
+	//회원탈퇴
 	@RequestMapping("/member_del")
 	public ModelAndView member_del(
 			@RequestParam("mid") String mid,

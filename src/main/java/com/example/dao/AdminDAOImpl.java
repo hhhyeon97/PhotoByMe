@@ -37,7 +37,7 @@ public class AdminDAOImpl implements AdminDAO {
 		return sqlSession.selectList("amList",p);
 	}
 	@Override
-	public MemberVO getMember(String mid) {
+	public MemberVO getMember2(String mid) {
 		return sqlSession.selectOne("amInfo",mid);
 	}
 	
