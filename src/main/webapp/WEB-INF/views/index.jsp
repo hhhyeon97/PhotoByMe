@@ -333,7 +333,7 @@ a{
          <div class="col-md-3">
         <div class="card mb-4" style="width: 12rem; height: 14rem;">
             <img src="images/KakaoTalk_20231220_021658232_02.jpg" class="card-img-top custom-img" alt="...">
-            <h5 class="card-title">이쁜 벽담<a href="/cart"><i id="mycon" class='bx bx-cart'></i></a></h5>
+            <h5 class="card-title">해바라기 벽담<a href="/cart"><i id="mycon" class='bx bx-cart'></i></a></h5>
         </div>
     </div>
     
@@ -341,7 +341,7 @@ a{
             <div class="col-md-3">
         <div class="card mb-4" style="width: 12rem; height: 14rem;">
             <img src="images/KakaoTalk_20231220_021658232_03.png" class="card-img-top custom-img" alt="...">
-            <h5 class="card-title">생각의자<a href="/cart"><i id="mycon" class='bx bx-cart'></i></a></h5>
+            <h5 class="card-title">생각 의자<a href="/cart"><i id="mycon" class='bx bx-cart'></i></a></h5>
         </div>
     </div>
     
