@@ -115,4 +115,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		board_seq.nextval,0,0,sysdate)
 	</insert>
 
+<!-- 관리자 게시판 내용보기+수정폼 -->
+	<select id="abCont" parameterType="int" resultType="board">
+		select * from Board01 where bno=#{bno}
+	</select>
+
+	<!-- 관리자 게시판 수정완료 -->
+	<update id="abEdit">
+		update Board01 set bname=#{bname},
+		btitle=#{btitle},bcont=#{bcont} where bno=#{bno}
+	</update>
+	
 </mapper>

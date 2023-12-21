@@ -60,6 +60,14 @@ public class AdminServiceImpl implements AdminService {
 	public void insertBoard(BoardVO b) {
 		adminDao.insertBoard(b);
 	}
+	@Override
+	public BoardVO getAdminBoardCont(int bno) {
+		return adminDao.getAdminBoardCont(bno);
+	}
+	@Override
+	public void editBoard(BoardVO eb) {
+		adminDao.editBoard(eb);
+	}
 	
 
 

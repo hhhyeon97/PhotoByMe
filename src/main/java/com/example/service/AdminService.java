@@ -22,6 +22,8 @@ public interface AdminService {
 	int getListCount2(PageVO p); // 공지사항 목록 수 
 	List<BoardVO> getBoardList(PageVO p);
 	void insertBoard(BoardVO b);
+	BoardVO getAdminBoardCont(int bno);
+	void editBoard(BoardVO eb);
 
 
 }

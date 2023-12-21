@@ -65,6 +65,14 @@ public class AdminDAOImpl implements AdminDAO {
 	public void insertBoard(BoardVO b) {
 		sqlSession.insert("abInsert",b);
 	}
+	@Override
+	public BoardVO getAdminBoardCont(int bno) {
+		return sqlSession.selectOne("abCont",bno);
+	}
+	@Override
+	public void editBoard(BoardVO eb) {
+		sqlSession.update("abEdit",eb);
+	}
 
 	
 }

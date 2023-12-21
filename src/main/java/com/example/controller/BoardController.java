@@ -30,6 +30,8 @@ public class BoardController {
 	@Autowired
 	private AdminService adminService;
 	
+	// ================== 사용자 공지사항 게시판 ==========================
+	
 	//게시판 입력폼 매핑
 	@RequestMapping(value="/board_write", method=RequestMethod.GET)
 	public String board_write(HttpServletRequest request,
@@ -305,6 +307,59 @@ public class BoardController {
 			return null;
 		}//admin_board_write_ok()
 
+
+		//내용보기+수정폼
+		@RequestMapping("/admin_board_cont")
+		public ModelAndView admin_board_cont(
+				@RequestParam("no") int bno,
+				@RequestParam("state") String state,
+				HttpServletResponse response,
+				HttpServletRequest request)
+						throws Exception{
+			response.setContentType("text/html;charset=UTF-8");
+			HttpSession session=request.getSession();
+			if(isAdminLogin(session, response)){
+				int page=1;
+				if(request.getParameter("page") != null) {
+					page=Integer.parseInt(request.getParameter("page"));
+					//get으로 전달된 쪽번호를 정수 숫자로 바꿔서 저장
+				}
+				BoardVO b=this.adminService.getAdminBoardCont(bno);
+				//디비로 부터 레코드 내용을 가져옴.
+				String bcont=b.getBcont().replace("\n","<br/>");
+				//textarea태그영역에서 엔터키 친부분을 줄바꿈 처리<br/>
+				ModelAndView cm=new ModelAndView();
+				cm.addObject("b",b);
+				cm.addObject("bcont",bcont);
+				cm.addObject("page",page);
+				if(state.equals("cont")) {//내용보기
+					cm.setViewName("admin/admin_board_cont");
+				}else if(state.equals("edit")) {//수정폼
+					cm.setViewName("admin/admin_board_edit");
+				}
+				return cm;
+			}//if else
+			return null;
+		}//admin_board_cont()
+		
+		//관리자 게시판 수정완료
+		@RequestMapping("/admin_board_edit_ok")
+		public String admin_board_edit_ok(
+				@ModelAttribute BoardVO eb,
+				HttpServletResponse response,
+				HttpServletRequest request,
+				HttpSession session,
+				@RequestParam("page") int page) 
+						throws Exception{
+			response.setContentType("text/html;charset=UTF-8");
+			session=request.getSession();
+			//관리자 세션 아이디를 구함
+			if(isAdminLogin(session, response)){
+				this.adminService.editBoard(eb);
+				return "redirect:/admin_board_list?page="+page;
+			}
+			return null;
+		}//admin_board_edit_ok()		
 		
 		// 관리자 로그인 인증 
 	    public static boolean isAdminLogin(HttpSession session,HttpServletResponse response)
