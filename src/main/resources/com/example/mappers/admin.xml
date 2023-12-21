@@ -13,4 +13,37 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   <select id="loginAdmin" resultType="admin">
     select * from admin where aid=#{aid}  
   </select>
+  
+<!-- ==== 회원 관리 ==== -->
+
+	<!-- 검색전후 회원수 -->
+	<select id="amCount" resultType="int">
+		select count(mid) from member01
+		<where>
+			<if test="find_field == ''"></if><!-- 전체회원수 -->
+			<if test="find_field == 'mid'">
+				mid like #{find_name}
+			</if>
+			<if test="find_field == 'mname'">
+				mname like #{find_name}
+			</if>
+		</where>
+	</select>
+
+	<!-- 검색 전후 회원목록 -->
+	<select id="amList" parameterType="page" resultType="member">
+		select * from (select rowNum rNum,mid,mname,mdate from
+		(select * from member01
+		<where>
+			<if test="find_field == ''"></if>
+			<if test="find_field == 'mid'">
+				mid like #{find_name}
+			</if>
+			<if test="find_field == 'mname'">
+				mname like #{find_name}
+			</if>
+		</where>
+		order by mid asc))
+		where rNum &gt;= #{startrow} and rNum &lt;= #{endrow}
+	</select>   
 </mapper>

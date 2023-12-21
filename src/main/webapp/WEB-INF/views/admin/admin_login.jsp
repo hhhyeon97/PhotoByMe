@@ -19,6 +19,18 @@
     }
  }
 </script>
+<style>
+body{
+	text-align:center;
+}
+#aloginwrap{
+}
+form{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+</style>
 </head>
 <body>
 	<div id="aloginwrap">

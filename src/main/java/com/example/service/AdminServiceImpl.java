@@ -1,10 +1,14 @@
 package com.example.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.dao.AdminDAO;
 import com.example.vo.AdminVO;
+import com.example.vo.MemberVO;
+import com.example.vo.PageVO;
 
 @Service
 public class AdminServiceImpl implements AdminService {
@@ -19,6 +23,15 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public AdminVO adminLogin(String aid) {
 		return adminDao.adminLogin(aid);
+	}
+	// ============= 회원 관리 ==============
+	@Override
+	public int getListCount(PageVO p) {
+		return adminDao.getListCount(p);
+	}
+	@Override
+	public List<MemberVO> getMemberList(PageVO p) {
+		return adminDao.getMemberList(p);
 	}
 
 	
