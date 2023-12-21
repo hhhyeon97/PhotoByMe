@@ -33,6 +33,10 @@ public class AdminDAOImpl implements AdminDAO {
 	public List<MemberVO> getMemberList(PageVO p) {
 		return sqlSession.selectList("amList",p);
 	}
+	@Override
+	public MemberVO getMember(String mid) {
+		return sqlSession.selectOne("amInfo",mid);
+	}
 
 	
 }

@@ -10,8 +10,8 @@
 </head>
 <body>
 	<form method="get" action="member_list">
-			<h2 class="bList_title">회원 관리</h2>
-			<div class="bList_count">회원( ${listcount} )</div>
+			<h2>회원 관리</h2>
+			<div>회원( ${listcount} )</div>
 			<table id="bList_t">
 				<tr>
 					<th width="20%" height="26">아이디</th>
@@ -24,16 +24,16 @@
 						<tr>
 							<td align="center">${m.mid}</td>
 							<td><a
-								href="admin_member_info?mid=${m.mid}&page=${page}&state=info">
-									${m.mname} </a></td>
+								href="member_info?mid=${m.mid}&page=${page}&state=info">
+									${m.mname}</a></td>
 							<td align="center">${fn:substring(m.mdate,0,10)}</td>
 							<td align="center"><input type="button" value="수정"
 								onclick="location=
-'admin_member_info?mid=${m.mid}&page=${page}&state=edit';" />
+'member_info?mid=${m.mid}&page=${page}&state=edit';" />
 								<input type="button" value="삭제"
 								onclick="if(confirm('정말로 삭제할까요?') == true){
 location=
-'admin_member_del?mid=${m.mid}&page=${page}';	
+'member_del?mid=${m.mid}&page=${page}';	
 }else{ return ;}" />
 								<%-- confirm() 자바스크립트 함수(메서드)는 삭제 유무를 판단하는
 확인/취소 버튼을 가진 경고창을 만들어 준다.확인을 클릭하면 true,

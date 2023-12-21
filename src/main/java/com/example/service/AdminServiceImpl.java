@@ -33,6 +33,10 @@ public class AdminServiceImpl implements AdminService {
 	public List<MemberVO> getMemberList(PageVO p) {
 		return adminDao.getMemberList(p);
 	}
+	@Override
+	public MemberVO getMember(String mid) {
+		return adminDao.getMember(mid);
+	}
 
 	
 }

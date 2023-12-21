@@ -116,7 +116,7 @@ img {
 </section>
 <footer>
 <hr>
-This is Photo by me’s administrator page
+This is Photo By Me’s administrator page
 </footer>
 </body>
 </html>

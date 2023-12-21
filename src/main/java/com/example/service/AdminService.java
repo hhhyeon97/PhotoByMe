@@ -14,6 +14,7 @@ public interface AdminService {
 	
 	int getListCount(PageVO p);
 	List<MemberVO> getMemberList(PageVO p);
+	MemberVO getMember(String mid);
 
 
 }

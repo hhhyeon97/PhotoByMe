@@ -45,5 +45,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</where>
 		order by mid asc))
 		where rNum &gt;= #{startrow} and rNum &lt;= #{endrow}
-	</select>   
+	</select>
+
+ <!-- 상세정보 + 수정폼 -->
+    <select id="amInfo" resultType="member">
+     select * from member01 where mid=#{mid}
+    </select>
+    
+    
 </mapper>

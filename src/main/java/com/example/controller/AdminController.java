@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.pwdconv.PwdChange;
@@ -109,7 +110,7 @@ public class AdminController {
 	
 	//관리자 회원목록
 		@RequestMapping("/member_list")
-		public String admin_member_list(Model listM,
+		public String member_list(Model listM,
 				HttpServletResponse response,
 				HttpServletRequest request,
 				PageVO p)
@@ -171,6 +172,41 @@ public class AdminController {
 			}
 			return null;
 		}//admin_member_list()
-	
+
+		
+		//회원 상세정보+수정폼
+		@RequestMapping("/member_info")
+		public String member_info(
+				@RequestParam("mid") String mid,
+				@RequestParam("state") String state,
+				HttpServletRequest request,
+				HttpServletResponse response,
+				Model am) throws Exception{
+			response.setContentType("text/html;charset=UTF-8");
+			PrintWriter out=response.getWriter();
+			HttpSession session=request.getSession();
+			String aid=(String)session.getAttribute("aid");
+			if(aid == null) {
+				out.println("<script>");
+				out.println("alert('다시 로그인 하세요!');");
+				out.println("location='admin_index';");
+				out.println("</script>");
+			}else {
+				int page=1;
+				if(request.getParameter("page") != null) {
+					page=Integer.parseInt(request.getParameter("page"));    		
+				}
+				
+				MemberVO m=this.adminService.getMember(mid);//회원정보
+				am.addAttribute("page",page);
+				
+				if(state.equals("info")) {//상세정보 보기
+					return "admin/member_info";
+				}else if(state.equals("edit")) {//수정폼
+					return "admin/member_edit";
+				}
+			}
+			return null;
+		}//member_info()
 	
 }
