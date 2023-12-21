@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.example.service.AdminService;
 import com.example.service.NoticeService;
 import com.example.vo.NoticeVO;
 import com.example.vo.PageVO;
@@ -24,6 +26,8 @@ public class NoticeController {
 	@Autowired
 	private NoticeService noticeService;
 	
+	@Autowired
+	private AdminService adminService;
 	
 	// ====================== 관리자 공지사항  ========================
 	
@@ -33,7 +37,7 @@ public class NoticeController {
 				HttpSession session,HttpServletRequest request) throws Exception{
 			response.setContentType("text/html;charset=UTF-8");
 
-			//if(isAdminLogin(session, response)){
+			if(isAdminLogin(session, response)){
 				int page=1;
 				if(request.getParameter("page") != null) {
 					page=Integer.parseInt(request.getParameter("page"));
@@ -42,6 +46,8 @@ public class NoticeController {
 				wm.addObject("page",page);//페이징 목록에서 책갈피 기능을 구현하기 위한것
 				wm.setViewName("admin/notice_write");
 				return wm;
+			}
+			return null;
 		}//notice_write()
 	
 		//관리자 공지 저장
@@ -51,8 +57,12 @@ public class NoticeController {
 			  //네임 피라미터 이름과 빈클래스 변수명이 같으면 noticeVO n에서 n객체에 이름,공지제목,비번,공지내용까지 
 			 //저장되어 있다.
 			response.setContentType("text/html;charset=UTF-8");
+			
+			if(isAdminLogin(session, response)){
 			this.noticeService.insertNotice(n);//공지 저장
 			return new ModelAndView("redirect:/notice_list");
+			}
+			return null;
 		}//notice_write_ok()	
 		
 		
@@ -62,6 +72,7 @@ public class NoticeController {
 				HttpSession session,HttpServletResponse response) throws Exception{
 			response.setContentType("text/html;charset=UTF-8");
 
+			if(isAdminLogin(session, response)) {//관리자로 로그인 된 경우
 			int page=1;//쪽번호
 			int limit=7;//한페이지에 보여지는 목록개수
 			if(request.getParameter("page") != null) {
@@ -109,6 +120,8 @@ public class NoticeController {
 			listM.addObject("find_name", find_name);
 
 			return listM;
+			}
+			return null;
 		}//notice_list()
 	
 		//공지 수정과 상세정보 보기
@@ -120,7 +133,7 @@ public class NoticeController {
 						throws Exception {
 
 			response.setContentType("text/html;charset=UTF-8");
-
+			if(isAdminLogin(session, response)){
 			int page=1;
 			if(request.getParameter("page") != null) {
 				page=Integer.parseInt(request.getParameter("page"));		
@@ -141,8 +154,9 @@ public class NoticeController {
 				cm.setViewName("admin/notice_edit");
 			}
 			return cm;
+			}
+			return null;
 		}//notice_cont()	
-		
 		
 		//공지 수정완료
 		@RequestMapping("/notice_edit_ok")
@@ -151,12 +165,15 @@ public class NoticeController {
 				HttpServletResponse response,HttpSession session)
 						throws Exception{
 			response.setContentType("text/html;charset=UTF-8");
+			if(isAdminLogin(session, response)) {
 			int page=1;
 			if(request.getParameter("page") != null) {
 				page=Integer.parseInt(request.getParameter("page"));
 			}
 			this.noticeService.editNotice(n);//공지 수정
 			return new ModelAndView("redirect:/notice_list?page="+page);
+			}
+			return null;
 		}//notice_edit_ok()	
 	
 		//공지 삭제
@@ -164,12 +181,15 @@ public class NoticeController {
 		public String notice_del(int no,HttpServletResponse response,
 				HttpSession session,HttpServletRequest request)throws Exception{
 			response.setContentType("text/html;charset=UTF-8");		
+			if(isAdminLogin(session, response)) {
 			int page=1;
 			if(request.getParameter("page") != null) {
 				page=Integer.parseInt(request.getParameter("page"));		
 			}
 			this.noticeService.delNotice(no);//공지 삭제
 			return "redirect:/notice_list?page="+page;
+			}
+			return null;
 		}//notice_del()		
 		
 		// ====================== 사용자 공지사항 ========================
@@ -197,4 +217,19 @@ public class NoticeController {
 		}//user_notice_cont()
 
 
+		 //관리자 로그아웃되었을 때 반복적인 코드를 안하기 위한 부분 코드 추가
+	    public static boolean isAdminLogin(HttpSession session,HttpServletResponse response)
+	    throws Exception{
+	    	PrintWriter out = response.getWriter();
+	    	String aid=(String)session.getAttribute("aid");
+	    	if(aid == null) {
+	    		out.println("<script>");
+	    		out.println("alert('다시 로그인 하세요!');");
+	    		out.println("location='/admin_login';");
+	    		out.println("</script>");
+	    		return false;
+	    	}
+	    	return true;
+	    }//isAdminLogin()	
+		
 }

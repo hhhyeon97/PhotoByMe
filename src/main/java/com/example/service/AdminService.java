@@ -15,6 +15,8 @@ public interface AdminService {
 	int getListCount(PageVO p);
 	List<MemberVO> getMemberList(PageVO p);
 	MemberVO getMember(String mid);
+	void editMember(MemberVO m);
+	void deleteMem(String mid);
 
 
 }

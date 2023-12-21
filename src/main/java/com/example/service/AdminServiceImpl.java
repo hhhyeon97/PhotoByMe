@@ -37,6 +37,14 @@ public class AdminServiceImpl implements AdminService {
 	public MemberVO getMember(String mid) {
 		return adminDao.getMember(mid);
 	}
+	@Override
+	public void editMember(MemberVO m) {
+		adminDao.editMember(m);
+	}
+	@Override
+	public void deleteMem(String mid) {
+		adminDao.deleteMem(mid);
+	}
 
 	
 }

@@ -2,6 +2,8 @@ package com.example.dao;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -36,6 +38,16 @@ public class AdminDAOImpl implements AdminDAO {
 	@Override
 	public MemberVO getMember(String mid) {
 		return sqlSession.selectOne("amInfo",mid);
+	}
+	
+	@Transactional
+	@Override
+	public void editMember(MemberVO m) {
+		sqlSession.update("amUpdate",m);
+	}
+	@Override
+	public void deleteMem(String mid) {
+		sqlSession.delete("amDelete",mid);
 	}
 
 	

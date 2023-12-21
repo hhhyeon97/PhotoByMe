@@ -43,7 +43,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				mname like #{find_name}
 			</if>
 		</where>
-		order by mid asc))
+		order by mdate desc))
 		where rNum &gt;= #{startrow} and rNum &lt;= #{endrow}
 	</select>
 
@@ -51,6 +51,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <select id="amInfo" resultType="member">
      select * from member01 where mid=#{mid}
     </select>
+
+ <!-- 관리자에서 회원정보 수정 -->
+    <update id="amUpdate">
+     update member01 set mpw=#{mpw},mname=#{mname},
+     memail=#{memail},memail2=#{memail2} where mid=#{mid}
+    </update>    
+
     
-    
+    <!-- 관리자에서 회원삭제 -->
+    <delete id="amDelete">
+     delete from member01 where mid=#{mid}
+    </delete>       
 </mapper>
