@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.example.service.AdminService;
 import com.example.service.BoardService;
 import com.example.vo.BoardVO;
 import com.example.vo.PageVO;
@@ -25,6 +27,9 @@ public class BoardController {
 	@Autowired
 	private BoardService boardService;
 
+	@Autowired
+	private AdminService adminService;
+	
 	//게시판 입력폼 매핑
 	@RequestMapping(value="/board_write", method=RequestMethod.GET)
 	public String board_write(HttpServletRequest request,
@@ -190,5 +195,108 @@ public class BoardController {
 				this.boardService.delBoard(bno);//게시판 삭제
 				return "redirect:/board_list?page="+page;
 		}//board_del_ok()
+		
+	// ================== 관리자 공지사항 게시판 관리 ==========================
+		/*관리자 게시판 목록*/
+		@RequestMapping("/admin_board_list")
+		public String admin_board_list(Model listM,
+				@ModelAttribute PageVO p,
+				HttpServletResponse response,	
+				HttpServletRequest request)
+						throws Exception{
+			response.setContentType("text/html;charset=UTF-8");
+			PrintWriter out=response.getWriter();
+			HttpSession session=request.getSession();//세션 객체 생성
+			String aid=(String)session.getAttribute("aid");
+			//세션 관리자 아이디를 구함
 
+			if(isAdminLogin(session, response)) {
+				int page=1;//쪽번호
+				int limit=7;//한페이지에 보여지는 목록개수
+				if(request.getParameter("page") != null) {
+					page=Integer.parseInt(request.getParameter("page"));			
+				}
+				String find_name=request.getParameter("find_name");//검색어
+				String find_field=request.getParameter("find_field");//검색
+				//필드
+				p.setFind_field(find_field);
+				p.setFind_name("%"+find_name+"%");
+				//%는 오라클 와일드 카드 문자로서 하나이상의 임의의 문자와
+				//매핑 대응
+
+				int listcount=this.adminService.getListCount2(p);
+				//전체 레코드 개수 또는 검색전후 레코드 개수
+				//System.out.println("총 게시물수:"+listcount+"개");
+
+				p.setStartrow((page-1)*7+1);//시작행번호
+				p.setEndrow(p.getStartrow()+limit-1);//끝행번호
+
+				List<BoardVO> blist=
+						this.adminService.getBoardList(p);
+				//목록
+
+				//총페이지수
+				int maxpage=(int)((double)listcount/limit+0.95);
+				//현재 페이지에 보여질 시작페이지 수(1,11,21)
+				int startpage=(((int)((double)page/10+0.9))-1)*10+1;
+				//현재 페이지에 보여줄 마지막 페이지 수(10,20,30)
+				int endpage=maxpage;
+				if(endpage > startpage+10-1) endpage=startpage+10-1;
+
+				listM.addAttribute("blist",blist);
+				//blist 키이름에 값 저장
+				listM.addAttribute("page",page);
+				listM.addAttribute("startpage",startpage);
+				listM.addAttribute("endpage",endpage);
+				listM.addAttribute("maxpage",maxpage);
+				listM.addAttribute("listcount",listcount);	
+				listM.addAttribute("find_field",find_field);
+				listM.addAttribute("find_name", find_name);
+
+				return "admin/admin_board_list";
+				//뷰페이지 폴더경로와 파일명 지정		
+			}
+			return null;
+		}//admin_board_list()	
+
+		
+		//관리자 게시판 글쓰기
+		@RequestMapping("/admin_board_write")
+		public ModelAndView admin_board_write(
+				HttpServletRequest request,
+				HttpServletResponse response)
+						throws Exception{
+			response.setContentType("text/html;charset=UTF-8");
+			PrintWriter out=response.getWriter();
+			HttpSession session=request.getSession();
+			String aid=(String)session.getAttribute("aid");
+			//세션 관리자 아이디를 구함
+			if(isAdminLogin(session, response)){
+				int page=1;
+				if(request.getParameter("page") != null) {
+					page=Integer.parseInt(request.getParameter("page"));     		
+				}
+				ModelAndView cm=
+						new ModelAndView("admin/admin_board_write");
+				cm.addObject("page",page);
+				return cm;
+			}
+			return null;
+		}//admin_board_write		
+		
+		
+		// 관리자 로그인 인증 
+	    public static boolean isAdminLogin(HttpSession session,HttpServletResponse response)
+	    throws Exception{
+	    	PrintWriter out = response.getWriter();
+	    	String aid=(String)session.getAttribute("aid");
+	    	if(aid == null) {
+	    		out.println("<script>");
+	    		out.println("alert('다시 로그인 하세요!');");
+	    		out.println("location='/admin_login';");
+	    		out.println("</script>");
+	    		return false;
+	    	}
+	    	return true;
+	    }//isAdminLogin()
 }

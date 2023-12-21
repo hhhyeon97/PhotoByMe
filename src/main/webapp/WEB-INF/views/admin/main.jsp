@@ -103,7 +103,7 @@ img {
 </header>
 <nav>
 <a href="/notice_list">공지 관리</a>&nbsp;&nbsp; 
-<a href="#">QnA 관리</a>&nbsp;&nbsp; 
+<a href="/admin_board_list">QnA 관리</a>&nbsp;&nbsp; 
 <a href="/member_list">회원 관리</a>&nbsp;&nbsp;
 <a href="admin_index">HOME</a>&nbsp;&nbsp;
 <span><strong>${aname}</strong>님으로 접속중</span>

@@ -217,7 +217,8 @@ public class NoticeController {
 		}//user_notice_cont()
 
 
-		 //관리자 로그아웃되었을 때 반복적인 코드를 안하기 위한 부분 코드 추가
+		
+		 // ========= 관리자 로그아웃되었을 때 반복적인 코드를 안하기 위한 부분 코드 추가 ==========
 	    public static boolean isAdminLogin(HttpSession session,HttpServletResponse response)
 	    throws Exception{
 	    	PrintWriter out = response.getWriter();

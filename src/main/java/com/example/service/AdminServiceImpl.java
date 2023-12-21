@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.dao.AdminDAO;
 import com.example.vo.AdminVO;
+import com.example.vo.BoardVO;
 import com.example.vo.MemberVO;
 import com.example.vo.PageVO;
 
@@ -45,6 +46,18 @@ public class AdminServiceImpl implements AdminService {
 	public void deleteMem(String mid) {
 		adminDao.deleteMem(mid);
 	}
+	
+	//==================관리자 공지사항 관리 ==============
+	@Override
+	public int getListCount2(PageVO p) {
+		return adminDao.getListCount2(p);
+	}
+	@Override
+	public List<BoardVO> getBoardList(PageVO p) {
+		return adminDao.getBoardList(p);
+	}
+	
+
 
 	
 }

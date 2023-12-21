@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.example.vo.AdminVO;
+import com.example.vo.BoardVO;
 import com.example.vo.MemberVO;
 import com.example.vo.PageVO;
 
@@ -48,6 +49,14 @@ public class AdminDAOImpl implements AdminDAO {
 	@Override
 	public void deleteMem(String mid) {
 		sqlSession.delete("amDelete",mid);
+	}
+	@Override
+	public int getListCount2(PageVO p) {
+		return sqlSession.selectOne("abCount",p);
+	}
+	@Override
+	public List<BoardVO> getBoardList(PageVO p) {
+		return sqlSession.selectList("abList",p);
 	}
 
 	
