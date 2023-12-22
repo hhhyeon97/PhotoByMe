@@ -1,6 +1,5 @@
 package com.example.dao;
 
-import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,13 +17,8 @@ public class PhotoDAOImpl implements PhotoDAO {
 	private PhotoRepository photoRepo;
 
 	@Override
-	public List<PhotoVO> getAllPhotos() {
-		return photoRepo.findAll();
-	}
-
-	@Override
-	public void uploadPhoto(PhotoVO photo) {
-		photoRepo.save(photo);
+	public void insertPhoto(PhotoVO p) {
+		sqlSession.insert("uploadPhoto",p);
 	}
 	
 }

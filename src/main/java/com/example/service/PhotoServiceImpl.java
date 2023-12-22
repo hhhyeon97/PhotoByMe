@@ -15,13 +15,10 @@ public class PhotoServiceImpl implements PhotoService {
 	private PhotoDAO photoDao;
 
 	@Override
-	public List<PhotoVO> getAllPhotos() {
-		return photoDao.getAllPhotos();
+	public void insertPhoto(PhotoVO p) {
+		photoDao.insertPhoto(p);
 	}
 
-	@Override
-	public void uploadPhoto(PhotoVO photo) {
-		photoDao.uploadPhoto(photo);
-	}
+
 
 }
