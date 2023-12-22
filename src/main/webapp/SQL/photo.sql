@@ -11,7 +11,7 @@ create table photo(
 
 
 select * from photo;
-
+delete from photo where pno=0;
 drop table photo; -- 외래키 제약조건 걸려 있어서 x
 drop table photo cascade constraints; -- 외래키 제약 조건 걸린 테이블 삭제 
 commit;

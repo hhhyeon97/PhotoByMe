@@ -287,5 +287,9 @@ public class MemberController {
     		return false;
     	}
     	return true;
-    }//isLogin()	
+    }//isLogin()
+    
+    
+
+    
 }

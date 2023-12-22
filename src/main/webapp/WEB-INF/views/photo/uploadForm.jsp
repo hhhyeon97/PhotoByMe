@@ -17,7 +17,20 @@
 </style>
 </head>
 <body>
-<form method="post" action="upload_ok"
+ <form method="post" enctype="multipart/form-data">
+    <ul>
+      <li>상품명 <input type="text" name="itemName"></li>
+      <li>파일<input type="file" name="file" ></li>
+    </ul>
+    <input type="submit"/>
+  </form>
+  
+<!--  <a href="/upload">스프링 파일 업로드</a>-->
+<!-- <form action="/file/upload" method="post" enctype="multipart/form-data">
+    <input type="file" name="file" />
+    <input type="submit" value="Upload" />
+</form> -->
+<!-- <form method="post" action="upload_ok"
          onsubmit="return write_check();" enctype="multipart/form-data">
           <table>
             <tr>
@@ -33,9 +46,9 @@
                </td>
             </tr>
          </table>
-    <!-- 등록 버튼 -->
+    등록 버튼
      <input type="submit" value="Upload Photo" /> 
      <input type="reset" value="취소" onclick="$('#ptitle').focus();"> 
-</form>
+</form> -->
 </body>
 </html>
